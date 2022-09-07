@@ -10,7 +10,6 @@ class App(tk.Frame):
         self.createWidgets()
         self.master = master
         self.master.minsize(500,250)
-
         
     def createWidgets(self):
         self.consultar = tk.Button(self, text="Consultar", command=self.consultarVuelo)
