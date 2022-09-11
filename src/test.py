@@ -3,13 +3,24 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 
+import urllib.request
+import urllib.parse
+import http.client
+import json
+import csv
+
 class App(tk.Frame):
+    #djsonClimaOrigen
+    #djsonClimaDestino
+    api = ""
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         self.grid()
         self.createWidgets()
+        self.inicializarJsons()
         self.master = master
         self.master.minsize(500,250)
+        api = "9d92b9e2262e46e5b34601d6f706cf43"
         
     def createWidgets(self):
         self.consultar = tk.Button(self, text="Consultar", command=self.consultarVuelo)
@@ -40,17 +51,54 @@ class App(tk.Frame):
         self.optionVarDestino = tk.StringVar(self)
         self.origen = tk.OptionMenu(self, self.optionVarDestino, self.destinos[0], *self.destinos, command=self.destinoElegido)
         self.origen.pack()
+
+    def inicializarJsons(self):
+        print("Inicializamos los Json de cada Aereopuerto")
+        
     def consultarVuelo(self):
-        print("Haciendo la request con la API dada")#con la api, hacemos la request con api, lat, long, escribimos en ambas etiquetas
+        #Se muestra tanto el clima de origen como el clima de destino con iconos.
+        print(djsonClimaOrigen)
+        print(djsonClimaOrigen["weather"][0]["description"])
+        print(djsonClimaDestino)
+        print(djsonClimaDestino["weather"][0]["description"])
+        print("Haciendo la request con la API dada", api)
+
+        
     def mostrarHistorial(self):
+        historial = open("../data/listaDeVuelos.txt")
+        print(historial.read())
         print("Mostrando todos los vuelos consultados")#abrir y leer el archivo
+        
     def registrarAPI(self):
-        print("Cambiando la API")#sobreescribir el archivo de la api
+        api = "9d92b9e2262e46e5b34601d6f706cf43"
+        print("Cambiando la API")#sobreescribir el archivo de la api y la variable api
+        
     def origenElegido(self, *args):
         print(f'Has elegido { self.optionVarOrigen.get()}')#redefinimos destino, establecer lat y long
+        #Destino se tiene que redefinir con los posibles destinos del origen elegido
+        #Se calcula el clima de la ciudad de Origen y se guarda
+        longitud = str(-99.566)
+        latitud = str(19.3371)
+        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitud+ "&lon=" + longitud + "&appid=" + api
+        datoClimaOrigen = urllib.request.urlopen(url,timeout=30)
+        djsonClimaOrigen = json.loads(datoClimaOrigen.read())
+        
+        
     def destinoElegido(self, *args):
         print(f'Has elegido { self.optionVarDestino.get()}')#redefinos origen, establecer lat y long
+        #Origen se tiene que redefinir con los posibles origen del destino elegido
+        #Se calcula el clima de la ciudad de Destino y se guarda
+        longitud = str(-99.566)
+        latitud = str(19.3371)
+        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitud+ "&lon=" + longitud + "&appid=" + api
+        datoClimaDestino = urllib.request.urlopen(url,timeout=30)
+        djsonClimaDestino = json.loads(datoClimaDestino.read())
+
+        
         
 root = tk.Tk()
 app = App(root)
 app.mainloop()
+# En cada Aereopuerto.json tendremos 2 arreglos, 1 con los posibles destinos y otro con las posibles llegadas
+#Archivo json de la API
+#Archivo txt con todos los vuelos registrados
