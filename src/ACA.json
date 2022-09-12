@@ -1,0 +1,19 @@
+{
+    "data" : [
+	{
+	    "nombre": "ACA",
+	    "longitud": 99,
+	    "latitud": -10
+	},
+	{
+	    "nombre": "MEX",
+	    "longitud": 10,
+	    "latitud": 77
+	},
+	{
+	    "nombre": "MTY",
+	    "longitud": 10,
+	    "latitud": 77
+	}
+    ]
+}

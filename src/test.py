@@ -10,9 +10,7 @@ import json
 import csv
 
 class App(tk.Frame):
-    #djsonClimaOrigen
-    #djsonClimaDestino
-    api = ""
+
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         self.grid()
@@ -20,7 +18,7 @@ class App(tk.Frame):
         self.inicializarJsons()
         self.master = master
         self.master.minsize(500,250)
-        api = "9d92b9e2262e46e5b34601d6f706cf43"
+        self.api = "9d92b9e2262e46e5b34601d6f706cf43"
         
     def createWidgets(self):
         self.consultar = tk.Button(self, text="Consultar", command=self.consultarVuelo)
@@ -57,11 +55,12 @@ class App(tk.Frame):
         
     def consultarVuelo(self):
         #Se muestra tanto el clima de origen como el clima de destino con iconos.
-        print(djsonClimaOrigen)
-        print(djsonClimaOrigen["weather"][0]["description"])
-        print(djsonClimaDestino)
-        print(djsonClimaDestino["weather"][0]["description"])
-        print("Haciendo la request con la API dada", api)
+        #Se guarda en un archivo los datos de los vuelos.
+        print(self.djsonClimaOrigen)
+        print(self.djsonClimaOrigen["weather"][0]["description"])
+        print(self.djsonClimaDestino)
+        print(self.djsonClimaDestino["weather"][0]["description"])
+        print("Haciendo la request con la API dada", self.api)
 
         
     def mostrarHistorial(self):
@@ -70,7 +69,7 @@ class App(tk.Frame):
         print("Mostrando todos los vuelos consultados")#abrir y leer el archivo
         
     def registrarAPI(self):
-        api = "9d92b9e2262e46e5b34601d6f706cf43"
+        self.api = "9d92b9e2262e46e5b34601d6f706cf43"
         print("Cambiando la API")#sobreescribir el archivo de la api y la variable api
         
     def origenElegido(self, *args):
@@ -79,9 +78,9 @@ class App(tk.Frame):
         #Se calcula el clima de la ciudad de Origen y se guarda
         longitud = str(-99.566)
         latitud = str(19.3371)
-        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitud+ "&lon=" + longitud + "&appid=" + api
+        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitud+ "&lon=" + longitud + "&appid=" + self.api
         datoClimaOrigen = urllib.request.urlopen(url,timeout=30)
-        djsonClimaOrigen = json.loads(datoClimaOrigen.read())
+        self.djsonClimaOrigen = json.loads(datoClimaOrigen.read())
         
         
     def destinoElegido(self, *args):
@@ -90,9 +89,9 @@ class App(tk.Frame):
         #Se calcula el clima de la ciudad de Destino y se guarda
         longitud = str(-99.566)
         latitud = str(19.3371)
-        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitud+ "&lon=" + longitud + "&appid=" + api
+        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitud+ "&lon=" + longitud + "&appid=" + self.api
         datoClimaDestino = urllib.request.urlopen(url,timeout=30)
-        djsonClimaDestino = json.loads(datoClimaDestino.read())
+        self.djsonClimaDestino = json.loads(datoClimaDestino.read())
 
         
         
