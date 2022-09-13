@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timedelta
 class ComplexEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Ciudades):
@@ -33,9 +34,14 @@ array3 = {'ciudad':[acapulco, mexico, monterrey]}
     #for x in data['ciudad']:
     #    json.dump(ComplexEncoder().encode(x), archivo, indent=4)
 
-with open("ACA.json") as archivo:
-    datos = json.load(archivo)
-    for d in datos:
-        print(d)
+#with open("ACA.json") as archivo:
+#    datos = json.load(archivo)
+#    for d in datos:
+#        print(d)
+now = datetime.now()
+now2 = datetime.now()
+if(now2 - now > timedelta(seconds=0)):
+    print("CHK1" + str(now2-now))
+print(datetime.now().strftime("%H: %M: %S"))
  #   for d in datos['ciudad']:
  #       print(d)
