@@ -147,11 +147,15 @@ def obtenerClima(cacheClima, ciudad, n, api):
     return cacheClima
 """Funcion que registra si tenemos que realizar la peticion """
 def obtenerNumeroDeVuelo():
-    f = open ('nVuelo.txt','r')
-    contenido = f.read()
-    numero = int(contenido)
+    try:
+        f = open ('nVuelo.txt','r')
+        contenido = f.read()
+        numero = int(contenido)
+        f.close()
+    except OSError as error:
+        numero = 0
     print(str(numero))
-    f.close()
+    
     f = open ('nVuelo.txt','w')
     f.write(str(numero + 1))
     f.close()
@@ -195,7 +199,6 @@ def main():
     #Obtenemos el destino y lo guardamos en la cache
     destinos = leerDestinos(stringCiudad)
     ciudadOrigen = Ciudades(destinos[0][0], destinos[0][1], destinos[0][2])
-    print("Nuestra ciudad origne" + str(ciudadOrigen))
     cacheClima = obtenerClima(cacheClima, ciudadOrigen, n, api)
     
     ciudadDestinoCodigo = input()#Esta es la seleccion de aereopuerto destino

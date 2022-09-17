@@ -10,3 +10,12 @@ Destino: Playa Blanca, MX, Temperatura: 299.15
 Vuelo 0 a las: 13: 30: 17
 Origen: Pantitlán, MX, Temperatura: 293.23
 Destino: Mata de Pita, MX, Temperatura: 298.2
+Vuelo 0 a las: 20: 48: 00
+Origen: Pantitlán, MX, Temperatura: 291.07
+Destino: Santa Teresa de Lo Ovalle, CL, Temperatura: 284.41
+Vuelo 1 a las: 20: 48: 07
+Origen: Pantitlán, MX, Temperatura: 291.07
+Destino: Las Ladrilleras, MX, Temperatura: 302.29
+Vuelo 2 a las: 20: 48: 21
+Origen: Pantitlán, MX, Temperatura: 291.07
+Destino: Phoenix, US, Temperatura: 305.67
