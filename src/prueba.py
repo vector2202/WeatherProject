@@ -82,12 +82,16 @@ def escribirDestinos(n):
                     json.dump(listaCiudades[i], archivo, indent=4, cls=CiudadesEncoder)
 """Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash """
 def leerDestinos(ciudadOrigen):
-    with open("data/" + ciudadOrigen + ".json") as archivo:
-        destinos = json.load(archivo)
-        for destino in destinos:
-            if(destino[0] != ciudadOrigen):
-                print(destino)
-        return destinos
+    try:
+        with open("data/" + ciudadOrigen + ".json") as archivo:
+            destinos = json.load(archivo)
+            for destino in destinos:
+                if(destino[0] != ciudadOrigen):
+                    print(destino)
+            return destinos
+    except OSError as error:
+        print("Ciudad no valida")
+        return None
 """ Leemos con la ciudad de origen todos sus destinos posibles"""
 def cargarDatos():
     with open("data/historial.json") as archivo:
@@ -95,6 +99,8 @@ def cargarDatos():
         return historial
     
 def convertirDatos(datos):
+    if(datos == None):
+        return ""
     informacion = "Clima: " + datos['weather'][0]['main'] + "\n"
     informacion += "Descripcion: " + datos['weather'][0]['description'] + "\n"
     #print(datos['wheather'][0]['icon'])
@@ -124,16 +130,19 @@ def buscarCiudadClima(cacheClima, ciudad, n):
     return -1
 """Funcion que busca con una ciudad clima donde esta ubicada en la cache"""
 def realizarPeticion(ciudad, api):
-    url = "https://api.openweathermap.org/data/2.5/weather?lat=" + str(ciudad.latitud) + "&lon=" + str(ciudad.longitud) + "&appid=" + api + "&lang=es"
-    f = urllib.request.urlopen(url,timeout=30)
-    return json.loads(f.read())
+    try:
+        url = "https://api.openweathermap.org/data/2.5/weather?lat=" + str(ciudad.latitud) + "&lon=" + str(ciudad.longitud) + "&appid=" + api + "&lang=es"
+        f = urllib.request.urlopen(url,timeout=30)
+        return json.loads(f.read())
+    except urllib.request.HTTPError as error:
+        print(error)
+        return None
 """Funcion que realiza dada una ciudad y la api su clima en datos json"""
 def obtenerClima(cacheClima, ciudad, n, api):
     index = buscarCiudadClima(cacheClima, ciudad, n)
     if(index != -1):#Si el clima ya se registro previamente
-        if((datetime.now() - cacheClima[index][2]) < timedelta(minutes=30)):
-            datosJson = cacheClima[index][1]#Usar la cache
-        else:#Si ya paso tiempo desde la ultima consulta
+        if((datetime.now() - cacheClima[index][2]) >= timedelta(minutes=30)):
+            #Si ya paso tiempo desde la ultima consulta
             datosJson = realizarPeticion(ciudad, api)
             cacheClima[index][1] = datosJson
             cacheClima[index][2] = datetime.now()
@@ -163,6 +172,8 @@ def obtenerNumeroDeVuelo():
 """Funcion que devuelve cuantos vuelos hemos reguistrado"""
 
 def convertirVuelo(datosOrigen, datosDestino):
+    if(datosOrigen == None or datosDestino == None):
+        return ""
     informacion = "Vuelo " + str(obtenerNumeroDeVuelo()) + " a las: " + datetime.now().strftime("%H: %M: %S") + "\n"
     informacion += "Origen: " + datosOrigen['name'] + ", " + datosOrigen['sys']['country'] + ", Temperatura: " + str(datosOrigen['main']['temp']) + "\n"
     informacion += "Destino: " + datosDestino['name'] + ", " + datosDestino['sys']['country'] + ", Temperatura: " + str(datosDestino['main']['temp']) + "\n"
@@ -185,6 +196,7 @@ def main():
     #Escribimos los .JSON de cada aereopuerto
     escribirDestinos(n)
     #API utilizada para las solicitudes
+    #api = "al"
     api = "9d92b9e2262e46e5b34601d6f706cf43"
 
     #Creamos la cache de los climas
@@ -198,20 +210,23 @@ def main():
     
     #Obtenemos el destino y lo guardamos en la cache
     destinos = leerDestinos(stringCiudad)
-    ciudadOrigen = Ciudades(destinos[0][0], destinos[0][1], destinos[0][2])
-    cacheClima = obtenerClima(cacheClima, ciudadOrigen, n, api)
+    if(destinos != None):
+        ciudadOrigen = Ciudades(destinos[0][0], destinos[0][1], destinos[0][2])
+        cacheClima = obtenerClima(cacheClima, ciudadOrigen, n, api)
     
-    ciudadDestinoCodigo = input()#Esta es la seleccion de aereopuerto destino
-    longitudDestino = 0.0
-    latitudDestino = 0.0
-    for destino in destinos:
-        if (destino[0] == ciudadDestinoCodigo):
-            latitudDestino = destino[1]
-            longitudDestino = destino[2]
-            
-    ciudadDestino = Ciudades(ciudadDestinoCodigo, latitudDestino, longitudDestino)
-    cacheClima = obtenerClima(cacheClima, ciudadDestino, n, api)
-    #Mostramos el clima de ambas ciudades, los labels van aqui
-    mostrarClima(cacheClima[buscarCiudadClima(cacheClima, ciudadOrigen, n)][1], cacheClima[buscarCiudadClima(cacheClima, ciudadDestino, n)][1])
+        ciudadDestinoCodigo = input()#Esta es la seleccion de aereopuerto destino
+        longitudDestino = 0.0
+        latitudDestino = 0.0
+        destinoEncontrado = False
+        for destino in destinos:
+            if (destino[0] == ciudadDestinoCodigo):
+                latitudDestino = destino[1]
+                longitudDestino = destino[2]
+                destinoEncontrado = True
+        if (destinoEncontrado):
+            ciudadDestino = Ciudades(ciudadDestinoCodigo, latitudDestino, longitudDestino)
+            cacheClima = obtenerClima(cacheClima, ciudadDestino, n, api)
+            #Mostramos el clima de ambas ciudades, los labels van aqui
+            mostrarClima(cacheClima[buscarCiudadClima(cacheClima, ciudadOrigen, n)][1], cacheClima[buscarCiudadClima(cacheClima, ciudadDestino, n)][1])
     #leerHistorial()
 main()

@@ -23,7 +23,7 @@
   filecolor=magenta,      
   urlcolor=cyan,
   pdfauthor={Victor Torres},
-  pdftitle={Probabilidad 1},
+  pdftitle={Documentacion},
   pdfkeywords={},
   pdfsubject={},
   pdfcreator={Victor Torres}, 
@@ -55,20 +55,54 @@ Para el diseño de la interfaz y minimizar la informacion que tiene que ingresar
 En cuanto al manejo de peticiones, sabemos que no podemos hacer mas de 60 por minuto e incluso podemos no hacer algunas ya que si se quiere saber, la informacion de una request realizada hace 10 minutos, pues el clima no ha variado significativamente, por lo que usando tablas hash guardamos la informacion en un diccionario y establecemos condiciones para hacer una request, estas son si ha pasado mas de media hora o si no hay informacion guardada. Una vez que se obtuvo los datos en formato json del clima, se procesan y filtran a datos legibles y se muestran en pantalla. Por ultimo se guarda en un archivo el historial de vuelos realizados considerando que al momento de la consulta es un vuelo que se ha realizado por si despues solo se quiere consultar el vuelo y no registrarlo.
 \section{Pseudocodigo}
 \begin{algorithmic}[1]
-  
-  \If{you love me}
-  \State{kiss me!}
-  \ElsIf{you like me}
-  \State{kiss me!}
-  \Else
-  \State{kiss me?}
+  \For{cada vuelo}
+  \If{ciudad de origen no esta registrada}
+  \State{registrala en la primera casilla vacia}
   \EndIf
+  \If{ciudad de destino no esta registrada}
+  \State{registrala en el arreglo de la ciudad de origen}
+  \EndIf
+  \EndFor
+  \For{ciudad de Origen}{ciudades}
+  \State{Escribir en cada json el arreglo de ciudad Origen}
+  \EndFor
+  \State{Leer ciudad Origen}
+  \State{Mostrar todos los destinos posibles dada la ciudad de origen}
+  \State{climaOrigen = obtenerClima(ciudadOrigen, api)}
+  \State{Leer ciudad destino}
+  \State{climaDestino = obtenerClima(ciudadOrigen, api)}
+  \State{Mostrar Clima}
+  \State{Registrar el vuelo en un archivo}
+
+  \Function{obtenerClima}{ciudadOrigen, api}
+  \If{clima ya fue registrado en cache}
+  \If{Han pasado mas de 30 min desde la ultima request}
+  \State{realiza una peticion y guarda en cache}
+  \EndIf
+  \Else
+  \State{realiza la peticion}
+  \State{Guarda en los datos en la primera posicion disponible}
+  \EndIf
+  \EndFunction
 \end{algorithmic}
 \section{Mantenimiento}
 \section{Pruebas}
+Las pruebas las realizamos ingresando los datos manualmente y desde terminal para poder manipular mejor los datos, ya que como la interfaz es amigable con el usuario, son pocos los datos que el mismo manipula. Identificamos los datos como 
 \subsection{Prueba con el archivo csv}
+¿Que sucede si ingresamos el archivo csv incorrecto, es decir, nosotros requerimos que el archivo csv venga de la siguiente manera: $x,y,lat_o,lon_o,lat_d, long_d$, donde:
+\begin{itemize}
+\item $x$: nombre codigo de la ciudad de origen
+\item $y$: nombre codigo de la ciudad de destino
+\item $lat_o$: latitud de la ciudad de origen
+\item $long_o$: longitud de la ciudad de origen
+\item $lat_d$: latitud de la ciudad de destino
+\item $long_d$: longitud de la ciudad de destino
+\end{itemize}
+por cada fila.
 \subsection{Prueba una ciudad inexistente}
+¿Que pasa si ingresamos un nombre codigo de ciudad tanto de origen como de destino que no existe?
 \subsection{Una API erronea}
+¿Que pasa si ingresamos una API no valida para la peticion de los datos?
 \end{document}
 %%% Local Variables:
 %%% mode: latex
