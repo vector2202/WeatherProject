@@ -50,7 +50,7 @@ def buscarCiudad(listaCiudades, nombreCiudad):
 """ Funcion que busca si la ciudad destino ya esta considerada en en arreglo de los destinos de la ciudad"""
 
 def escribirDestinos(n):    
-    with open('../data/dataset1.csv', 'r') as file:
+    with open('data/dataset1.csv', 'r') as file:
         reader = csv.reader(file)
         #Lista de listas donde cada casilla contiene a una ciudad y sus destinos posibles
         listaCiudades = [list()]
@@ -78,11 +78,11 @@ def escribirDestinos(n):
         for i in range(n):
             if(len(listaCiudades[i]) > 0):#Para cada ciudad que fue registrada
                 #Abrimos el json de la ciudad correspondiente y escribimos la ciudad y todos sus destinos
-                with open(listaCiudades[i][0].nombre + '.json', 'w') as archivo:
+                with open("data/" + listaCiudades[i][0].nombre + '.json', 'w') as archivo:
                     json.dump(listaCiudades[i], archivo, indent=4, cls=CiudadesEncoder)
 """Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash """
 def leerDestinos(ciudadOrigen):
-    with open(ciudadOrigen + ".json") as archivo:
+    with open("data/" + ciudadOrigen + ".json") as archivo:
         destinos = json.load(archivo)
         for destino in destinos:
             if(destino[0] != ciudadOrigen):
@@ -90,7 +90,7 @@ def leerDestinos(ciudadOrigen):
         return destinos
 """ Leemos con la ciudad de origen todos sus destinos posibles"""
 def cargarDatos():
-    with open("historial.json") as archivo:
+    with open("data/historial.json") as archivo:
         historial = json.load(archivo)
         return historial
     
@@ -110,7 +110,7 @@ def convertirDatos(datos):
 """Funcion que devuelve la informacion dado el json del clima"""
     
 def leerHistorial():
-    historial = open("historial.txt", 'r')
+    historial = open("../data/historial.txt", 'r')
     print(historial.read())
     historial.close()
 """Funcion que lee el historial"""
@@ -148,7 +148,7 @@ def obtenerClima(cacheClima, ciudad, n, api):
 """Funcion que registra si tenemos que realizar la peticion """
 def obtenerNumeroDeVuelo():
     try:
-        f = open ('nVuelo.txt','r')
+        f = open ('data/nVuelo.txt','r')
         contenido = f.read()
         numero = int(contenido)
         f.close()
@@ -156,7 +156,7 @@ def obtenerNumeroDeVuelo():
         numero = 0
     print(str(numero))
     
-    f = open ('nVuelo.txt','w')
+    f = open ('data/nVuelo.txt','w')
     f.write(str(numero + 1))
     f.close()
     return numero
@@ -174,7 +174,7 @@ def mostrarClima(datosOrigen, datosDestino):
     print(convertirDatos(datosOrigen))
     print(convertirDatos(datosDestino))
     #Registramos el vuelo en un txt
-    historial = open("historial.txt", 'a')
+    historial = open("data/historial.txt", 'a')
     historial.write(convertirVuelo(datosOrigen, datosDestino))
     historial.close()
 """Funcion que muestra el clima y escribe el vuelo en un historial"""

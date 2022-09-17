@@ -1,0 +1,3 @@
+#Ignore JSONS and TXT
+data/*.json
+data/*.txt
