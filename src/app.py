@@ -290,7 +290,7 @@ class App(tk.Frame):
         informacion += "Temp. maxima: " + str(datos['main']['temp_max']) + "\n"
         informacion += "Amanecer: " + str(datos['sys']['sunrise']) + "\n"
         informacion += "Atardecer: " + str(datos['sys']['sunset']) + "\n"
-        self.iconURL = "http://openweathermap.org/img/w/" + str(datos['weather'][0]['icon']) + ".png"
+        iconURL = "http://openweathermap.org/img/w/" + str(datos['weather'][0]['icon']) + ".png"
         return informacion
     """Funcion que devuelve la informacion dado el json del clima"""
 
