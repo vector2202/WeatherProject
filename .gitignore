@@ -1,3 +1,7 @@
 #Ignore JSONS and TXT
 data/*.json
 data/*.txt
+
+#Ignore
+doc/
+!doc/documentacion.pdf
