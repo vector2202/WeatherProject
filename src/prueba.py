@@ -3,6 +3,7 @@ import urllib.parse
 import http.client
 import json
 import csv
+import sys
 from datetime import datetime, timedelta
 
 
@@ -48,9 +49,19 @@ def buscarCiudad(listaCiudades, nombreCiudad):
             return True
     return False
 """ Funcion que busca si la ciudad destino ya esta considerada en en arreglo de los destinos de la ciudad"""
-
-def escribirDestinos(n):    
-    with open('data/dataset1.csv', 'r') as file:
+def revisarCsv(archivo):
+    with open('data/' + archivo, 'r') as file:
+        contenido = csv.reader(file)
+        i = 0
+        for vuelo in contenido:
+            if(len(vuelo) != 6):
+                raise Exception("Formato de csv incorrecto")
+            if(i > 0):
+                if(type(vuelo[0]) != str or type(vuelo[1]) != str or type(vuelo[2]) != float or type(vuelo[3]) != float or type(vuelo[4]) != float or type(vuelo[5]) != float):
+                    raise Exception("Formato de csv incorrecto")            
+"""Funcion que verifica que el formato del csv sea correcto"""
+def escribirDestinos(archivo, n):    
+    with open('data/' + archivo, 'r') as file:
         reader = csv.reader(file)
         #Lista de listas donde cada casilla contiene a una ciudad y sus destinos posibles
         listaCiudades = [list()]
@@ -90,7 +101,6 @@ def leerDestinos(ciudadOrigen):
                     print(destino)
             return destinos
     except OSError as error:
-        print("Ciudad no valida")
         return None
 """ Leemos con la ciudad de origen todos sus destinos posibles"""
 def cargarDatos():
@@ -194,7 +204,13 @@ def main():
     #Tamaño de la tabla de dispersion
     n = 71
     #Escribimos los .JSON de cada aereopuerto
-    escribirDestinos(n)
+    #archivo = "dataset1.csv"
+    archivo = "dataset1.csv"
+    try:
+        revisarCsv(archivo)
+    except Exception as exception:
+        sys.exit(str(exception))
+    escribirDestinos(archivo, n)
     #API utilizada para las solicitudes
     #api = "al"
     api = "9d92b9e2262e46e5b34601d6f706cf43"
@@ -205,7 +221,7 @@ def main():
         cacheClima.append(list())
 
     #Ciudad de Origen y lo guardamos en la cache
-    stringCiudad = "MEX"#Esta es la seleccion de aereopuerto origen
+    stringCiudad = input()#Esta es la seleccion de aereopuerto origen
     #funcion str->objCiudad mediante abriendo str.json
     
     #Obtenemos el destino y lo guardamos en la cache
@@ -228,5 +244,10 @@ def main():
             cacheClima = obtenerClima(cacheClima, ciudadDestino, n, api)
             #Mostramos el clima de ambas ciudades, los labels van aqui
             mostrarClima(cacheClima[buscarCiudadClima(cacheClima, ciudadOrigen, n)][1], cacheClima[buscarCiudadClima(cacheClima, ciudadDestino, n)][1])
-    #leerHistorial()
+            #leerHistorial()
+        else:
+            print("Ciudad de destino no disponible")
+    else:
+        print("Ciudad de origen no disponible")
+    
 main()

@@ -99,10 +99,67 @@ Las pruebas las realizamos ingresando los datos manualmente y desde terminal par
 \item $long_d$: longitud de la ciudad de destino
 \end{itemize}
 por cada fila.
+
+Si ingresamos un csv incorrecto nos mandara un mensaje diciendo que el archivo CSV es incorrecto y terminara la ejecucion del programa:
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.5]{figures/csvmalo}
+  \caption{Ingresando un archivo csv incorrecto}
+\end{figure}
+Ingresando un CSV bajo el formato correcto, ademas del programa ejecutarse con normalidad, observamos que en la carpeta data se crea unos archivos json por cada ciudad de origen:
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.3]{figures/csv1}
+  \caption{Ingresando un archivo csv con formato correcto}
+\end{figure}
+\newpage
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.3]{figures/csv2}
+  \caption{Ingresando un archivo csv con formato correcto}
+\end{figure}
+
 \subsection{Prueba una ciudad inexistente}
 ¿Que pasa si ingresamos un nombre codigo de ciudad tanto de origen como de destino que no existe?
+
+Si ingresamos un codigo (nombre acortado de la ciudad) de ciudad como ciudad de origen que no existe, el programa termina diciendo que la ciudad no existe
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/ciudadOmal}
+  \caption{Ingresando una ciudad de origen inexistente}
+\end{figure}
+
+Si ingresamos un codigo de ciudad como ciudad de destino que no esta listada como destino disponible, el programa termina diciendo que esa ciudad de destino no existe.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.3]{figures/ciudadDmal}
+  \caption{Ingresando una ciudad de destino inexistente}
+\end{figure}
+
+Para ambos casos una prueba con entrada exitosa se ve asi:
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.3]{figures/pruebaBuena}
+  \caption{Prueba exitosa}
+\end{figure}
+
 \subsection{Una API erronea}
-¿Que pasa si ingresamos una API no valida para la peticion de los datos?
+¿Que pasa si ingresamos una llave API no valida para la peticion de los datos?
+
+Si corremos el programa con una llave API erronea, el programa lanzara un mensaje el cual dice que la peticion esta no autorizada
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.3]{figures/apiMal}
+  \caption{Haciendo una peticion con una llave API no valida}
+\end{figure}
+
+Si ingresamos una llave API valida:
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.3]{figures/pruebaBuena}
+  \caption{Llave API valida}
+\end{figure}
+
 \end{document}
 %%% Local Variables:
 %%% mode: latex
