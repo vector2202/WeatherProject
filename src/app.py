@@ -281,9 +281,8 @@ class App(tk.Frame):
     def convertirDatos(self, datos):
         if(datos == None):
             return ""
-        informacion = "Nombre: " + datos['name'] + "," + datos['sys']['country'] + "\n"
-        informacion += "Clima: " + datos['weather'][0]['main'] + "\n"
-        informacion += "Descripcion: " + datos['weather'][0]['description'] + "\n"
+        informacion = datos['name'] + "," + datos['sys']['country'] + "\n"
+        informacion += datos['weather'][0]['description'] + "\n"
         
         informacion += "Temperatura: " + str(datos['main']['temp'] - 273) + "\n"
         informacion += "Sensacion: "+ str(datos['main']['feels_like'] - 273) + "\n"

@@ -16,10 +16,9 @@ _Para que el sistema funcione de manera correcta, tiene que tener un archivo don
 
 _En el directorio actual hay un archivo denominado dataset1.csv, ese es el formato a seguir de los vuelos que queremos registrar en la base de datos, si queremos ingresar un nuevo formato basta remplazar este con el mismo nombre_
 
+## Ejecutando el programa ⚙️
 
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+_La interfaz es muy amigable e intuitiva, al abrirla apareceran opciones para ingresar nuestra propia llave API, nostros proporcionamos una por default pero si se quiere se puede modificar, solo basta presionar el boton de API, para mostrar el historial de vuelos basta con presionar el boton de consultar y _
 
 ### Analice las pruebas end-to-end 🔩
 
