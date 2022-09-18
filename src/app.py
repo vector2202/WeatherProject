@@ -286,8 +286,8 @@ class App(tk.Frame):
         
         informacion += "Temperatura: " + str(datos['main']['temp'] - 273) + "\n"
         informacion += "Sensacion: "+ str(datos['main']['feels_like'] - 273) + "\n"
-        informacion += "Temp. minima: " + str(datos['main']['temp_min']) + "\n"
-        informacion += "Temp. maxima: " + str(datos['main']['temp_max']) + "\n"
+        informacion += "Temp. minima: " + str(datos['main']['temp_min'] - 273) + "\n"
+        informacion += "Temp. maxima: " + str(datos['main']['temp_max'] - 273) + "\n"
         informacion += "Amanecer: " + str(datos['sys']['sunrise']) + "\n"
         informacion += "Atardecer: " + str(datos['sys']['sunset']) + "\n"
         iconURL = "http://openweathermap.org/img/w/" + str(datos['weather'][0]['icon']) + ".png"
