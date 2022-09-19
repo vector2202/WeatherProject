@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.30)  18 SEP 2022 23:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.30)  18 SEP 2022 23:15
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -731,98 +731,97 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.112   \EndFor
-                <./figures/boceto.jpeg>]
-Overfull \hbox (2.06511pt too wide) in paragraph at lines 140--141
+                <./figures/boceto.jpeg>] [7]
+Overfull \hbox (2.06511pt too wide) in paragraph at lines 151--152
 \T1/cmr/m/n/12 mos que el archivo csv venga de la sigu-iente man-era: $\OML/cmm
 /m/it/12 x; y; lat[]; lon[]; lat[]; long[]$\T1/cmr/m/n/12 ,
  []
 
-[7]
 <figures/csvmalo.png, id=121, 547.04375pt x 207.77625pt>
 File: figures/csvmalo.png Graphic file (type png)
 <use figures/csvmalo.png>
-Package pdftex.def Info: figures/csvmalo.png  used on input line 154.
+Package pdftex.def Info: figures/csvmalo.png  used on input line 165.
 (pdftex.def)             Requested size: 273.5212pt x 103.88786pt.
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
- has been already used, duplicate ignored
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.157 \newpage
+l.168 \newpage
                <./figures/csvmalo.png>]
 <figures/csv1.png, id=130, 1371.1225pt x 770.88pt>
 File: figures/csv1.png Graphic file (type png)
 <use figures/csv1.png>
-Package pdftex.def Info: figures/csv1.png  used on input line 161.
+Package pdftex.def Info: figures/csv1.png  used on input line 172.
 (pdftex.def)             Requested size: 274.21964pt x 154.17326pt.
 <figures/csv2.png, id=131, 1371.1225pt x 770.88pt>
 File: figures/csv2.png Graphic file (type png)
 <use figures/csv2.png>
-Package pdftex.def Info: figures/csv2.png  used on input line 167.
+Package pdftex.def Info: figures/csv2.png  used on input line 178.
 (pdftex.def)             Requested size: 274.21964pt x 154.17326pt.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.170 \newpage
+l.181 \newpage
               pdfTeX warning (ext4): destination with the same identifier (name
 {figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.170 \newpage
+l.181 \newpage
                <./figures/csv1.png> <./figures/csv2.png>]
 <figures/ciudadOmal.png, id=140, 548.0475pt x 90.3375pt>
 File: figures/ciudadOmal.png Graphic file (type png)
 <use figures/ciudadOmal.png>
-Package pdftex.def Info: figures/ciudadOmal.png  used on input line 177.
+Package pdftex.def Info: figures/ciudadOmal.png  used on input line 188.
 (pdftex.def)             Requested size: 274.02307pt x 45.16862pt.
 <figures/ciudadDmal.png, id=141, 548.0475pt x 90.3375pt>
 File: figures/ciudadDmal.png Graphic file (type png)
 <use figures/ciudadDmal.png>
-Package pdftex.def Info: figures/ciudadDmal.png  used on input line 184.
+Package pdftex.def Info: figures/ciudadDmal.png  used on input line 195.
 (pdftex.def)             Requested size: 274.02307pt x 45.16862pt.
  [10pdfTeX warning (ext4): destination with the same identifier (name{figure.5}
 ) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.187 \newpage
+l.198 \newpage
               pdfTeX warning (ext4): destination with the same identifier (name
 {figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.187 \newpage
+l.198 \newpage
                <./figures/ciudadOmal.png> <./figures/ciudadDmal.png>]
 <figures/pruebaBuena.png, id=150, 1371.1225pt x 770.88pt>
 File: figures/pruebaBuena.png Graphic file (type png)
 <use figures/pruebaBuena.png>
-Package pdftex.def Info: figures/pruebaBuena.png  used on input line 191.
+Package pdftex.def Info: figures/pruebaBuena.png  used on input line 202.
 (pdftex.def)             Requested size: 411.33992pt x 231.26578pt.
 
-Overfull \hbox (21.33992pt too wide) in paragraph at lines 191--192
+Overfull \hbox (21.33992pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
 <figures/apimal.png, id=151, 548.0475pt x 90.3375pt>
 File: figures/apimal.png Graphic file (type png)
 <use figures/apimal.png>
-Package pdftex.def Info: figures/apimal.png  used on input line 200.
+Package pdftex.def Info: figures/apimal.png  used on input line 211.
 (pdftex.def)             Requested size: 274.02307pt x 45.16862pt.
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.203 \newpage
+l.214 \newpage
               pdfTeX warning (ext4): destination with the same identifier (name
 {figure.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.203 \newpage
+l.214 \newpage
                <./figures/pruebaBuena.png> <./figures/apimal.png>]
 File: figures/pruebaBuena.png Graphic file (type png)
 <use figures/pruebaBuena.png>
-Package pdftex.def Info: figures/pruebaBuena.png  used on input line 207.
+Package pdftex.def Info: figures/pruebaBuena.png  used on input line 218.
 (pdftex.def)             Requested size: 411.33992pt x 231.26578pt.
 
-Overfull \hbox (21.33992pt too wide) in paragraph at lines 207--208
+Overfull \hbox (21.33992pt too wide) in paragraph at lines 218--219
  [][] 
  []
 
@@ -830,16 +829,16 @@ Overfull \hbox (21.33992pt too wide) in paragraph at lines 207--208
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.215 \end{document}
+l.226 \end{document}
                     ] (./documentacion.aux)
 Package rerunfilecheck Info: File `documentacion.out' has not changed.
 (rerunfilecheck)             Checksum: 313F080D34859C02A0838196A0036412;2061.
  ) 
 Here is how much of TeX's memory you used:
- 10376 strings out of 479957
- 148866 string characters out of 5879162
- 446234 words of memory out of 6000000
- 27619 multiletter control sequences out of 15000+600000
+ 10379 strings out of 479957
+ 148909 string characters out of 5879162
+ 447234 words of memory out of 6000000
+ 27622 multiletter control sequences out of 15000+600000
  415356 words of font info for 56 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  60i,8n,63p,1007b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -855,7 +854,7 @@ share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on documentacion.pdf (12 pages, 2040347 bytes).
+Output written on documentacion.pdf (12 pages, 2041726 bytes).
 PDF statistics:
  215 PDF objects out of 1000 (max. 8388607)
  170 compressed objects within 2 object streams

@@ -104,15 +104,19 @@ Como vemos el boceto del diseño, el usuario solo puede ingresar 3 cosas al sist
 \begin{algorithmic}[1]
   \For{cada vuelo}
   \If{ciudad de origen no esta registrada}
-  \State{registrala en la primera casilla vacia}
+  \State{registrala en la primera casilla vacia a partir del hash}
   \EndIf
   \If{ciudad de destino no esta registrada}
   \State{registrala en el arreglo de la ciudad de origen}
   \EndIf
   \EndFor
+
+  
   \For{ciudad de Origen}{ciudades}
   \State{Escribir en cada json el arreglo de ciudad Origen}
   \EndFor
+
+  
   \State{Leer ciudad Origen}
   \State{Mostrar todos los destinos posibles dada la ciudad de origen}
   \State{climaOrigen = obtenerClima(ciudadOrigen, api)}
@@ -130,6 +134,13 @@ Como vemos el boceto del diseño, el usuario solo puede ingresar 3 cosas al sist
   \State{realiza la peticion}
   \State{Guarda en los datos en la primera posicion disponible}
   \EndIf
+  \EndFunction
+  \Function{hash}{ciudad, n}
+  \State{suma = 0}
+  \For{caracter}{nombre de ciudad}
+  \State{suma += caracter}
+  \EndFor
+  \Return{(suma + abs(latitud) + abs(longitud)) \% n}
   \EndFunction
 \end{algorithmic}
 \section{Mantenimiento}
