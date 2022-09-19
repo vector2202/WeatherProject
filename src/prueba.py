@@ -212,8 +212,8 @@ def main():
         sys.exit(str(exception))
     escribirDestinos(archivo, n)
     #API utilizada para las solicitudes
-    #api = "al"
-    api = "9d92b9e2262e46e5b34601d6f706cf43"
+    api = "al"
+    #api = "9d92b9e2262e46e5b34601d6f706cf43"
 
     #Creamos la cache de los climas
     cacheClima = [list()]

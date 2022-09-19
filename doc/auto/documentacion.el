@@ -32,6 +32,10 @@
     "capt-of"
     "hyperref"
     "algorithm"
-    "algpseudocode"))
+    "algpseudocode")
+   (LaTeX-add-labels
+    "EscudoUNAM"
+    "EscudoCiencias"
+    "fig:label"))
  :latex)
 

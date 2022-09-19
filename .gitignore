@@ -2,6 +2,3 @@
 data/*.json
 data/*.txt
 
-#Ignore
-doc/
-!doc/documentacion.pdf

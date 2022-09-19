@@ -4,8 +4,29 @@ _Proyecto 1 de la Modelado y Programacion en el cual tenemos que desarrollar una
 _Estas instrucciones permitiran hacer una copia del proyecto en funcionamiento para el fin de utilizarlo como sistema de consulta de clima acerca de vuelos._
 
 ### Pre-requisitos 📋
-_
-_Se necesita instalar request de Python_
+_La aplicacion esta desarrolada en python, para verificar que este instalado en el sistema, inserte en la terminal:_
+```
+python --version
+```
+
+_En caso de que no tenga instalado corra el siguiente comando:_
+
+```
+sudo dnf install python
+```
+
+_dnf en el caso de las distribuciones de redHat, depende de cada distribucion el comando_ 
+
+_Tambien se requiere de tener pip instalado, por lo que hay que correr:_
+```
+command -v pip
+```
+_En caso de que no este instalado, ejecute la siguiente linea:_
+```
+$ python get-pip.py
+```
+
+_Ya con python y pip instalados, se necesita instalar request de Python, corriendo el siguiente comando:_
 ```
 pip install request
 ```
@@ -40,5 +61,5 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Victor Torres** - *Desarrollador* - [villanuevand](https://github.com/villanuevand)
-* **Diego Castro** - *Desarrollador* - [fulanitodetal](#fulanito-de-tal)
+* **Victor Torres** - *Desarrollador* - [vector2202](https://github.com/vector2202)
+* **Diego Castro** - *Desarrollador* - [DiegoCastroRendon](https://github.com/DiegoCastroRendon)
