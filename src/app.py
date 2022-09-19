@@ -1,4 +1,3 @@
-from re import template
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
@@ -6,7 +5,6 @@ import tkinter.messagebox
 
 import urllib.request
 import urllib.parse
-import http.client
 import json
 import csv
 import sys
@@ -299,14 +297,12 @@ class App(tk.Frame):
         
     
     def mostrarHistorial(self):
-        historial = open("data/historial.txt", 'r')
-        print(historial.read())
-        tk.messagebox.showinfo("Historial",text=historial.read())
-        historial.close()
-
-    #def onClick(self):
-        #tk.messagebox.showinfo("Historial",text=historial.read())
-
+        n = 3*3
+        with open("data/historial.txt", 'r') as file:
+            information = ""
+            for line in (file.readlines() [-n:]): 
+                information += line + "\n"
+            tkinter.messagebox.showinfo("Historial", message=information)
     def registrarAPI(self):
         self.api = self.apiLlave.get()
         print(str(self.api))#sobreescribir el archivo de la api y la variable api
