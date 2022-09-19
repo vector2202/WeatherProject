@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 import tkinter.messagebox
+from PIL import Image, ImageTk
+from urllib.request import urlopen
 
 import urllib.request
 import urllib.parse
@@ -9,6 +11,8 @@ import json
 import csv
 import sys
 from datetime import datetime, timedelta
+
+import math
 
 class CiudadesEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -178,12 +182,15 @@ def convertirVuelo(datosOrigen, datosDestino):
 class App(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        self.grid() # Esto es la cuadricula para poder poner los terxtos y opciones.
+        self.grid() # Esto es la cuadricula para poder poner los textos y opciones.
         self.inicializarJsons()
         self.createWidgets()
         self.master = master
         self.master.minsize(400,250)
         self.api = "9d92b9e2262e46e5b34601d6f706cf43"
+        #self.owm = OpenWeatherMap()
+        #self.temp_icon = OWIconLabel(self, weather_icon = owm.get_icon_data)
+        #self.temp_icon.grid(row=0, column=0)
 
         
     def createWidgets(self):
@@ -234,12 +241,22 @@ class App(tk.Frame):
         self.climaDestino = ttk.Label(self, textvariable=self.climaDestinoDatos)
         self.climaDestino.place(x=200, y=170)
 
+        #iconURL = "http://openweathermap.org/img/w/" + str(datos['weather'][0]['icon']) + ".png"
         #self.labelMostrarClima = ttk.Label(self, text= mostrarClima)
         #self.labelMostrarClima.place(x=20, y=190)
+
+        #imageUrl = "http://openweathermap.org/img/w/.png"
+        #u = urlopen(imageUrl)
+        #rawData = u.read()
+        #u.close()
+        #photo = ImageTk.PhotoImage(data=rawData)
+        #label = tk.Label(image=photo)
+        #label.image = photo
+        #label.pack()
         
         #Boton para salir del programa
         self.buttonQuit = ttk.Button(self, text="Salir del programa", command = root.quit)
-        self.buttonQuit.pack(padx=200, pady=300)
+        self.buttonQuit.pack(padx=200, pady=350)
         #self.buttonQuit.place(x=200, y=300)
 
     def inicializarJsons(self):
@@ -277,32 +294,42 @@ class App(tk.Frame):
         historial.close()
         """Funcion que muestra el clima y escribe el vuelo en un historial"""
     def convertirDatos(self, datos):
+        self.json = {}
         if(datos == None):
             return ""
         informacion = datos['name'] + "," + datos['sys']['country'] + "\n"
         informacion += datos['weather'][0]['description'] + "\n"
         
-        informacion += "Temperatura: " + str(datos['main']['temp'] - 273) + "\n"
-        informacion += "Sensacion: "+ str(datos['main']['feels_like'] - 273) + "\n"
-        informacion += "Temp. minima: " + str(datos['main']['temp_min'] - 273) + "\n"
-        informacion += "Temp. maxima: " + str(datos['main']['temp_max'] - 273) + "\n"
-        informacion += "Amanecer: " + str(datos['sys']['sunrise']) + "\n"
-        informacion += "Atardecer: " + str(datos['sys']['sunset']) + "\n"
+        informacion += "Temperatura: " + str(math.floor(datos['main']['temp'] - 273)) + "\n"
+        informacion += "Sensacion: "+ str(math.floor(datos['main']['feels_like'] - 273)) + "\n"
+        informacion += "Temp. minima: " + str(math.floor(datos['main']['temp_min'] - 273)) + "\n"
+        informacion += "Temp. maxima: " + str(math.floor(datos['main']['temp_max'] - 273)) + "\n"
+        #informacion += "Amanecer: " + str(datos['sys']['sunrise']) + "\n"
+        #informacion += "Atardecer: " + str(datos['sys']['sunset']) + "\n"
         iconURL = "http://openweathermap.org/img/w/" + str(datos['weather'][0]['icon']) + ".png"
+        #response = requests.get(iconURL, stream=True)
         return informacion
     """Funcion que devuelve la informacion dado el json del clima"""
+
+    #esto es para el icon del Openweathermap
+    #def getIcon(self):
+        #icon_id = self.json['weather'][0]['icon']
+        #url = 'http://openweathermap.org/img/wn/{icon}.png'.format(icon=icon_id)
+        #response = requests.get(url, stream=True)
+        #return base64.encodebytes(response.raw.read())
 
     def consultarVuelo(self):
         self.mostrarClima(self.cacheClima[buscarCiudadClima(self.cacheClima, self.ciudadOrigen, self.n)][1], self.cacheClima[buscarCiudadClima(self.cacheClima, self.ciudadDestino, self.n)][1])
         
     
     def mostrarHistorial(self):
-        n = 3*3
+        n = 3*3 
         with open("data/historial.txt", 'r') as file:
             information = ""
-            for line in (file.readlines() [-n:]): 
+            for line in (file.readlines()[-n:]):
                 information += line + "\n"
-            tkinter.messagebox.showinfo("Historial", message=information)
+        tkinter.messagebox.showinfo("Historial", message=information)
+
     def registrarAPI(self):
         self.api = self.apiLlave.get()
         print(str(self.api))#sobreescribir el archivo de la api y la variable api
@@ -346,7 +373,5 @@ class App(tk.Frame):
 
 root = tk.Tk()
 root.title("Bienvenidos a CheckWeather por- Victor Torres y Diego Castro")
-#root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='../img/icon.png'))
-#root.configure(background='green')
 app = App(root)
 app.mainloop()
