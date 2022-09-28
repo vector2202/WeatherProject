@@ -93,17 +93,21 @@ class Interfaz(tk.Frame):
     
     def inicializarJsons(self):
         nombreArchivoCSV = "dataset1.csv"
+        #Tamaño de la tabla de dispersion
         tamañoDiccionario = 71
         self.listaOrigenes = []
         self.listaDestinos = []
         
         try:
+            #Revisamos si el archivo CSV es correcto
             revisarCsv(nombreArchivoCSV)
         except Exception as exception:
             sys.exit(str(exception))
-            
+        #Escribimos los JSON de cada cd Origen
         listaAeropuertos = escribirDestinos(nombreArchivoCSV, tamañoDiccionario)
+        #Inicializamos la lista de ciudades origen
         self.listaOrigenes = listaAeropuertos.obtenerNombres()
+        #Creamos la cache de los climas
         self.cache = CacheClima(tamañoDiccionario)
 
     def origenElegido(self, *args):
@@ -142,7 +146,7 @@ class Interfaz(tk.Frame):
     def mostrarClima(self, datosOrigen, datosDestino):
         self.climaOrigenDatos.set(datosOrigen)
         self.climaDestinoDatos.set(datosDestino)
-        
+        #Registramos el vuelo en un txt
         archivoHistorial = open("data/historial.txt", 'a')
         archivoHistorial.write(convertirVuelo(datosOrigen, datosDestino))
         archivoHistorial.close()
@@ -159,4 +163,4 @@ class Interfaz(tk.Frame):
 
     def registrarAPI(self):
         self.api = self.apiLlave.get()
-        print(str(self.api))
+        print(str(self.api))#sobreescribir el archivo de la api y la variable api

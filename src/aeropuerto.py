@@ -12,7 +12,6 @@ class Aeropuerto:
                 abs(int(float(self.longitud)))) % hashSize
     """ Funcion que obtiene el valor hash de una ciudad, dado su nombre, longitud ciudad """
 
-    
     def __str__(self):
         return "[ " + self.nombre + ", " + str(self.latitud) +\
             ", " + str(self.longitud) + "]"
