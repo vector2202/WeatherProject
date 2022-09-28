@@ -147,7 +147,7 @@ class Interfaz(tk.Frame):
         self.climaOrigenDatos.set(datosOrigen)
         self.climaDestinoDatos.set(datosDestino)
         #Registramos el vuelo en un txt
-        archivoHistorial = open("data/historial.txt", 'a')
+        archivoHistorial = open("datos/historial.txt", 'a')
         archivoHistorial.write(convertirVuelo(datosOrigen, datosDestino))
         archivoHistorial.close()
         """Funcion que muestra el clima y escribe el vuelo en un historial"""
@@ -155,7 +155,7 @@ class Interfaz(tk.Frame):
     
     def mostrarHistorial(self):
         n = 3*3 
-        with open("data/historial.txt", 'r') as file:
+        with open("datos/historial.txt", 'r') as file:
             information = ""
             for line in (file.readlines()[-n:]):
                 information += line + "\n"

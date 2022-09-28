@@ -1,13 +1,13 @@
 from datetime import datetime
 def obtenerNumeroDeVuelo():
     try:
-        archivoNumeroDeVuelo = open ('data/nVuelo.txt','r')
+        archivoNumeroDeVuelo = open ('datos/nVuelo.txt','r')
         numeroDeVuelo = archivoNumeroDeVuelo.read()
         numeroDeVuelo = int(numeroDeVuelo)
         archivoNumeroDeVuelo.close()
     except OSError as error:
         numeroDeVuelo = 0
-    archivoNumeroDeVuelo = open ('data/nVuelo.txt','w')
+    archivoNumeroDeVuelo = open ('datos/nVuelo.txt','w')
     archivoNumeroDeVuelo.write(str(numeroDeVuelo + 1))
     archivoNumeroDeVuelo.close()
     return numeroDeVuelo

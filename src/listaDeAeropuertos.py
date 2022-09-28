@@ -14,8 +14,12 @@ class ListaDeAeropuertos():
         aeropuertoOrigen = Aeropuerto(vuelo[0], float(vuelo[2]), float(vuelo[3]))
         aeropuertoDestino = Aeropuerto(vuelo[1], float(vuelo[4]), float(vuelo[5]))
         indice = self.buscarAeropuertoOrigen(aeropuertoOrigen)
+        if(vuelo[0] == "ACA"):
+            print(aeropuertoOrigen)
+            print(aeropuertoDestino)
+            print(indice)
         if(indice == -1):#Si la ciudad no existe, la registramos
-            self.insertarAeropuerto(aeropuertoOrigen)
+            indice = self.insertarAeropuerto(aeropuertoOrigen)
         if(not self.buscarAeropuertoDestino(self.lista[indice],\
                                             aeropuertoDestino.nombre)):
             self.lista[indice].append(aeropuertoDestino)
@@ -47,7 +51,7 @@ class ListaDeAeropuertos():
         for i in range(self.tamaño):
             if(len(self.lista[i]) > 0):#Para cada ciudad que fue registrada
                 #Abrimos el json de la ciudad correspondiente y escribimos la ciudad y todos sus destinos
-                with open("data/" + self.lista[i][0].nombre + '.json', 'w') as archivo:
+                with open("datos/" + self.lista[i][0].nombre + '.json', 'w') as archivo:
                     json.dump(self.lista[i], archivo, indent=4, cls=CodificadorAeropuerto)
     
     def obtenerNombres(self):
