@@ -3,12 +3,12 @@ from tkinter import ttk
 import tkinter as tk
 import tkinter.messagebox
 import sys
-from aeropuerto import Aeropuerto
+from src.aeropuerto import Aeropuerto
 
-from archivosCSV import escribirDestinos, leerDestinos, revisarCsv
-from historial import convertirVuelo
-from cacheClima import CacheClima
-from listaDeAeropuertos import ListaDeAeropuertos
+from src.archivosCSV import escribirDestinos, leerDestinos, revisarCsv
+from src.historial import convertirVuelo
+from src.cacheClima import CacheClima
+from src.listaDeAeropuertos import ListaDeAeropuertos
 
 class Interfaz(tk.Frame):
     def __init__(self, master):

@@ -1,5 +1,5 @@
 import tkinter
-from interfaz import Interfaz
+from src.interfaz import Interfaz
 
 def main():
     raiz = tkinter.Tk()

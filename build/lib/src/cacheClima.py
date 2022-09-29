@@ -2,7 +2,6 @@ import json
 import urllib
 import urllib.request
 from datetime import datetime, timedelta
-
 from src.datosClima import DatosClima
 
 class CacheClima:

@@ -1,6 +1,6 @@
 import json
-from aeropuerto import Aeropuerto
-from codificadorJsonAeropuerto import CodificadorAeropuerto
+from src.aeropuerto import Aeropuerto
+from src.codificadorJsonAeropuerto import CodificadorAeropuerto
 
 class ListaDeAeropuertos():
     def __init__(self, tamañoDiccionario) -> None:

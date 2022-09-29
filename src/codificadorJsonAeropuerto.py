@@ -1,5 +1,6 @@
 import json
-from aeropuerto import Aeropuerto
+from src.aeropuerto import Aeropuerto
+
 class CodificadorAeropuerto(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Aeropuerto):

@@ -1,6 +1,8 @@
 import csv
 import json
-from listaDeAeropuertos import ListaDeAeropuertos
+
+from src.listaDeAeropuertos import ListaDeAeropuertos
+
 
 def revisarFormatoVuelo(vuelo):
     if(type(vuelo[0]) != str or type(vuelo[1]) != str or \
