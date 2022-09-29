@@ -2,10 +2,9 @@ import json
 import urllib
 import urllib.request
 from datetime import datetime, timedelta
-from aeropuerto import Aeropuerto
-from urllib.request import urlopen
 
-from datosClima import DatosClima
+from src.datosClima import DatosClima
+
 class CacheClima:
     def __init__(self, tamañoDiccionario) -> None:
         self.cache = [list()]
