@@ -22,8 +22,7 @@ class Interfaz(tk.Frame):
         #self.owm = OpenWeatherMap()
         #self.temp_icon = OWIconLabel(self, weather_icon = owm.get_icon_data)
         #self.temp_icon.grid(row=0, column=0)
-
-        
+    
     def createWidgets(self):
         self.historial = ttk.Button(self, text="Historial", command=self.mostrarHistorial)#boton de historial para mostrar lo consultado
         #self.historial.pack(side=LEFT, padx=20, pady=20)
@@ -116,7 +115,7 @@ class Interfaz(tk.Frame):
         self.listaDestinos = []
         if(self.destinosDisponibles != None):
             self.aeropuertoOrigen = Aeropuerto(self.destinosDisponibles[0][0], self.destinosDisponibles[0][1], self.destinosDisponibles[0][2])
-            self.cache.refrescar(self.aeropuertoOrigen, self.api)
+            self.cache.refrescar(self.aeropuertoOrigen)
             self.destinosDisponibles.pop(0)
             
             for destino in self.destinosDisponibles:
@@ -134,7 +133,7 @@ class Interfaz(tk.Frame):
             for destino in self.destinosDisponibles:
                 if (destino[0] == nombreAeropuertoDestino):
                     self.aeropuertoDestino = Aeropuerto(nombreAeropuertoDestino, destino[1], destino[2])
-                    self.cache.refrescar(self.aeropuertoDestino, self.api)
+                    self.cache.refrescar(self.aeropuertoDestino)
                     self.consultarVuelo()
                     return
         print("La ciudad de destino es invalida")
@@ -163,4 +162,5 @@ class Interfaz(tk.Frame):
 
     def registrarAPI(self):
         self.api = self.apiLlave.get()
+        self.cache.actualizarAPI(self.api)
         print(str(self.api))#sobreescribir el archivo de la api y la variable api

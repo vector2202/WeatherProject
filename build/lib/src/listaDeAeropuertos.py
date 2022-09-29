@@ -14,16 +14,11 @@ class ListaDeAeropuertos():
         aeropuertoOrigen = Aeropuerto(vuelo[0], float(vuelo[2]), float(vuelo[3]))
         aeropuertoDestino = Aeropuerto(vuelo[1], float(vuelo[4]), float(vuelo[5]))
         indice = self.buscarAeropuertoOrigen(aeropuertoOrigen)
-        if(vuelo[0] == "ACA"):
-            print(aeropuertoOrigen)
-            print(aeropuertoDestino)
-            print(indice)
         if(indice == -1):#Si la ciudad no existe, la registramos
             indice = self.insertarAeropuerto(aeropuertoOrigen)
         if(not self.buscarAeropuertoDestino(self.lista[indice],\
                                             aeropuertoDestino.nombre)):
             self.lista[indice].append(aeropuertoDestino)
-    
     def buscarAeropuertoOrigen(self, aeropuertoOrigen):
         for i in range(self.tamaño):
             if(len(self.lista[(aeropuertoOrigen.funcionHash(self.tamaño) + i)\
@@ -59,5 +54,4 @@ class ListaDeAeropuertos():
         for aeropuertoOrigen in self.lista:
             if(len(aeropuertoOrigen) > 0):
                nombresAeropuertosDestinos.append(aeropuertoOrigen[0].nombre)
-        return nombresAeropuertosDestinos
-        
+        return nombresAeropuertosDestinos        
