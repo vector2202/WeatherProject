@@ -13,7 +13,7 @@ def revisarFormatoVuelo(vuelo):
 
 def revisarCsv(nombreArchivo):
     with open('datos/' + nombreArchivo, 'r') as archivo:
-        next(archivo)
+        next(archivo)#Omite la primera linea de entrada
         vuelos = csv.reader(archivo)
         for vuelo in vuelos:
             if(len(vuelo) != 6 or revisarFormatoVuelo(vuelo)):
@@ -42,7 +42,6 @@ def leerDestinos(nombreAeropuertoOrigen):
         with open("datos/" + nombreAeropuertoOrigen + ".json") as archivo:
             datos = json.load(archivo)
             for dato in datos:
-                print(dato)
                 destinos.append(dato)
             return destinos
     except OSError as error:

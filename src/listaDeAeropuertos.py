@@ -54,4 +54,4 @@ class ListaDeAeropuertos():
         for aeropuertoOrigen in self.lista:
             if(len(aeropuertoOrigen) > 0):
                nombresAeropuertosDestinos.append(aeropuertoOrigen[0].nombre)
-        return nombresAeropuertosDestinos        
+        return nombresAeropuertosDestinos

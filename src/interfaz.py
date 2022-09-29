@@ -4,11 +4,10 @@ import tkinter as tk
 import tkinter.messagebox
 import sys
 from src.aeropuerto import Aeropuerto
-
 from src.archivosCSV import escribirDestinos, leerDestinos, revisarCsv
 from src.historial import convertirVuelo
 from src.cacheClima import CacheClima
-from src.listaDeAeropuertos import ListaDeAeropuertos
+
 
 class Interfaz(tk.Frame):
     def __init__(self, master):
@@ -96,7 +95,6 @@ class Interfaz(tk.Frame):
         tamañoDiccionario = 71
         self.listaOrigenes = []
         self.listaDestinos = []
-        
         try:
             #Revisamos si el archivo CSV es correcto
             revisarCsv(nombreArchivoCSV)
@@ -112,35 +110,45 @@ class Interfaz(tk.Frame):
     def origenElegido(self, *args):
         nombreAeropuertoOrigen = self.optionVarOrigen.get()
         self.destinosDisponibles = leerDestinos(nombreAeropuertoOrigen)#try excepto en lugar de un if none
-        self.listaDestinos = []
         if(self.destinosDisponibles != None):
-            self.aeropuertoOrigen = Aeropuerto(self.destinosDisponibles[0][0], self.destinosDisponibles[0][1], self.destinosDisponibles[0][2])
+            self.aeropuertoOrigen = Aeropuerto\
+                (self.destinosDisponibles[0][0],\
+                 self.destinosDisponibles[0][1], self.destinosDisponibles[0][2])
             self.cache.refrescar(self.aeropuertoOrigen)
             self.destinosDisponibles.pop(0)
-            
-            for destino in self.destinosDisponibles:
-                self.listaDestinos.append(destino[0])
+            self.listaDestinos = self.obtenerNombreDestinos(self.destinosDisponibles)
+            self.optionVarDestino.set('')
             self.destino['menu'].delete(0, 'end')
+            
             for aeropuertoDestino in self.listaDestinos:
-                self.destino['menu'].add_command(label=aeropuertoDestino, command=tk._setit(self.optionVarDestino, aeropuertoDestino))
-                
+                self.destino['menu'].add_command\
+                    (label=aeropuertoDestino, command=tk._setit\
+                     (self.optionVarDestino, aeropuertoDestino))
+            return True
         else:
-            print("Ciudad de origen no existente")
+            return False
+    def obtenerNombreDestinos(self, destinos):
+        lista = []
+        for destino in destinos:
+                lista.append(destino[0])
+        return lista
             
     def destinoElegido(self, *args):
         nombreAeropuertoDestino = self.optionVarDestino.get()
         if(self.destinosDisponibles != None):
             for destino in self.destinosDisponibles:
                 if (destino[0] == nombreAeropuertoDestino):
-                    self.aeropuertoDestino = Aeropuerto(nombreAeropuertoDestino, destino[1], destino[2])
+                    self.aeropuertoDestino = Aeropuerto(nombreAeropuertoDestino,\
+                                                        destino[1], destino[2])
                     self.cache.refrescar(self.aeropuertoDestino)
                     self.consultarVuelo()
-                    return
-        print("La ciudad de destino es invalida")
+                    return True
+        return False
 
     def consultarVuelo(self):
         #definir los Json
-        self.mostrarClima(self.cache.obtenerClima(self.aeropuertoOrigen), self.cache.obtenerClima(self.aeropuertoDestino))
+        self.mostrarClima(self.cache.obtenerClima(self.aeropuertoOrigen),\
+                          self.cache.obtenerClima(self.aeropuertoDestino))
         
     def mostrarClima(self, datosOrigen, datosDestino):
         self.climaOrigenDatos.set(datosOrigen)

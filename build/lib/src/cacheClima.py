@@ -17,10 +17,10 @@ class CacheClima:
     def buscarAeropuerto(self, aeropuerto):
         for i in range(self.tamaño):
             if(len(self.cache[(aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño]) == 0):
-                return -1
+                return -1#La casilla esta vacia
             if(self.cache[(aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño][0] == aeropuerto.nombre):
-                return i + aeropuerto.funcionHash(self.tamaño)
-        return -1
+                return i + aeropuerto.funcionHash(self.tamaño)#Encontramos donde esta
+        return -1#Nunca estuvo
     """Funcion que busca con una ciudad clima donde esta ubicada en la cache"""
     def refrescar(self, aeropuerto):
         indice = self.buscarAeropuerto(aeropuerto)
