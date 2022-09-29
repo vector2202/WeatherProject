@@ -1,5 +1,4 @@
 from datetime import datetime
-
 def obtenerNumeroDeVuelo():
     try:
         archivoNumeroDeVuelo = open ('datos/nVuelo.txt','r')

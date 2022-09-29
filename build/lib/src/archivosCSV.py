@@ -2,6 +2,7 @@ import csv
 import json
 from listaDeAeropuertos import ListaDeAeropuertos
 
+#Prueba por cada funcion, prueba/pruebasArchivosCSV.py = (dataset1.csv) -> 
 def revisarFormatoVuelo(vuelo):
     if(type(vuelo[0]) != str or type(vuelo[1]) != str or \
        type(vuelo[2]) != float or type(vuelo[3]) != float or\
