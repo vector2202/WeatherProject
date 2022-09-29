@@ -8,7 +8,6 @@ from src.archivosCSV import escribirDestinos, leerDestinos, revisarCsv
 from src.historial import convertirVuelo
 from src.cacheClima import CacheClima
 
-
 class Interfaz(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -49,13 +48,16 @@ class Interfaz(tk.Frame):
 
         #Arreglos de informacion de origenes y destinos
         self.optionVarOrigen = tk.StringVar(self)
-        self.origen = tk.OptionMenu(self, self.optionVarOrigen, self.listaOrigenes[0], *self.listaOrigenes, command=self.origenElegido)
+        self.origen = tk.OptionMenu(self, self.optionVarOrigen,\
+                                    self.listaOrigenes[0], *self.listaOrigenes,\
+                                    command=self.origenElegido)
         self.origen.place(x=20, y=130)
         self.optionVarOrigen.set("Selecciona el origen:")
 
         self.optionVarDestino = tk.StringVar(self)
         self.optionVarDestino.set('')
-        self.destino = tk.OptionMenu(self, self.optionVarDestino, None,  *self.listaDestinos, command=self.destinoElegido)
+        self.destino = tk.OptionMenu(self, self.optionVarDestino, None,\
+                                     *self.listaDestinos,command=self.destinoElegido)
         self.destino.place(x=200, y=130)
         self.optionVarDestino.set("Selecciona el destino:")
 
@@ -83,7 +85,8 @@ class Interfaz(tk.Frame):
         #label.image = photo
         #label.pack()
         #Boton para salir del programa
-        self.buttonQuit = ttk.Button(self, text="Salir del programa", command=self.saluda)
+        self.buttonQuit = ttk.Button(self, text="Salir del programa",\
+                                     command=self.saluda)
         self.buttonQuit.pack(padx=200, pady=350)
         
     def saluda(self):
@@ -114,7 +117,7 @@ class Interfaz(tk.Frame):
             self.aeropuertoOrigen = Aeropuerto\
                 (self.destinosDisponibles[0][0],\
                  self.destinosDisponibles[0][1], self.destinosDisponibles[0][2])
-            self.cache.refrescar(self.aeropuertoOrigen)
+            self.request = self.cache.refrescar(self.aeropuertoOrigen)
             self.destinosDisponibles.pop(0)
             self.listaDestinos = self.obtenerNombreDestinos(self.destinosDisponibles)
             self.optionVarDestino.set('')
@@ -140,15 +143,19 @@ class Interfaz(tk.Frame):
                 if (destino[0] == nombreAeropuertoDestino):
                     self.aeropuertoDestino = Aeropuerto(nombreAeropuertoDestino,\
                                                         destino[1], destino[2])
-                    self.cache.refrescar(self.aeropuertoDestino)
+                    self.request = self.request and\
+                        self.cache.refrescar(self.aeropuertoDestino)
                     self.consultarVuelo()
                     return True
         return False
 
     def consultarVuelo(self):
         #definir los Json
-        self.mostrarClima(self.cache.obtenerClima(self.aeropuertoOrigen),\
-                          self.cache.obtenerClima(self.aeropuertoDestino))
+        if(self.request):
+            self.mostrarClima(self.cache.obtenerClima(self.aeropuertoOrigen),\
+                              self.cache.obtenerClima(self.aeropuertoDestino))
+        else:
+            print("No hay datos")
         
     def mostrarClima(self, datosOrigen, datosDestino):
         self.climaOrigenDatos.set(datosOrigen)

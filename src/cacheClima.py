@@ -1,6 +1,7 @@
 import json
 import urllib
 import urllib.request
+import urllib.parse
 from datetime import datetime, timedelta
 from src.datosClima import DatosClima
 
@@ -30,14 +31,14 @@ class CacheClima:
                 datosJson = self.realizarPeticion(aeropuerto)
                 self.cache[indice][1] = datosJson
                 self.cache[indice][2] = datetime.now()
-                return True
+                return False if datosJson == None else True
         else:#Registramos el clima
             for i in range(self.tamaño):
                 indice = (aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño
                 if(len(self.cache[indice]) == 0): 
                     datosJson = self.realizarPeticion(aeropuerto)
                     self.cache[indice] = [aeropuerto.nombre, datosJson, datetime.now()]
-                    return True
+                    return False if datosJson == None else True
         return False
     """Funcion que registra si tenemos que realizar la peticion """
     
@@ -50,6 +51,7 @@ class CacheClima:
                 + str(aeropuerto.latitud) + "&lon=" + str(aeropuerto.longitud)\
                 + "&appid=" + self.api + "&lang=es"
             f = urllib.request.urlopen(url,timeout=30)
+            print("Request exitosa")
             return json.loads(f.read())
         except urllib.request.HTTPError as error:
             print(error)
