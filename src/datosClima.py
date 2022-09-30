@@ -13,8 +13,6 @@ class DatosClima:
                                                - 273))
         self.icono = "http://openweathermap.org/img/w/" +\
             str(datosJSON['weather'][0]['icon']) + ".png"
-        #informacion += "Amanecer: " + str(datosJSON['sys']['sunrise']) + "\n"
-        #informacion += "Atardecer: " + str(datosJSON['sys']['sunset']) + "\n"
 
     def __str__(self) -> str:
         return self.ubicacion + '\n' + self.descripcion +\
