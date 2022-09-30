@@ -11,11 +11,11 @@ class ListaDeAeropuertos():
             self.lista.append(list())
             
     def procesarVuelo(self, vuelo):
-        #Inicializamos todas las casillas con listas vacias
+        
         aeropuertoOrigen = Aeropuerto(vuelo[0], float(vuelo[2]), float(vuelo[3]))
         aeropuertoDestino = Aeropuerto(vuelo[1], float(vuelo[4]), float(vuelo[5]))
         indice = self.buscarAeropuertoOrigen(aeropuertoOrigen)
-        if(indice == -1):#Si la ciudad no existe, la registramos
+        if(indice == -1):
             indice = self.insertarAeropuerto(aeropuertoOrigen)
         if(not self.buscarAeropuertoDestino(self.lista[indice],\
                                             aeropuertoDestino.nombre)):
@@ -33,7 +33,7 @@ class ListaDeAeropuertos():
     """ Funcion que busca en el arreglo de ciudades, una ciudad dado su nombre, si no la encuentra devuelve -1"""
 
     def insertarAeropuerto(self, aeropuerto):
-        for j in range(self.tamaño):#En la primera posicion disponible a partir de su HK
+        for j in range(self.tamaño):
             if(len(self.lista[(aeropuerto.funcionHash(self.tamaño) + j)\
                               % self.tamaño]) == 0):
                 self.lista[(aeropuerto.funcionHash(self.tamaño) + j)\
@@ -50,16 +50,14 @@ class ListaDeAeropuertos():
     """ Funcion que busca si la ciudad destino ya esta considerada en en arreglo de los destinos de la ciudad"""
     def escribirAeropuertosJson(self):
         for i in range(self.tamaño):
-            if(len(self.lista[i]) > 0):#Para cada ciudad que fue registrada
-                #Abrimos el json de la ciudad correspondiente y escribimos la ciudad y todos sus destinos
+            if(len(self.lista[i]) > 0):
                 with open("datos/" + self.lista[i][0].nombre + '.json', 'w') as archivo:
                     json.dump(self.lista[i], archivo, indent=4, cls=CodificadorAeropuerto)
         return self.revisarArchivos()
     
     def revisarArchivos(self):
         for i in range(self.tamaño):
-            if(len(self.lista[i]) > 0):#Para cada ciudad que fue registrada
-                #Abrimos el json de la ciudad correspondiente y escribimos la ciudad y todos sus destinos
+            if(len(self.lista[i]) > 0):
                 if(os.path.isfile(r'datos/' + self.lista[i][0].nombre) == False):
                     return False
         return True
