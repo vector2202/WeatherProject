@@ -3,10 +3,10 @@ class Aeropuerto:
         self.nombre = nombre
         self.longitud = longitud
         self.latitud = latitud
-        
+    
     def funcionHash(self, hashSize):
         suma = 0
-        for caracter in self.nombre:
+        for caracter in self.nombre: 
             suma += ord(caracter)
         return (suma + abs(int(float(self.latitud))) +\
                 abs(int(float(self.longitud)))) % hashSize
