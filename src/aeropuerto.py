@@ -6,7 +6,7 @@ class Aeropuerto:
         
     def funcionHash(self, hashSize):
         suma = 0
-        for caracter in self.nombre:#Suma de valores ASCII
+        for caracter in self.nombre:
             suma += ord(caracter)
         return (suma + abs(int(float(self.latitud))) +\
                 abs(int(float(self.longitud)))) % hashSize
