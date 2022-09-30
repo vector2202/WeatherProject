@@ -1,4 +1,4 @@
 #Ignore JSONS and TXT
-data/*.json
-data/*.txt
+datos/*.json
+datos/*.txt
 
