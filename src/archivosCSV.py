@@ -13,7 +13,7 @@ def revisarFormatoVuelo(vuelo):
 
 def revisarCsv(nombreArchivo):
     with open('datos/' + nombreArchivo, 'r') as archivo:
-        next(archivo)#Omite la primera linea de entrada
+        next(archivo)
         vuelos = csv.reader(archivo)
         for vuelo in vuelos:
             if(len(vuelo) != 6 or revisarFormatoVuelo(vuelo)):
@@ -25,10 +25,9 @@ def escribirDestinos(nombreArchivo, tamañoDiccionario):
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
-        #Lista de listas donde cada casilla contiene a una ciudad y sus destinos posibles
+        
         lista = ListaDeAeropuertos(tamañoDiccionario)
-        #Inicializamos todas las casillas con listas vacias
-        #Vamos a guardar en el arreglo los n aereopuertos distintos con sus vuelos posibles.
+              
         for vuelo in vuelos:
             lista.procesarVuelo(vuelo)
         
