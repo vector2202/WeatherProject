@@ -24,9 +24,7 @@ def escribirDestinos(nombreArchivo, tamañoDiccionario):
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
-        
         lista = ListaDeAeropuertos(tamañoDiccionario)
-              
         for vuelo in vuelos:
             lista.procesarVuelo(vuelo)
         
