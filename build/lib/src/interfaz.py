@@ -141,8 +141,9 @@ class Interfaz(tk.Frame):
         if(self.destinosDisponibles != None):
             for destino in self.destinosDisponibles:
                 if (destino[0] == nombreAeropuertoDestino):
-                    self.aeropuertoDestino = Aeropuerto(nombreAeropuertoDestino,\
-                                                        destino[1], destino[2])
+                    self.aeropuertoDestino = \
+                        Aeropuerto(nombreAeropuertoDestino, destino[1],\
+                                   destino[2])
                     self.request = self.request and\
                         self.cache.refrescar(self.aeropuertoDestino)
                     self.consultarVuelo()

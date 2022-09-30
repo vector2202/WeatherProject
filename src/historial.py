@@ -17,9 +17,12 @@ def obtenerNumeroDeVuelo():
 def convertirVuelo(datosOrigen, datosDestino):
     if(datosOrigen == None or datosDestino == None):
         return ""
-    informacion = "Vuelo " + str(obtenerNumeroDeVuelo()) + " a las: " + datetime.now().strftime("%H: %M: %S") + "\n"
-    informacion += "Origen: " + datosOrigen.ubicacion + ", Temperatura: " + datosOrigen.temperatura + "\n"
-    informacion += "Destino: " + datosDestino.ubicacion + ", Temperatura: " + datosDestino.temperatura + "\n"
+    informacion = "Vuelo " + str(obtenerNumeroDeVuelo()) + " a las: "\
+        + datetime.now().strftime("%H: %M: %S") + "\n"
+    informacion += "Origen: " + datosOrigen.ubicacion + ", Temperatura: "\
+        + datosOrigen.temperatura + "\n"
+    informacion += "Destino: " + datosDestino.ubicacion + ", Temperatura: "\
+        + datosDestino.temperatura + "\n"
     return informacion
 """Funcion que devuelve datos los datos json un dato en string con la hora y numero de vuelo"""
 

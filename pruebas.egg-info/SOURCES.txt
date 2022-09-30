@@ -12,7 +12,6 @@ pruebas.egg-info/dependency_links.txt
 pruebas.egg-info/top_level.txt
 src/__init__.py
 src/aeropuerto.py
-src/app.py
 src/archivosCSV.py
 src/cacheClima.py
 src/codificadorJsonAeropuerto.py
