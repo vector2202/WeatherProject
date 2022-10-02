@@ -14,13 +14,15 @@ class DatosClima:
         self.icono = "http://openweathermap.org/img/w/" +\
             str(datosJSON['weather'][0]['icon']) + ".png"
 
+
     def __str__(self) -> str:
         return self.ubicacion + '\n' + self.descripcion +\
             '\nTemperatura: ' + self.temperatura + '\nSensacion: '\
             + self.sensacion + '\nTemperatura Maxima: '\
             + self.tempeaturaMaxima + '\nTemperatura Minima: '\
             + self.tempeaturaMinima
-    
+
+
     def __repr__(self) -> str:
         return self.ubicacion + '\n' + self.descripcion +\
             '\nTemperatura: ' + self.temperatura + '\nSensacion: '\

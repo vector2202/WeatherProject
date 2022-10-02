@@ -1,20 +1,24 @@
 from datetime import datetime
 
 def obtenerNumeroDeVuelo():
+    '''
+    Funcion que devuelve cuantos vuelos hemos reguistrado
+    '''
     try:
-        archivoNumeroDeVuelo = open ('datos/nVuelo.txt','r')
-        numeroDeVuelo = archivoNumeroDeVuelo.read()
-        numeroDeVuelo = int(numeroDeVuelo)
-        archivoNumeroDeVuelo.close()
+        with open('datos/nVuelo.txt','r') as archivoNumeroDeVuelo:
+            numeroDeVuelo = archivoNumeroDeVuelo.read()
+            numeroDeVuelo = int(numeroDeVuelo)
     except OSError as error:
         numeroDeVuelo = 0
-    archivoNumeroDeVuelo = open ('datos/nVuelo.txt','w')
-    archivoNumeroDeVuelo.write(str(numeroDeVuelo + 1))
-    archivoNumeroDeVuelo.close()
+    with open('datos/nVuelo.txt','w') as archivoNumeroDeVuelo:
+        archivoNumeroDeVuelo.write(str(numeroDeVuelo + 1))
     return numeroDeVuelo
-"""Funcion que devuelve cuantos vuelos hemos reguistrado"""
+
 
 def convertirVuelo(datosOrigen, datosDestino):
+    '''
+    Funcion que devuelve datos los datos json un dato en string con la hora y numero de vuelo
+    '''
     if(datosOrigen == None or datosDestino == None):
         return ""
     informacion = "Vuelo " + str(obtenerNumeroDeVuelo()) + " a las: "\
@@ -24,5 +28,4 @@ def convertirVuelo(datosOrigen, datosDestino):
     informacion += "Destino: " + datosDestino.ubicacion + ", Temperatura: "\
         + datosDestino.temperatura + "\n"
     return informacion
-"""Funcion que devuelve datos los datos json un dato en string con la hora y numero de vuelo"""
 
