@@ -188,11 +188,12 @@ Tenemos para el siguiente codigo un aeropuerto con la siguiente entrada tenemos 
 \end{minted}
 Por lo que al correr la siguiente salida es:
 %Insertar foto
-Si nosotros ponemos un objeto nulo, nos devuelve:
+Si ahora probamos con un resultado distinto a 3, sea 2
 \begin{minted}{python}
-  aeropuertoPrueba = None
-  assert(aeropuertoPrueba.funcionHash(11) == 3)
+  aeropuertoPrueba = aeropuerto.Aeropuerto('MEX', 10, 100)
+  assert(aeropuertoPrueba.funcionHash(11) == 2)
 \end{minted}
+Se obtiene la siguiente salida:
 \subsection{Prueba de Archivos}
 Para el prueba de archivos la funcion de revisarFormatoVuelo es meramente auxiliar para probar que el formato de vuelo sea de la forma: (string,string,float,float, float, float) para poder validar que el formato de vuelo es valido, pero esta funcion es llamada desde revisarCSV por lo que es redundante hacer una prueba de esto ya que se usa directamente al revisar la base de datos dada.
 
@@ -218,22 +219,89 @@ Creamos un cache de prueba, el metodo de actualizaAPI no tiene sentido probarlo 
 \subsubsection{refrescar}
 \begin{itemize}
 \item Se refresca con el aeropuerto de mexico
+\begin{minted}{python}
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+\end{minted}
+  Salida:
 \item Se refresca con un aeropuerto nulo
-\item Se establece la llave api erronea y se solicita la informacion del aeropuerto de mexico
+\begin{minted}{python}
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+aeropuerto1 = None
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+\end{minted}
+  Salida:
+\item No se establece una llave API por lo que es erronea la llave vacia y se solicita la informacion del aeropuerto de mexico
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+\end{minted}
+  Salida:
 \end{itemize}
 \subsubsection{buscar aeropuerto}
 \begin{itemize}
 \item Con el aeropuerto de mexico insertado, se busca el aeropuerto de mexico
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1), "Aeropuerto no encontrado"
+\end{minted}
+  Salida:
 \item Se busca el aeropuerto de acapulco el cual no se encuentra en el cache
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+aeropuerto2 = Aeropuerto('ACA', 16.7571, -99.754)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1), "Aeropuerto no encontrado"
+\end{minted}
+  Salida:
 \item Se busca un aeropuerto nulo
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.buscarAeropuerto(None) != -1), "Aeropuerto no encontrado"
+\end{minted}
+  Salida:
 \end{itemize}
 \subsubsection{obtener clima y realizar peticion}
 Se compara con realizar peticion ya que los datos que hay en el cache son formato JSON que son los datos que devuelve realizar peticion pero realizar peticion lo hace directamente.
 \begin{itemize}
 \item Se obtiene el clima de un aeropuerto que ya se refresco el aeropuerto
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.obtenerClima(aeropuerto1).__eq__(DatosClima(cacheEjemplo.realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
+\end{minted}
+  Salida:
 \item Se busca el clima de un aeropuerto nulo
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.obtenerClima(None).__eq__(DatosClima(cacheEjemplo.realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
+\end{minted}
+  Salida:
 \item Se busca el clima de un aeropuerto que no esta en el cache
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.obtenerClima(aeropuerto2).__eq__(DatosClima(cacheEjemplo.realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
+\end{minted}
+  Salida:
 \item Por ultimo se prueba realizar peticion para un aeropuerto nulo
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.realizarPeticion(None) != None), "Datos JSON nulos"
+\end{minted}
+  Salida:
 \end{itemize}
 \subsection{Historial}
 \subsubsection{Obtener numero de vuelo}
