@@ -1,6 +1,5 @@
 import csv
 import json
-
 from src.listaDeAeropuertos import ListaDeAeropuertos
 
 
@@ -11,32 +10,39 @@ def revisarFormatoVuelo(vuelo):
         return False
     return True
 
+
 def revisarCsv(nombreArchivo):
+    '''
+    Funcion que verifica que el formato del csv sea correcto
+    '''
     with open('datos/' + nombreArchivo, 'r') as archivo:
-        next(archivo)#Omite la primera linea de entrada
+        next(archivo)
         vuelos = csv.reader(archivo)
         for vuelo in vuelos:
             if(len(vuelo) != 6 or revisarFormatoVuelo(vuelo)):
                 return False
         return True
-"""Funcion que verifica que el formato del csv sea correcto"""
+
 
 def escribirDestinos(nombreArchivo, tamañoDiccionario):
+    '''
+    Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash
+    '''
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
-        #Lista de listas donde cada casilla contiene a una ciudad y sus destinos posibles
         lista = ListaDeAeropuertos(tamañoDiccionario)
-        #Inicializamos todas las casillas con listas vacias
-        #Vamos a guardar en el arreglo los n aereopuertos distintos con sus vuelos posibles.
         for vuelo in vuelos:
             lista.procesarVuelo(vuelo)
         
         lista.escribirAeropuertosJson()
         return lista
-"""Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash """
+
 
 def leerDestinos(nombreAeropuertoOrigen):
+    '''
+    Leemos con la ciudad de origen todos sus destinos posibles
+    '''
     try:
         destinos = []
         with open("datos/" + nombreAeropuertoOrigen + ".json") as archivo:
@@ -46,4 +52,3 @@ def leerDestinos(nombreAeropuertoOrigen):
             return destinos
     except OSError as error:
         return None
-""" Leemos con la ciudad de origen todos sus destinos posibles"""
