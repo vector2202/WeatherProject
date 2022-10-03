@@ -2,10 +2,10 @@ README.md
 setup.py
 pruebas/__init__.py
 pruebas/pruebaAeropuerto.py
-pruebas/pruebaArchivosCSV.py
 pruebas/pruebaCacheClima.py
-pruebas/pruebaHistorial.py
+pruebas/pruebaHistorialVuelos.py
 pruebas/pruebaListaDeAeropuertos.py
+pruebas/pruebaProcesarArchivos.py
 src/__init__.py
 src/aeropuerto.py
 src/cacheClima.py

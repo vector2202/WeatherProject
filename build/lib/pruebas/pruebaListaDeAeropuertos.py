@@ -11,9 +11,9 @@ def main():
     assert(listaPrueba.procesarVuelo(vuelo) != -1)
     assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1)
     assert(listaPrueba.buscarAeropuertoDestino(listaPrueba.lista, aeropuerto2))
-    assert(listaPrueba.insertarAeropuerto(aeropuertoPrueba) != -1)
+    assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1)
     listaPrueba.escribirAeropuertosJson()
-    assert(listaPrueba.revisarArchivos())
+    assert(listaPrueba.revisarArchivosJSON())
     assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
     
 main()

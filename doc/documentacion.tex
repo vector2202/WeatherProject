@@ -164,11 +164,11 @@ Para poder garantizar la minima interaccion se diseño un boceto el cual solo ti
 El sistema se dividio en 9 archivos el cual cada uno representa una clase o un conjunto de funciones para que el sistema pueda funcionar de manera correctamente, estos son:
 \begin{itemize}
 \item aeropuerto.py el cual encapsula los datos del aeropuerto
-\item archivosCSV.py el cual contiene las funciones para procesar la base de datos, escribir las salidas parciales en archivos JSON y leer esos archivos
+\item procesarArchivos.py el cual contiene las funciones para procesar la base de datos, escribir las salidas parciales en archivos JSON y leer esos archivos
 \item cacheClima.py contiene la clase para simular la cache del sistema y las peticiones con la API
 \item codificadorJsonAeropuerto.py la cual nos ayuda a poder transformar el aeropuerto en una salida formato JSON
 \item datosClima.py la cual nos ayuda a filtrar los datos JSON en algo mas legible y facil de entender.
-\item historial.py la cual nos ayuda a mantener un registro de los vuelos consultados
+\item historialVuelo.py la cual nos ayuda a mantener un registro de los vuelos consultados
 \item interfaz.py la cual contiene todo lo relacionado con la interfaz
 \item listaDeAeropuertos.py la cual nos ayuda a procesar la base de datos usando tablas hash y guardar la informacion de cada aeropuerto de origen.
 \item main.py contiene la funcion principal que es la que corre el sistema
@@ -240,7 +240,7 @@ Se compara con realizar peticion ya que los datos que hay en el cache son format
 \begin{itemize}
 \item Se busca que devuelva un dato de tipo entero
 \end{itemize}
-\subsubsection{Convertir vuelo}
+\subsubsection{Convertir a vuelo}
 Usaremos un objeto de la clase clima cache para poder acceder a la funcion de realizar peticion, ya que esta funcion toma datos JSON y los convierte en texto legible para vuelos
 \begin{itemize}
 \item Revisamos que lo que nos devuelva es una string ya que quiere decir que proceso bien los datos JSON de entrada.
