@@ -15,7 +15,7 @@ def obtenerNumeroDeVuelo():
     return numeroDeVuelo
 
 
-def convertirVuelo(datosOrigen, datosDestino):
+def convertirAVuelo(datosOrigen, datosDestino):
     '''
     Funcion que devuelve datos los datos json un dato en string con la hora y numero de vuelo
     '''

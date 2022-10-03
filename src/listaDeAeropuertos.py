@@ -16,7 +16,7 @@ class ListaDeAeropuertos():
         aeropuertoDestino = Aeropuerto(vuelo[1], float(vuelo[4]), float(vuelo[5]))
         indice = self.buscarAeropuertoOrigen(aeropuertoOrigen)
         if(indice == -1):#Si la ciudad no existe, la registramos
-            indice = self.insertarAeropuerto(aeropuertoOrigen)
+            indice = self.insertarAeropuertoOrigen(aeropuertoOrigen)
         if(not self.buscarAeropuertoDestino(self.lista[indice],\
                                             aeropuertoDestino.nombre)):
             self.lista[indice].append(aeropuertoDestino)
@@ -32,7 +32,7 @@ class ListaDeAeropuertos():
         return -1
     """ Funcion que busca en el arreglo de ciudades, una ciudad dado su nombre, si no la encuentra devuelve -1"""
 
-    def insertarAeropuerto(self, aeropuerto):
+    def insertarAeropuertoOrigen(self, aeropuerto):
         for j in range(self.tamaño):#En la primera posicion disponible a partir de su HK
             if(len(self.lista[(aeropuerto.funcionHash(self.tamaño) + j)\
                               % self.tamaño]) == 0):
@@ -54,9 +54,9 @@ class ListaDeAeropuertos():
                 #Abrimos el json de la ciudad correspondiente y escribimos la ciudad y todos sus destinos
                 with open("datos/" + self.lista[i][0].nombre + '.json', 'w') as archivo:
                     json.dump(self.lista[i], archivo, indent=4, cls=CodificadorAeropuerto)
-        return self.revisarArchivos()
+        return self.revisarArchivosJSON()
     
-    def revisarArchivos(self):
+    def revisarArchivosJSON(self):
         for i in range(self.tamaño):
             if(len(self.lista[i]) > 0):#Para cada ciudad que fue registrada
                 #Abrimos el json de la ciudad correspondiente y escribimos la ciudad y todos sus destinos

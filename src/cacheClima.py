@@ -32,7 +32,7 @@ class CacheClima:
         return -1
 
 
-    def refrescar(self, aeropuerto):
+    def refrescarClima(self, aeropuerto):
         '''
         Funcion que registra si tenemos que realizar la peticion
         '''
@@ -42,9 +42,7 @@ class CacheClima:
                 datosJson = self.realizarPeticion(aeropuerto)
                 self.cache[indice][1] = datosJson
                 self.cache[indice][2] = datetime.now()
-                return False if datosJson == None else True
-            else:
-                return False if self.cache[indice][1] == None else True
+            return False if self.cache[indice][1] == None else True
         else:#Registramos el clima
             for i in range(self.tamaño):
                 indice = (aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño

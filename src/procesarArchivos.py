@@ -10,7 +10,7 @@ def revisarFormatoVuelo(vuelo):
     return True
 
 
-def revisarCsv(nombreArchivo):
+def revisarCSV(nombreArchivo):
     '''
     Funcion que verifica que el formato del csv sea correcto
     '''
