@@ -14,45 +14,49 @@ class Interfaz(tk.Frame):
         tk.Frame.__init__(self, master)
         self.grid() 
         self.inicializarJsons()
-        self.createWidgets()
         self.master = master
         self.master.minsize(400,250)
+        self.createButtons()
+        self.createLabels()
+        self.createEntries()
+        self.createMenus()
         self.api = "9d92b9e2262e46e5b34601d6f706cf43"
-    
+ 
 
-    def createWidgets(self):
+    def createButtons(self):
         ttk.Button(self, text="Historial", command=self.mostrarHistorial).place(x=20,y=20)
-        ttk.Label(text="Escriba la llave:").place(x=200,y=20)
-        ttk.Entry().place(x=320, y=20, width=60)
         ttk.Button(self, text="API", command=self.registrarAPI).place(x=390, y=20)
-        
+        ttk.Button(self, text="Salir del programa",\
+                  command=self.saluda).pack(padx=200, pady=350)
+
+
+    def createMenus(self):
+        self.optionVarOrigen = tk.StringVar(self)
+        self.optionVarOrigen.set("Selecciona el origen:")
+        tk.OptionMenu(self, self.optionVarOrigen,\
+                self.listaOrigenes[0], *self.listaOrigenes,\
+                command=self.origenElegido).place(x=20, y=130)
+        self.optionVarDestino = tk.StringVar(self)
+        self.optionVarDestino.set("Selecciona el destino:")
+        tk.OptionMenu(self, self.optionVarDestino, None,\
+                *self.listaDestinos,command=self.destinoElegido).place(x=200, y=130)
+
+
+    def createLabels(self):
+        ttk.Label(text="Escriba la llave:").place(x=200,y=20)
         Label(self, text="Ciudad de origen").place(x=20,y=100)
         Label(self, text="Ciudad de destino:").place(x=200, y=100) 
-
-        self.optionVarOrigen = tk.StringVar(self)
-        self.origen = tk.OptionMenu(self, self.optionVarOrigen,\
-                                    self.listaOrigenes[0], *self.listaOrigenes,\
-                                    command=self.origenElegido)
-        self.origen.place(x=20, y=130)
-        self.optionVarOrigen.set("Selecciona el origen:")
-
-        self.optionVarDestino = tk.StringVar(self)
-        self.optionVarDestino.set('')
-        self.destino = tk.OptionMenu(self, self.optionVarDestino, None,\
-                                     *self.listaDestinos,command=self.destinoElegido)
-        self.destino.place(x=200, y=130)
-        self.optionVarDestino.set("Selecciona el destino:")
-    
         self.climaOrigenDatos = StringVar()
         self.climaDestinoDatos = StringVar()
         self.climaOrigenDatos.set("")
         self.climaDestinoDatos.set("")
         ttk.Label(self, textvariable=self.climaOrigenDatos).place(x=20, y=170)
         ttk.Label(self, textvariable=self.climaDestinoDatos).place(x=200, y=170)
+        
 
-        ttk.Button(self, text="Salir del programa",\
-                  command=self.saluda).pack(padx=200, pady=350)
-       
+    def createEntries(self):
+        ttk.Entry().place(x=320, y=20, width=60)
+
 
     def saluda(self):
         print("Hola")
