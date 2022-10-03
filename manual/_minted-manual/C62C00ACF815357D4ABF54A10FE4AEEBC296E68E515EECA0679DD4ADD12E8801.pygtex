@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n}{aeropuertoPrueba} \PYG{o}{=} \PYG{n}{aeropuerto}\PYG{o}{.}\PYG{n}{Aeropuerto}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}MEX\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{)}
+  \PYG{k}{assert}\PYG{p}{(}\PYG{n}{aeropuertoPrueba}\PYG{o}{.}\PYG{n}{funcionHash}\PYG{p}{(}\PYG{l+m+mi}{11}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{3}\PYG{p}{)}
+\end{Verbatim}
