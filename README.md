@@ -33,19 +33,34 @@ pip install request
 
 ### Instalación 🔧
 
-_Para que el sistema funcione de manera correcta, tiene que tener un archivo donde los vuelos estan almacenados en el directorio data/_
+_Para que el sistema funcione de manera correcta, tiene que tener un archivo donde los vuelos estan almacenados en el directorio data/_ 
 
-_En el directorio actual hay un archivo denominado dataset1.csv, ese es el formato a seguir de los vuelos que queremos registrar en la base de datos, si queremos ingresar un nuevo formato basta remplazar este con el mismo nombre_
+_En el directorio actual hay un archivo denominado dataset1.csv, ese es el formato a seguir de los vuelos que queremos registrar en la base de datos, si queremos ingresar un nuevo formato basta remplazar este con el mismo nombre en este archivo se encuentran 3000 vuelos_
 
+_En cuanto al sistema se refiere es necesario instalar setup.py para que se añada a las librerias de python los paquetes que usamos, en este caso basta con correr:_
+```
+sudo python setup.py install
+```
+_Se corre en modo administrador porque hay archivos que necesitamos permisos para escrbirlos, esto lo que hace es establecer que paquetes hay en los proyectos para que se puedan exportar facilmente_
 ## Ejecutando el programa ⚙️
 
-_La interfaz es muy amigable e intuitiva, al abrirla apareceran opciones para ingresar nuestra propia llave API, nostros proporcionamos una por default pero si se quiere se puede modificar, solo basta presionar el boton de API, para mostrar los ultimos 3 vuelos realizados basta con presionar el boton de consultar y para registrar un vuelo primero se tiene que seleccionar una ciudad de origen, luego una ciudad de destino y presionar consultar._
+### Pruebas de cada paquete 🔩
 
-_Para ejecutar la aplicacion debe correrse la siguiente lineada situada desde el directorio principal (Donde esta contenido este readme y todos los directorios)_
+Las pruebas contenidas el el directorio pruebas cada archivo contiene la prueba de cada funcion por lo que para ejecutar las pruebas basta con correr:
 
 ```
-python src/app.py
+python3.10 pruebas/pruebaNombreDeArchivo.py
 ```
+Y se ejecutara las pruebas, obviamente se puede editar el documento para probar distintas entradas, si el archivo no genera ningun mensaje es que todas las pruebas fueron correctas
+### Ejecucion del sistema ⌨️
+
+Para ejecutar el sistema, la aplicacion y que funcione se tiene que ejecutar:
+
+```
+python3.10 src/main.py
+```
+
+La interfaz es muy amigable e intuitiva, al abrirla necesitamos ingresar una llave API valida ya que por default es una llave vacia, solo se tiene que ingresar en el textbox y presionar el boton de API, para mostrar los ultimos 3 vuelos realizados basta con presionar el boton de historial y para registrar un vuelo primero se tiene que seleccionar una ciudad de origen, luego una ciudad de destino y presionar consultar y aparecen los datos del clima abajo de cada ciudad.
 
 ## Construido con 🛠️
 

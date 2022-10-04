@@ -30,4 +30,11 @@
 \contentsline {subsubsection}{\numberline {5.5.5}Revisar archivos}{27}{subsubsection.5.5.5}%
 \contentsline {subsubsection}{\numberline {5.5.6}Obtener nombres}{27}{subsubsection.5.5.6}%
 \contentsline {section}{\numberline {6}Referencias}{27}{section.6}%
-\contentsline {section}{\numberline {7}Costos}{27}{section.7}%
+\contentsline {subsection}{\numberline {6.1}Web services}{27}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Json}{28}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Tiempo}{28}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Archivos}{29}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Interfaz}{29}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Setup.py}{30}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Asserts}{30}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Costos}{30}{section.7}%
