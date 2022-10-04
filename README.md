@@ -45,7 +45,6 @@ _Se corre en modo administrador porque hay archivos que necesitamos permisos par
 ## Ejecutando el programa ⚙️
 
 ### Pruebas de cada paquete 🔩
-Llave valida: 9d92b9e2262e46e5b34601d6f706cf43
 Las pruebas contenidas el el directorio pruebas cada archivo contiene la prueba de cada funcion por lo que para ejecutar las pruebas basta con correr:
 
 ```
@@ -53,6 +52,8 @@ python3.10 pruebas/pruebaNombreDeArchivo.py
 ```
 Y se ejecutara las pruebas, obviamente se puede editar el documento para probar distintas entradas, si el archivo no genera ningun mensaje es que todas las pruebas fueron correctas
 ### Ejecucion del sistema ⌨️
+Se le deja a continuacion la llave valida para que pueda ejecutar la aplicacion, esto es solo por calificacion, posteriormente se eliminara.
+Llave valida: 9d92b9e2262e46e5b34601d6f706cf43
 
 Para ejecutar el sistema, la aplicacion y que funcione se tiene que ejecutar:
 
