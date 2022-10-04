@@ -345,13 +345,14 @@ aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 assert(cacheEjemplo.refrescarClima(aeropuerto1))\
       , "No se actualizaron los datos"
 \end{minted}
-  \newpage
+
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.4]{pruebasPy/cache/refrescaApiMal.png}
     \caption{Salida}
   \end{figure}
 \end{itemize}
+\newpage
 \subsubsection{buscar aeropuerto}
 \begin{itemize}
 \item Con el aeropuerto de mexico insertado, se busca el aeropuerto de mexico
@@ -378,12 +379,13 @@ assert(cacheEjemplo.refrescarClima(aeropuerto1))\
 assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1)\
       , "Aeropuerto no encontrado"
 \end{minted}
-  \newpage
  \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.4]{pruebasPy/cache/aeroNoEncontrado.png}
     \caption{Salida}
   \end{figure}
+   \newpage
+
 \item Se busca un aeropuerto nulo
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
@@ -412,6 +414,8 @@ assert(cacheEjemplo.obtenerClima(aeropuerto1)\
        .__eq__(DatosClima(cacheEjemplo\
        .realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
 \end{minted}
+    \newpage
+
  \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{pruebasPy/cache/bien.png}
@@ -500,6 +504,12 @@ assert(type (convertirAVuelo(\
 assert(type (convertirAVuelo(cacheClima.obtenerClima(None),\
                              cacheClima.obtenerClima(None))) == str)
 \end{minted}
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/historial/bien.png}
+    \caption{Salida}
+  \end{figure}
+
   En ambos caso tenemos la misma salida, una string que representa el vuelo
 \end{itemize}
 \subsection{Lista de Aeropuertos}
@@ -523,7 +533,7 @@ assert(listaPrueba.procesarVuelo(vuelo) != -1)
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.3]{pruebasPy/listaAeropuertos/procesaNone.png}
+    \includegraphics[scale=0.4]{pruebasPy/listaAeropuertos/procesaNone.png}
     \caption{Salida}
   \end{figure}
 \end{itemize}
@@ -546,9 +556,10 @@ assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1)
 aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
 assert(listaPrueba.buscarAeropuertoOrigen(None) != -1)    
 \end{minted}
+  \newpage
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.4]{pruebasPy/listaAeropuertos/buscaNone.png}
+    \includegraphics[scale=0.7]{pruebasPy/listaAeropuertos/buscaNone.png}
     \caption{Salida}
   \end{figure}
 
@@ -570,6 +581,7 @@ assert(listaPrueba.buscarAeropuertoOrigen(aeropuertoPrueba) != -1)
 assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1)\
        , "No se inserto el aeropuerto"
 \end{minted}
+  \newpage
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
@@ -595,6 +607,7 @@ assert(listaPrueba.buscarAeropuertoDestino(\
        listaPrueba.lista[aeropuerto1.funcionHash(11)]\
        , aeropuerto2.nombre)), "Aeropuerto inexistente"
 \end{minted}
+  \newpage
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
@@ -640,11 +653,29 @@ Si solo se han insertado acapulco y monterrey como aeropuertos de origen se busc
 assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
 \end{minted}
 \begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
-    \caption{Salida}
-  \end{figure}
+  \centering
+  \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
+  \caption{Salida}
+\end{figure}
+\section{Referencias}
+\subsection{Web services}
+Nos apoyamos de \url{https://unprogramador.com/consumir-webservices-en-python-get-tutorial-python-3/} para poder hacer la request de los datos, urlopen que esta en urllib.request lo que hace es dado una url nos devuelve un archivo, hace la peticion al servicio web, nosotros especificamos la URL que es una combinacion de longitud latitud y la API,  agregamos lenguaje tambien, despues de que recibimos el archivo usamos read para leerlo y con loads lo que hacemos es transformarlo en una cadena formato json usando la libreria json, que es lo que devolvemos, manejamos los errores de peticiones con HTTPError y lo imprimimos, para saber que datos seleccionar de los multiples datos que estan contenidos en la cadena formato json, leimos la documentacion de \url{https://openweathermap.org/current} que es como convertimos datos en formato json a datos en formato string usando datos clima que basicamente es el concepto de arreglos.
 
+\subsection{Json}
+
+Para poder escribir un aeropuerto en un archivo JSON hacia falta codificarlo a JSON, por lo que nos basamos en \url{https://stackoverflow.com/questions/46005944/python-json-encoder-default-method} que lo que hace es crear una clase la cual devuelve los atributos de la clase en forma de lista, para poder devolverlos en formato json y poderlos escribir asi, si es instancia de aeropuerto devuelve la lista y sino la clase base devuelve el error que no son de la misma clase.
+Para poder ver como escribir en un archivo json nos basamos en el siguiente link \url{https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable} donde se especifica que se debe indicar la clase que codifica al aeropuerto y para ver la diferencia entre leer y escribir un archivo json nos apoyamos del siguiente archivo: \url{https://www.freecodecamp.org/espanol/news/python-leer-archivo-json-como-cargar-json-desde-un-archivo-y-procesar-dumps/} donde nos dice que dump escribe sobre un archivo json y para que sirve la identacion y que load solo carga el contenido y con loads la string, 
+\subsection{Tiempo}
+Para el manejo del tiempo nos basamos en \url{https://www.geeksforgeeks.org/python-datetime-timedelta-function/} para poder establecer la diferencia entre dos fechas que basicamente es restar dos .now() y con timedelta establecemos valor de la diferencia requerida, y con \url{https://www.programiz.com/python-programming/datetime/current-datetime} para poder ver como visualizar el tiempo en un formato conocido que es con strftime y estableciendo que queremos horas minutos y segundos.
+\subsection{Archivos}
+Usamos el \url{https://www.geeksforgeeks.org/python-os-path-isfile-method/} para saber como conocer si un archivo existe o no dado un a ruta determinada usando la libreria os y devuelve un booleano
+
+Para leer el csv usamos el \url{https://www.programiz.com/python-programming/reading-csv-files} para conocer todo el contenido del csv que solo es llamar a reader de parte de la biblioteca csv para que iteremos sobre el contenido, por ello usamos next ya que es un iterador
+
+Para el manejor de lectura escritura en archivos txt usamos el \url{https://programminghistorian.org/es/lecciones/trabajar-con-archivos-de-texto} donde tambien s enos dice como usar append, igual que todos los archivos solo hay que especificar bien la ruta y lo demas es parecido a los demas lenguajes de programacion.
+
+\subsection{Interfaz}
+La interfaz tal vez fue la que mas ayuda necesitamos de codigos de internet ya que a veces se vuelve muy especifica o asi y tkinter es una libreria muy extensa, para el displayMenu se uso \url{https://www.geeksforgeeks.org/tkinter-optionmenu-widget/} que entendimos porque se establece una stringvar que va a ser la variable de seleccion de la barra de menu, y luego en el caso de destino que cada vez que seleccionamos un aeropuerto de origen se redefine destino, se apoyo en \url{https://www.plus2net.com/python/tkinter-OptionMenu-proj1.php} para ver como limpiar todas las opciones y redefinir la lista de opciones con add_command y con las etiquetas correspondientes, reiniciando igual la variable de seleccion a cadena vacia, es por ello que consultar se le asigna tambien el realizar la peticion de destino ya que al redefinir se pierde el comando relacionado, en el caso de leer textbox como lo requerimos en la API nos basamos en \url{https://recursospython.com/guias-y-manuales/caja-de-texto-entry-tkinter/} y en el caso del historial queremos mostrar una ventana emergente asi que utilizamos \url{https://www.geeksforgeeks.org/python-tkinter-messagebox-widget/} donde nos indica como crear un message box, pasandole el titulo y la informacion y para mostrar el historial usamos \url{https://es.acervolima.com/python-lectura-de-las-ultimas-n-lineas-de-un-archivo/} ya que mostrar todo se nos complico mientras mas grande se hacia, lo que hace es con un iterador negativo lee las lineas desde el final del archivo y es 3*3 porque queremos los ultimos 3 vuelos y cada vuelo contiene 3 lineas, por lo que son las ultimas 9 lineas.
 \section{Costos}
 El costo de desarrollo por la beta seria de \$1000, el de desarrollo final seria un costo total ya de \$2000 y por darle mantenimiento habria un costo de \$500.
 \end{document}
