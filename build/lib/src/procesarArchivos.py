@@ -3,6 +3,9 @@ import json
 from src.listaDeAeropuertos import ListaDeAeropuertos
 
 def revisarFormatoVuelo(vuelo):
+    '''
+    Funcion para revisar formato de los vuelos para que sea compratible
+    '''
     if(type(vuelo[0]) != str or type(vuelo[1]) != str or \
        type(vuelo[2]) != float or type(vuelo[3]) != float or\
        type(vuelo[4]) != float or type(vuelo[5]) != float):
@@ -30,7 +33,7 @@ def escribirDestinos(nombreArchivo, tamañoDiccionario):
     Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash
     '''
     if(type(nombreArchivo) != str or len(nombreArchivo) < 1):
-        return None
+        return ListaDeAeropuertos(tamañoDiccionario)
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)

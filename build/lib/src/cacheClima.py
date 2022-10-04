@@ -1,5 +1,4 @@
 import json
-from types import NoneType
 import urllib
 import urllib.request
 import urllib.parse
@@ -7,7 +6,13 @@ from datetime import datetime, timedelta
 from src.datosClima import DatosClima
 
 class CacheClima:
+    '''
+    Clase en la que almacenamos y operamos con los datos del clima 
+    '''    
     def __init__(self, tamañoDiccionario) -> None:
+        '''
+        Atributos de la clase
+        '''
         self.cache = [list()]
         self.tamaño = tamañoDiccionario
         self.api = ''
@@ -16,6 +21,9 @@ class CacheClima:
 
 
     def actualizarAPI(self, api):
+        '''
+        Funcion donde asignamos las api
+        '''
         self.api = api
         
 
@@ -48,7 +56,7 @@ class CacheClima:
                 self.cache[indice][1] = datosJson
                 self.cache[indice][2] = datetime.now()
             return False if self.cache[indice][1] == None else True
-        else:#Registramos el clima
+        else:
             for i in range(self.tamaño):
                 indice = (aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño
                 if(len(self.cache[indice]) == 0): 
@@ -59,6 +67,9 @@ class CacheClima:
     
 
     def obtenerClima(self, aeropuerto):
+        '''
+        Funcion que regresa los datos del clima
+        '''
         if(self.buscarAeropuerto(aeropuerto) == -1):
             return None
         return DatosClima(self.cache[self.buscarAeropuerto(aeropuerto)][1])
@@ -74,8 +85,8 @@ class CacheClima:
             url = "https://api.openweathermap.org/data/2.5/weather?lat="\
                 + str(aeropuerto.latitud) + "&lon=" + str(aeropuerto.longitud)\
                 + "&appid=" + self.api + "&lang=es"
-            f = urllib.request.urlopen(url,timeout=30)
-            return json.loads(f.read())
+            archivoPeticion = urllib.request.urlopen(url,timeout=30)
+            return json.loads(archivoPeticion.read())
         except urllib.request.HTTPError as error:
             print(error)
             return None
