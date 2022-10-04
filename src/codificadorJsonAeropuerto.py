@@ -9,6 +9,6 @@ class CodificadorAeropuerto(json.JSONEncoder):
         '''
         Esta ciudad convierte el objeto Ciudades en un formato json para escribir en los archivos json
         '''
-        if isinstance(obj, Aeropuerto):
-            return [obj.nombre, obj.latitud, obj.longitud]
-        return json.JSONEncoder.default(self, obj)
+        if isinstance(objeto, Aeropuerto):
+            return [objeto.nombre, objeto.latitud, objeto.longitud]
+        return json.JSONEncoder.default(self, objeto)

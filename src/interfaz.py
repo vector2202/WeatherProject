@@ -26,7 +26,6 @@ class Interfaz(tk.Frame):
         self.crearMenus()
         self.master = master
         self.master.minsize(400,250)
-        self.createMenus()
         self.api = "9d92b9e2262e46e5b34601d6f706cf43"
  
 
@@ -37,7 +36,7 @@ class Interfaz(tk.Frame):
         ttk.Button(self, text="Historial", command=self.mostrarHistorial).place(x=20,y=20)
         ttk.Button(self, text="API", command=self.registrarAPI).place(x=390, y=20)
         ttk.Button(self, text="Salir del programa",\
-                  command=self.saluda).pack(padx=200, pady=350)
+                   command=self.salida).pack(padx=200, pady=350)
         ttk.Button(self, text="Consultar", command=self.seleccionAeropuertoDestino).place(x=390, y=130)
 
 
@@ -82,7 +81,7 @@ class Interfaz(tk.Frame):
 
     
     def salida(self):
-        tk.Frame.destroy() 
+        tk.Frame.destroy
 
     def inicializarJSONs(self):
         '''

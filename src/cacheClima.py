@@ -56,7 +56,7 @@ class CacheClima:
                 self.cache[indice][1] = datosJson
                 self.cache[indice][2] = datetime.now()
             return False if self.cache[indice][1] == None else True
-        else:#Registramos el clima
+        else:
             for i in range(self.tamaño):
                 indice = (aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño
                 if(len(self.cache[indice]) == 0): 

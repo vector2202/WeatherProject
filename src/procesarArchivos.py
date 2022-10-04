@@ -33,7 +33,7 @@ def escribirDestinos(nombreArchivo, tamañoDiccionario):
     Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash
     '''
     if(type(nombreArchivo) != str or len(nombreArchivo) < 1):
-        return None
+        return ListaDeAeropuertos(tamañoDiccionario)
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
