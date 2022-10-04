@@ -23,8 +23,11 @@ class CacheClima:
         '''
         Funcion que busca con una ciudad clima donde esta ubicada en la cache
         '''
+<<<<<<< HEAD
         if(aeropuerto == None):
             return -1
+=======
+>>>>>>> main
         for i in range(self.tamaño):
             if(len(self.cache[(aeropuerto.funcionHash(self.tamaño)\
                                + i) % self.tamaño]) == 0):
@@ -35,12 +38,19 @@ class CacheClima:
         return -1
 
 
+<<<<<<< HEAD
     def refrescarClima(self, aeropuerto):
         '''
         Funcion que registra si tenemos que realizar la peticion
         '''
         if(aeropuerto == None):
             return False
+=======
+    def refrescar(self, aeropuerto):
+        '''
+        Funcion que registra si tenemos que realizar la peticion
+        '''
+>>>>>>> main
         indice = self.buscarAeropuerto(aeropuerto)
         if(indice != -1):
             if((datetime.now() - self.cache[indice][2]) >= timedelta(minutes=30) or self.cache[indice][1] == None):
@@ -68,8 +78,11 @@ class CacheClima:
         '''
         Funcion que realiza dada una ciudad y la api su clima en datos json
         '''
+<<<<<<< HEAD
         if(aeropuerto == None):
             return None
+=======
+>>>>>>> main
         try:
             url = "https://api.openweathermap.org/data/2.5/weather?lat="\
                 + str(aeropuerto.latitud) + "&lon=" + str(aeropuerto.longitud)\
