@@ -34,6 +34,7 @@
     "hyperref"
     "algorithm"
     "algpseudocode"
+    "pdfpages"
     "minted")
    (LaTeX-add-labels
     "EscudoUNAM"

@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{pdfpages}
 \usepackage{minted}
 \usemintedstyle{pastie}
 \author{Víctor Torres}
@@ -113,17 +114,12 @@ Para poder garantizar la minima interaccion se diseño un boceto el cual solo ti
 \newpage
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.38]{figures/boceto.jpeg}
+  \includegraphics[scale=0.35]{figures/boceto.jpeg}
   \caption{\label{fig:label} }
 \end{figure}
-\newpage
-\section{Diagrama de Flujo}
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.5]{figures/flujo1}
-  \caption{Diagrama de flujo}
-\end{figure}
 
+\section{Diagrama de Flujo}
+\includepdf[pages=1-]{figures/diagrama.pdf}
 \section{Mantenimiento}
 El sistema se dividio en 9 archivos el cual cada uno representa una clase o un conjunto de funciones para que el sistema pueda funcionar de manera correctamente, estos son:
 \begin{itemize}

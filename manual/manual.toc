@@ -7,35 +7,35 @@
 \contentsline {subsection}{\numberline {2.1}Proceso de Solucion}{5}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Modelo de Datos}{6}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Seleccion de la mejor alternativa}{7}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Pseudocodigo}{9}{section.3}%
-\contentsline {section}{\numberline {4}Mantenimiento}{10}{section.4}%
-\contentsline {section}{\numberline {5}Pruebas}{10}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Aeropuerto}{11}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Prueba de Archivos}{12}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}revisarCSV}{12}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}escribirDestinos}{13}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}leerDestinos}{14}{subsubsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.3}Cache Clima}{15}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}refrescar}{15}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}buscar aeropuerto}{17}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}obtener clima y realizar peticion}{18}{subsubsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.4}Historial}{20}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Obtener numero de vuelo}{20}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Convertir a vuelo}{21}{subsubsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.5}Lista de Aeropuertos}{22}{subsection.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.1}Procesar Vuelo}{22}{subsubsection.5.5.1}%
-\contentsline {subsubsection}{\numberline {5.5.2}Buscar Aeropuerto de Origen}{23}{subsubsection.5.5.2}%
-\contentsline {subsubsection}{\numberline {5.5.3}Insertar aeropuerto de origen}{24}{subsubsection.5.5.3}%
-\contentsline {subsubsection}{\numberline {5.5.4}Buscar aeropuerto de destino}{25}{subsubsection.5.5.4}%
-\contentsline {subsubsection}{\numberline {5.5.5}Revisar archivos}{27}{subsubsection.5.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.6}Obtener nombres}{27}{subsubsection.5.5.6}%
-\contentsline {section}{\numberline {6}Referencias}{27}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Web services}{27}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Json}{28}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Tiempo}{28}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Archivos}{29}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Interfaz}{29}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Setup.py}{30}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Asserts}{30}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Documentacion}{30}{subsection.6.8}%
-\contentsline {section}{\numberline {7}Costos}{31}{section.7}%
+\contentsline {section}{\numberline {3}Diagrama de Flujo}{8}{section.3}%
+\contentsline {section}{\numberline {4}Mantenimiento}{11}{section.4}%
+\contentsline {section}{\numberline {5}Pruebas}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Aeropuerto}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Prueba de Archivos}{13}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}revisarCSV}{13}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}escribirDestinos}{14}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}leerDestinos}{15}{subsubsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.3}Cache Clima}{16}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}refrescar}{16}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}buscar aeropuerto}{18}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}obtener clima y realizar peticion}{19}{subsubsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.4}Historial}{21}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Obtener numero de vuelo}{21}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Convertir a vuelo}{22}{subsubsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.5}Lista de Aeropuertos}{23}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Procesar Vuelo}{23}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Buscar Aeropuerto de Origen}{24}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}Insertar aeropuerto de origen}{25}{subsubsection.5.5.3}%
+\contentsline {subsubsection}{\numberline {5.5.4}Buscar aeropuerto de destino}{26}{subsubsection.5.5.4}%
+\contentsline {subsubsection}{\numberline {5.5.5}Revisar archivos}{28}{subsubsection.5.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.6}Obtener nombres}{28}{subsubsection.5.5.6}%
+\contentsline {section}{\numberline {6}Referencias}{28}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Web services}{28}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Json}{29}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Tiempo}{29}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Archivos}{30}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Interfaz}{30}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Setup.py}{31}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Asserts}{31}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Documentacion}{31}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Costos}{32}{section.7}%
