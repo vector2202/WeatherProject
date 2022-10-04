@@ -35,7 +35,7 @@ class ListaDeAeropuertos():
 
 
     def buscarAeropuertoOrigen(self, aeropuertoOrigen):
-        '''Funcion que busca en el arreglo de ciudades, una ciudad dado su nombre, si no la encuentra devuelve -1'''
+        '''Funcion que busca en el arreglo de aeropuertos, un aeropuerto dado su nombre, si no la encuentra devuelve -1'''
         if(aeropuertoOrigen == None):
             return -1
         for i in range(self.tamaño):
@@ -70,7 +70,7 @@ class ListaDeAeropuertos():
         return False
 
 
-    """ Funcion que busca si la ciudad destino ya esta considerada en en arreglo de los destinos de la ciudad"""
+    """ Funcion que busca si el aeropuerto de destino ya esta considerada en en arreglo de los destinos del aeropuerto"""
     def escribirAeropuertosJson(self):
         for i in range(self.tamaño):
             if(len(self.lista[i]) > 0):

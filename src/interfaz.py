@@ -61,8 +61,8 @@ class Interfaz(tk.Frame):
         Funcion que crea las etiquetas para mostrar ciertos mensajes en nuestra interfaz (es meramente visual)
         '''
         ttk.Label(text="Escriba la llave:").place(x=200,y=20)
-        Label(self, text="Ciudad de origen").place(x=20,y=100)
-        Label(self, text="Ciudad de destino:").place(x=200, y=100) 
+        Label(self, text="Aeropuerto de origen").place(x=20,y=100)
+        Label(self, text="Aeropuerto de destino:").place(x=200, y=100) 
         self.datosClimaAeropuertoOrigen = StringVar()
         self.datosClimaAeropuertoDestino = StringVar()
         self.datosClimaAeropuertoOrigen.set("")

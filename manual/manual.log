@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.30)  4 OCT 2022 00:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.11.30)  4 OCT 2022 02:18
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -578,7 +578,7 @@ LaTeX Info: Redefining \nameref on input line 34.
 \@outlinefile=\write5
 \openout5 = `manual.out'.
 
-<figures/Logo_UNAM.png, id=164, 803.0pt x 803.0pt>
+<figures/Logo_UNAM.png, id=168, 803.0pt x 803.0pt>
 File: figures/Logo_UNAM.png Graphic file (type png)
 <use figures/Logo_UNAM.png>
 Package pdftex.def Info: figures/Logo_UNAM.png  used on input line 38.
@@ -595,7 +595,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<figures/Logo_FC.png, id=166, 1204.5pt x 1376.14125pt>
+<figures/Logo_FC.png, id=170, 1204.5pt x 1376.14125pt>
 File: figures/Logo_FC.png Graphic file (type png)
 <use figures/Logo_FC.png>
 Package pdftex.def Info: figures/Logo_FC.png  used on input line 42.
@@ -856,7 +856,7 @@ d only with embedded Type1 fonts
 
  [3] [4] [5] [6]
 [7]
-<figures/boceto.jpeg, id=248, 993.7125pt x 1266.7325pt>
+<figures/boceto.jpeg, id=253, 993.7125pt x 1266.7325pt>
 File: figures/boceto.jpeg Graphic file (type jpg)
 <use figures/boceto.jpeg>
 Package pdftex.def Info: figures/boceto.jpeg  used on input line 116.
@@ -888,7 +888,7 @@ File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2.
 )
-<pruebasPy/aeropuerto/hash1.png, id=264, 580.1675pt x 77.28876pt>
+<pruebasPy/aeropuerto/hash1.png, id=269, 580.1675pt x 77.28876pt>
 File: pruebasPy/aeropuerto/hash1.png Graphic file (type png)
 <use pruebasPy/aeropuerto/hash1.png>
 Package pdftex.def Info: pruebasPy/aeropuerto/hash1.png  used on input line 192
@@ -899,7 +899,7 @@ Package pdftex.def Info: pruebasPy/aeropuerto/hash1.png  used on input line 192
 
 (./_minted-manual/0690128655B5EA5ECBF01FB9838C9CA7C296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/aeropuerto/hash2.png, id=265, 1067.99pt x 149.55875pt>
+<pruebasPy/aeropuerto/hash2.png, id=270, 1067.99pt x 149.55875pt>
 File: pruebasPy/aeropuerto/hash2.png Graphic file (type png)
 <use pruebasPy/aeropuerto/hash2.png>
 Package pdftex.def Info: pruebasPy/aeropuerto/hash2.png  used on input line 204
@@ -932,7 +932,7 @@ l.209
 
 (./_minted-manual/71D407CAAD0AE0F9820B2B6F727702EBC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/archivos/bien.png, id=277, 419.5675pt x 75.28125pt>
+<pruebasPy/archivos/bien.png, id=282, 419.5675pt x 75.28125pt>
 File: pruebasPy/archivos/bien.png Graphic file (type png)
 <use pruebasPy/archivos/bien.png>
 Package pdftex.def Info: pruebasPy/archivos/bien.png  used on input line 218.
@@ -942,7 +942,7 @@ Package pdftex.def Info: pruebasPy/archivos/bien.png  used on input line 218.
 
 (./_minted-manual/66BB66994044168717D7CB506407DE2EC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/archivos/datosMal.png, id=278, 520.94624pt x 155.58125pt>
+<pruebasPy/archivos/datosMal.png, id=283, 520.94624pt x 155.58125pt>
 File: pruebasPy/archivos/datosMal.png Graphic file (type png)
 <use pruebasPy/archivos/datosMal.png>
 Package pdftex.def Info: pruebasPy/archivos/datosMal.png  used on input line 22
@@ -964,13 +964,13 @@ name{figure.5}) has been already used, duplicate ignored
 l.4 \end{Verbatim}
                    <./pruebasPy/archivos/bien.png> <./pruebasPy/archivos/datosM
 al.png>])
-<pruebasPy/archivos/datosNone.png, id=287, 520.94624pt x 155.58125pt>
+<pruebasPy/archivos/datosNone.png, id=292, 520.94624pt x 155.58125pt>
 File: pruebasPy/archivos/datosNone.png Graphic file (type png)
 <use pruebasPy/archivos/datosNone.png>
 Package pdftex.def Info: pruebasPy/archivos/datosNone.png  used on input line 2
 39.
 (pdftex.def)             Requested size: 312.57016pt x 93.34946pt.
-<pruebasPy/archivos/datosNulo.png, id=288, 520.94624pt x 155.58125pt>
+<pruebasPy/archivos/datosNulo.png, id=293, 520.94624pt x 155.58125pt>
 File: pruebasPy/archivos/datosNulo.png Graphic file (type png)
 <use pruebasPy/archivos/datosNulo.png>
 Package pdftex.def Info: pruebasPy/archivos/datosNulo.png  used on input line 2
@@ -1001,7 +1001,7 @@ Package pdftex.def Info: pruebasPy/archivos/bien.png  used on input line 261.
 
 (./_minted-manual/1B38AF04F2A642299F95672C22101191C296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/archivos/destinosNulo.png, id=298, 848.16875pt x 187.70125pt>
+<pruebasPy/archivos/destinosNulo.png, id=303, 848.16875pt x 187.70125pt>
 File: pruebasPy/archivos/destinosNulo.png Graphic file (type png)
 <use pruebasPy/archivos/destinosNulo.png>
 Package pdftex.def Info: pruebasPy/archivos/destinosNulo.png  used on input lin
@@ -1036,7 +1036,7 @@ name{figure.10}) has been already used, duplicate ignored
                                                   
 l.4 \end{Verbatim}
                    <./pruebasPy/archivos/destinosNulo.png>])
-<pruebasPy/archivos/aeroMal.png, id=307, 848.16875pt x 187.70125pt>
+<pruebasPy/archivos/aeroMal.png, id=312, 848.16875pt x 187.70125pt>
 File: pruebasPy/archivos/aeroMal.png Graphic file (type png)
 <use pruebasPy/archivos/aeroMal.png>
 Package pdftex.def Info: pruebasPy/archivos/aeroMal.png  used on input line 298
@@ -1047,7 +1047,7 @@ Package pdftex.def Info: pruebasPy/archivos/aeroMal.png  used on input line 298
 
 (./_minted-manual/64A68DFC5E21FAB8353E8AA44F69DC13C296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/archivos/leerNone.png, id=308, 848.16875pt x 187.70125pt>
+<pruebasPy/archivos/leerNone.png, id=313, 848.16875pt x 187.70125pt>
 File: pruebasPy/archivos/leerNone.png Graphic file (type png)
 <use pruebasPy/archivos/leerNone.png>
 Package pdftex.def Info: pruebasPy/archivos/leerNone.png  used on input line 30
@@ -1058,7 +1058,7 @@ Package pdftex.def Info: pruebasPy/archivos/leerNone.png  used on input line 30
 
 (./_minted-manual/BE846E9ACCE5AB9D00F76AB16F11E4AEC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/cache/bien.png, id=309, 621.32124pt x 84.315pt>
+<pruebasPy/cache/bien.png, id=314, 621.32124pt x 84.315pt>
 File: pruebasPy/cache/bien.png Graphic file (type png)
 <use pruebasPy/cache/bien.png>
 Package pdftex.def Info: pruebasPy/cache/bien.png  used on input line 327.
@@ -1084,7 +1084,7 @@ d
 l.1 \begin{Verbatim}[commandchars=\\\{\}]
                                           <./pruebasPy/archivos/aeroMal.png> <.
 /pruebasPy/archivos/leerNone.png>])
-<pruebasPy/cache/refrescaMal.png, id=318, 1075.01625pt x 157.58875pt>
+<pruebasPy/cache/refrescaMal.png, id=324, 1075.01625pt x 157.58875pt>
 File: pruebasPy/cache/refrescaMal.png Graphic file (type png)
 <use pruebasPy/cache/refrescaMal.png>
 Package pdftex.def Info: pruebasPy/cache/refrescaMal.png  used on input line 33
@@ -1100,7 +1100,7 @@ Overfull \hbox (39.99889pt too wide) in paragraph at lines 339--340
 
 (./_minted-manual/1E6DB577DE50639537E928E9A1AA486AC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/cache/refrescaApiMal.png, id=319, 1075.01625pt x 157.58875pt>
+<pruebasPy/cache/refrescaApiMal.png, id=325, 1075.01625pt x 157.58875pt>
 File: pruebasPy/cache/refrescaApiMal.png Graphic file (type png)
 <use pruebasPy/cache/refrescaApiMal.png>
 Package pdftex.def Info: pruebasPy/cache/refrescaApiMal.png  used on input line
@@ -1147,7 +1147,7 @@ Overfull \hbox (44.9219pt too wide) in paragraph at lines 369--370
 
 (./_minted-manual/9D1014261546F66BC08A16457296369FC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/cache/aeroNoEncontrado.png, id=331, 1071.00125pt x 155.58125pt>
+<pruebasPy/cache/aeroNoEncontrado.png, id=336, 1071.00125pt x 155.58125pt>
 File: pruebasPy/cache/aeroNoEncontrado.png Graphic file (type png)
 <use pruebasPy/cache/aeroNoEncontrado.png>
 Package pdftex.def Info: pruebasPy/cache/aeroNoEncontrado.png  used on input li
@@ -1174,7 +1174,7 @@ l.387    \newpage
 
 (./_minted-manual/01AC15FBF89BD8417C0B5BE2DA75F8E2C296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/cache/buscaNone.png, id=339, 1071.00125pt x 155.58125pt>
+<pruebasPy/cache/buscaNone.png, id=344, 1071.00125pt x 155.58125pt>
 File: pruebasPy/cache/buscaNone.png Graphic file (type png)
 <use pruebasPy/cache/buscaNone.png>
 Package pdftex.def Info: pruebasPy/cache/buscaNone.png  used on input line 400.
@@ -1204,7 +1204,7 @@ Package pdftex.def Info: pruebasPy/cache/bien.png  used on input line 421.
 
 (./_minted-manual/3771F3D1B08295C6841E54B68776685CC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/cache/obtenNone.png, id=346, 1041.8925pt x 130.4875pt>
+<pruebasPy/cache/obtenNone.png, id=351, 1041.8925pt x 130.4875pt>
 File: pruebasPy/cache/obtenNone.png Graphic file (type png)
 <use pruebasPy/cache/obtenNone.png>
 Package pdftex.def Info: pruebasPy/cache/obtenNone.png  used on input line 436.
@@ -1230,7 +1230,7 @@ me{figure.20}) has been already used, duplicate ignored
                                                   
 l.449   \newpage
                  <./pruebasPy/cache/obtenNone.png>]
-<pruebasPy/cache/obtenInex.png, id=355, 1041.8925pt x 130.4875pt>
+<pruebasPy/cache/obtenInex.png, id=360, 1041.8925pt x 130.4875pt>
 File: pruebasPy/cache/obtenInex.png Graphic file (type png)
 <use pruebasPy/cache/obtenInex.png>
 Package pdftex.def Info: pruebasPy/cache/obtenInex.png  used on input line 452.
@@ -1246,7 +1246,7 @@ Overfull \hbox (26.74962pt too wide) in paragraph at lines 452--453
 
 (./_minted-manual/3D612B9465CDA86D05F962755046095DC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/cache/pideNone.png, id=356, 1075.01625pt x 186.6975pt>
+<pruebasPy/cache/pideNone.png, id=361, 1075.01625pt x 186.6975pt>
 File: pruebasPy/cache/pideNone.png Graphic file (type png)
 <use pruebasPy/cache/pideNone.png>
 Package pdftex.def Info: pruebasPy/cache/pideNone.png  used on input line 466.
@@ -1261,7 +1261,7 @@ Overfull \hbox (39.99889pt too wide) in paragraph at lines 466--467
 
 (./_minted-manual/860A3F7AB4D6B02426B07BA5D64A8773C296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/historial/bien.png, id=357, 618.31pt x 145.54375pt>
+<pruebasPy/historial/bien.png, id=362, 618.31pt x 145.54375pt>
 File: pruebasPy/historial/bien.png Graphic file (type png)
 <use pruebasPy/historial/bien.png>
 Package pdftex.def Info: pruebasPy/historial/bien.png  used on input line 479.
@@ -1331,7 +1331,7 @@ Overfull \hbox (42.81404pt too wide) in paragraph at lines 509--510
 
 (./_minted-manual/A38FD752B9F3913E215ED4636EC61E4AC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/listaAeropuertos/bien.png, id=373, 652.4375pt x 90.3375pt>
+<pruebasPy/listaAeropuertos/bien.png, id=378, 652.4375pt x 90.3375pt>
 File: pruebasPy/listaAeropuertos/bien.png Graphic file (type png)
 <use pruebasPy/listaAeropuertos/bien.png>
 Package pdftex.def Info: pruebasPy/listaAeropuertos/bien.png  used on input lin
@@ -1357,7 +1357,7 @@ name{figure.26}) has been already used, duplicate ignored
                                                   
 l.4 \end{Verbatim}
                    <./pruebasPy/listaAeropuertos/bien.png>])
-<pruebasPy/listaAeropuertos/procesaNone.png, id=381, 1134.2375pt x 195.73125pt>
+<pruebasPy/listaAeropuertos/procesaNone.png, id=386, 1134.2375pt x 195.73125pt>
 
 File: pruebasPy/listaAeropuertos/procesaNone.png Graphic file (type png)
 <use pruebasPy/listaAeropuertos/procesaNone.png>
@@ -1399,7 +1399,7 @@ me{figure.28}) has been already used, duplicate ignored
                                                   
 l.559   \newpage
                  <./pruebasPy/listaAeropuertos/procesaNone.png>]
-<pruebasPy/listaAeropuertos/buscaNone.png, id=389, 639.38875pt x 160.6pt>
+<pruebasPy/listaAeropuertos/buscaNone.png, id=394, 639.38875pt x 160.6pt>
 File: pruebasPy/listaAeropuertos/buscaNone.png Graphic file (type png)
 <use pruebasPy/listaAeropuertos/buscaNone.png>
 Package pdftex.def Info: pruebasPy/listaAeropuertos/buscaNone.png  used on inpu
@@ -1415,7 +1415,7 @@ Overfull \hbox (57.56906pt too wide) in paragraph at lines 562--563
 
 (./_minted-manual/29D20AAED5B98264F2A5C539D8C90E6BC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/listaAeropuertos/buscaInex.png, id=390, 639.38875pt x 160.6pt>
+<pruebasPy/listaAeropuertos/buscaInex.png, id=395, 639.38875pt x 160.6pt>
 File: pruebasPy/listaAeropuertos/buscaInex.png Graphic file (type png)
 <use pruebasPy/listaAeropuertos/buscaInex.png>
 Package pdftex.def Info: pruebasPy/listaAeropuertos/buscaInex.png  used on inpu
@@ -1457,7 +1457,7 @@ Overfull \hbox (1.46552pt too wide) in paragraph at lines 587--588
 
 (./_minted-manual/DC5F0E81973DAFE3007C32EBED14E54EC296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/listaAeropuertos/insertaNone.png, id=399, 626.34pt x 157.58875pt>
+<pruebasPy/listaAeropuertos/insertaNone.png, id=404, 626.34pt x 157.58875pt>
 File: pruebasPy/listaAeropuertos/insertaNone.png Graphic file (type png)
 <use pruebasPy/listaAeropuertos/insertaNone.png>
 Package pdftex.def Info: pruebasPy/listaAeropuertos/insertaNone.png  used on in
@@ -1503,7 +1503,7 @@ t line 625.
 
 (./_minted-manual/E842393A120B6CA9E15053B72CD94545C296E68E515EECA0679DD4ADD12E8
 801.pygtex)
-<pruebasPy/listaAeropuertos/buscaDvacio.png, id=408, 626.34pt x 157.58875pt>
+<pruebasPy/listaAeropuertos/buscaDvacio.png, id=413, 626.34pt x 157.58875pt>
 File: pruebasPy/listaAeropuertos/buscaDvacio.png Graphic file (type png)
 <use pruebasPy/listaAeropuertos/buscaDvacio.png>
 Package pdftex.def Info: pruebasPy/listaAeropuertos/buscaDvacio.png  used on in
@@ -1636,17 +1636,17 @@ Overfull \hbox (41.9876pt too wide) in paragraph at lines 682--683
 ]$\T1/cmtt/m/n/12 https : / / ellibrodepython .
  []
 
-[30] (./manual.aux)
+[30] [31] (./manual.aux)
 Package rerunfilecheck Info: File `manual.out' has not changed.
-(rerunfilecheck)             Checksum: 974ABD397A1725899F163C3FF9E9311A;5593.
+(rerunfilecheck)             Checksum: 60FE8A9F1A3494ACBDC1ECEB3462340F;5716.
 runsystem(rm manual.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 14402 strings out of 479957
- 241783 string characters out of 5879162
- 575757 words of memory out of 6000000
- 31374 multiletter control sequences out of 15000+600000
+ 14405 strings out of 479957
+ 241820 string characters out of 5879162
+ 574110 words of memory out of 6000000
+ 31375 multiletter control sequences out of 15000+600000
  415966 words of font info for 58 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  75i,8n,79p,2038b,669s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1661,10 +1661,10 @@ lic/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-
 super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/s
 frm1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm2074
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on manual.pdf (30 pages, 1339334 bytes).
+Output written on manual.pdf (31 pages, 1340673 bytes).
 PDF statistics:
- 531 PDF objects out of 1000 (max. 8388607)
- 431 compressed objects within 5 object streams
- 109 named destinations out of 1000 (max. 500000)
- 456 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 544 PDF objects out of 1000 (max. 8388607)
+ 443 compressed objects within 5 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 464 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -37,4 +37,5 @@
 \contentsline {subsection}{\numberline {6.5}Interfaz}{29}{subsection.6.5}%
 \contentsline {subsection}{\numberline {6.6}Setup.py}{30}{subsection.6.6}%
 \contentsline {subsection}{\numberline {6.7}Asserts}{30}{subsection.6.7}%
-\contentsline {section}{\numberline {7}Costos}{30}{section.7}%
+\contentsline {subsection}{\numberline {6.8}Documentacion}{30}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Costos}{31}{section.7}%

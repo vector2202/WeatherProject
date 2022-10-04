@@ -117,49 +117,13 @@ Para poder garantizar la minima interaccion se diseño un boceto el cual solo ti
   \caption{\label{fig:label} }
 \end{figure}
 \newpage
-\section{Pseudocodigo}
-\begin{algorithmic}[1]
-  \For{cada vuelo}
-  \If{ciudad de origen no esta registrada}
-  \State{registrala en la primera casilla vacia a partir del hash}
-  \EndIf
-  \If{ciudad de destino no esta registrada}
-  \State{registrala en el arreglo de la ciudad de origen}
-  \EndIf
-  \EndFor
+\section{Diagrama de Flujo}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{figures/flujo1}
+  \caption{Diagrama de flujo}
+\end{figure}
 
-  
-  \For{ciudad de Origen}{ciudades}
-  \State{Escribir en cada json el arreglo de ciudad Origen}
-  \EndFor
-
-  
-  \State{Leer ciudad Origen}
-  \State{Mostrar todos los destinos posibles dada la ciudad de origen}
-  \State{climaOrigen = obtenerClima(ciudadOrigen, api)}
-  \State{Leer ciudad destino}
-  \State{climaDestino = obtenerClima(ciudadOrigen, api)}
-  \State{Mostrar Clima}
-  \State{Registrar el vuelo en un archivo}
-
-  \Function{obtenerClima}{ciudadOrigen, api}
-  \If{clima ya fue registrado en cache}
-  \If{Han pasado mas de 30 min desde la ultima request}
-  \State{realiza una peticion y guarda en cache}
-  \EndIf
-  \Else
-  \State{realiza la peticion}
-  \State{Guarda en los datos en la primera posicion disponible}
-  \EndIf
-  \EndFunction
-  \Function{hash}{ciudad, n}
-  \State{suma = 0}
-  \For{caracter}{nombre de ciudad}
-  \State{suma += caracter}
-  \EndFor
-  \Return{(suma + abs(latitud) + abs(longitud)) \% n}
-  \EndFunction
-\end{algorithmic}
 \section{Mantenimiento}
 El sistema se dividio en 9 archivos el cual cada uno representa una clase o un conjunto de funciones para que el sistema pueda funcionar de manera correctamente, estos son:
 \begin{itemize}
@@ -675,11 +639,13 @@ Para leer el csv usamos el \url{https://www.programiz.com/python-programming/rea
 Para el manejor de lectura escritura en archivos txt usamos el \url{https://programminghistorian.org/es/lecciones/trabajar-con-archivos-de-texto} donde tambien s enos dice como usar append, igual que todos los archivos solo hay que especificar bien la ruta y lo demas es parecido a los demas lenguajes de programacion.
 
 \subsection{Interfaz}
-La interfaz tal vez fue la que mas ayuda necesitamos de codigos de internet ya que a veces se vuelve muy especifica o asi y tkinter es una libreria muy extensa, para el displayMenu se uso \url{https://www.geeksforgeeks.org/tkinter-optionmenu-widget/} que entendimos porque se establece una stringvar que va a ser la variable de seleccion de la barra de menu, y luego en el caso de destino que cada vez que seleccionamos un aeropuerto de origen se redefine destino, se apoyo en \url{https://www.plus2net.com/python/tkinter-OptionMenu-proj1.php} para ver como limpiar todas las opciones y redefinir la lista de opciones con addcommand y con las etiquetas correspondientes, reiniciando igual la variable de seleccion a cadena vacia, es por ello que consultar se le asigna tambien el realizar la peticion de destino ya que al redefinir se pierde el comando relacionado, en el caso de leer textbox como lo requerimos en la API nos basamos en \url{https://recursospython.com/guias-y-manuales/caja-de-texto-entry-tkinter/} y en el caso del historial queremos mostrar una ventana emergente asi que utilizamos \url{https://www.geeksforgeeks.org/python-tkinter-messagebox-widget/} donde nos indica como crear un message box, pasandole el titulo y la informacion y para mostrar el historial usamos \url{https://es.acervolima.com/python-lectura-de-las-ultimas-n-lineas-de-un-archivo/} ya que mostrar todo se nos complico mientras mas grande se hacia, lo que hace es con un iterador negativo lee las lineas desde el final del archivo y es 3*3 porque queremos los ultimos 3 vuelos y cada vuelo contiene 3 lineas, por lo que son las ultimas 9 lineas.
+La interfaz tal vez fue la que mas ayuda necesitamos de codigos de internet ya que a veces se vuelve muy especifica o asi y tkinter es una libreria muy extensa, para el displayMenu se uso \url{https://www.geeksforgeeks.org/tkinter-optionmenu-widget/} que entendimos porque se establece una stringvar que va a ser la variable de seleccion de la barra de menu, y luego en el caso de destino que cada vez que seleccionamos un aeropuerto de origen se redefine destino, se apoyo en \url{https://www.plus2net.com/python/tkinter-OptionMenu-proj1.php} para ver como limpiar todas las opciones y redefinir la lista de opciones con addcommand y con las etiquetas correspondientes, reiniciando igual la variable de seleccion a cadena vacia, es por ello que consultar se le asigna tambien el realizar la peticion de destino ya que al redefinir se pierde el comando relacionado, en el caso de leer textbox como lo requerimos en la API nos basamos en \url{https://recursospython.com/guias-y-manuales/caja-de-texto-entry-tkinter/} y en el caso del historial queremos mostrar una ventana emergente asi que utilizamos \url{https://www.geeksforgeeks.org/python-tkinter-messagebox-widget/} donde nos indica como crear un message box, pasandole el titulo y la informacion y para mostrar el historial usamos \url{https://es.acervolima.com/python-lectura-de-las-ultimas-n-lineas-de-un-archivo/} ya que mostrar todo se nos complico mientras mas grande se hacia, lo que hace es con un iterador negativo lee las lineas desde el final del archivo y es 3*3 porque queremos los ultimos 3 vuelos y cada vuelo contiene 3 lineas, por lo que son las ultimas 9 lineas. Para poder inicializar exitosamente la interfaz nos hicimos de ayuda de la documentacion: \url{ttps://docs.python.org/es/3/library/tkinter.html}, grid y place nos ayudan a colocar los botones y etiquetas a lo largo de toda la interfaz grafica, en init se inicializa la ventana con la ventana principal. MinSize es para un tamaño minimo decente.
 \subsection{Setup.py}
 Tamnien cabe destacar que como usamos paquetes y en especial tenemos el directorio pruebas y el directorio src en donde en los archivos de pruebas usamos los paquetes de src, nos fue dificil como encontrar exportarlos hasta que vimos que con setup.py e init.py podiamos exportar y usar paquetes, setup.py y el porque lo encontramos aqui \url{https://betterprogramming.pub/sharing-code-using-a-setup-py-b6a596646532} donde se nos explica el que hace setup que le da un nombre al paquete y nos dice si queremos excluir alguno, en este caso no, y la importancia de init.py se encuentra aqui \url{https://stackoverflow.com/questions/448271/what-is-init-py-for} y basicamente es que con init.py nos damos cuenta que es un paquete el directorio y con setup.py establecemos cuales son paquetes y buscamos todos los archivos menos los especificados, en este caso ninguno y instalamos setup.py para que se añada a la libreria de python y lo podemos usar. Tambien nos apoyamos de: \url{https://www.educative.io/answers/what-is-setuppy} para ver como instalarlo y que hacia setup.py
 \subsection{Asserts}
 Nuestras primeras pruebas fueron muy rusticas, ahora usamos asserts que entendimos que son en base a lo explicado por esta pagina: \url{https://ellibrodepython.com/assert-python} donde nos dice que basicamente son funciones pruebas que buscan si lo que dado una funcion y su parametro devuelve es lo esperafo que uno especifica, sino rompe el programa para indicar que no se cumplio lo esperado.
+\subsection{Documentacion}
+Para generar la documentacion en python se baso en la documentacion de la pagina: \url{https://docs.python.org/3/library/pydoc.html} que es la que indica que banderas poner al correr la linea para generar la documentacion pertinente, para esto tienen que esta bien documentadas todas las clases
 \section{Costos}
 El costo de desarrollo por la beta seria de \$1000, el de desarrollo final seria un costo total ya de \$2000 y por darle mantenimiento habria un costo de \$500.
 \end{document}
