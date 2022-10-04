@@ -29,7 +29,7 @@ class CacheClima:
 
     def buscarAeropuerto(self, aeropuerto):
         '''
-        Funcion que busca con una ciudad clima donde esta ubicada en la cache
+        Funcion que busca con un aeropuerto donde esta ubicada en la cache
         '''
         if(aeropuerto == None):
             return -1
@@ -56,7 +56,7 @@ class CacheClima:
                 self.cache[indice][1] = datosJson
                 self.cache[indice][2] = datetime.now()
             return False if self.cache[indice][1] == None else True
-        else:#Registramos el clima
+        else:
             for i in range(self.tamaño):
                 indice = (aeropuerto.funcionHash(self.tamaño) + i) % self.tamaño
                 if(len(self.cache[indice]) == 0): 
@@ -77,7 +77,7 @@ class CacheClima:
 
     def realizarPeticion(self, aeropuerto):
         '''
-        Funcion que realiza dada una ciudad y la api su clima en datos json
+        Funcion que realiza dada un aeropuerto y la api su clima en datos json
         '''
         if(aeropuerto == None):
             return None

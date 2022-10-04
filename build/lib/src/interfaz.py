@@ -10,7 +10,13 @@ from src.cacheClima import CacheClima
 
 
 class Interfaz(tk.Frame):
+    '''
+    Clase para crear y organizar la interfaz
+    '''
     def __init__(self, master):
+        '''
+        Construye los atributos necesarios para nuestra interfaz
+        '''
         tk.Frame.__init__(self, master)
         self.grid() 
         self.inicializarJSONs()
@@ -20,18 +26,22 @@ class Interfaz(tk.Frame):
         self.crearMenus()
         self.master = master
         self.master.minsize(400,250)
-        self.api = "9d92b9e2262e46e5b34601d6f706cf43"
- 
-
+        self.api = ''
     def crearBotones(self):
+        '''
+        Funcion que nos permite crear botones que estan asociados a ciertas funciones
+        '''
         ttk.Button(self, text="Historial", command=self.mostrarHistorial).place(x=20,y=20)
         ttk.Button(self, text="API", command=self.registrarAPI).place(x=390, y=20)
         ttk.Button(self, text="Salir del programa",\
-                  command=self.saluda).pack(padx=200, pady=350)
+                   command=self.salida).pack(padx=200, pady=350)
         ttk.Button(self, text="Consultar", command=self.seleccionAeropuertoDestino).place(x=390, y=130)
 
 
     def crearMenus(self):
+        '''
+        Funcion que nos muestra los menus tanto para el lugar de origen como de destino
+        '''
         self.aeropuertoOrigenSeleccionado = tk.StringVar(self)
         self.aeropuertoOrigenSeleccionado.set("Selecciona el origen:")
         self.menuAeropuertoOrigen = tk.OptionMenu(self, self.aeropuertoOrigenSeleccionado,\
@@ -47,9 +57,12 @@ class Interfaz(tk.Frame):
         self.menuAeropuertoDestino.place(x=200, y=130)
 
     def crearEtiquetas(self):
+        '''
+        Funcion que crea las etiquetas para mostrar ciertos mensajes en nuestra interfaz (es meramente visual)
+        '''
         ttk.Label(text="Escriba la llave:").place(x=200,y=20)
-        Label(self, text="Ciudad de origen").place(x=20,y=100)
-        Label(self, text="Ciudad de destino:").place(x=200, y=100) 
+        Label(self, text="Aeropuerto de origen").place(x=20,y=100)
+        Label(self, text="Aeropuerto de destino:").place(x=200, y=100) 
         self.datosClimaAeropuertoOrigen = StringVar()
         self.datosClimaAeropuertoDestino = StringVar()
         self.datosClimaAeropuertoOrigen.set("")
@@ -58,13 +71,20 @@ class Interfaz(tk.Frame):
         self.climaAeropuertoDestino = ttk.Label(self, textvariable=self.datosClimaAeropuertoDestino).place(x=200, y=170)
         
     def crearEntrada(self):
+        '''
+        Funcion para que se pueda escribir la llave de la API
+        '''
         self.llaveAPI = ttk.Entry()
         self.llaveAPI.place(x=320, y=20, width=60)
 
-    def saluda(self):
-        print("Hola")
     
+    def salida(self):
+        tk.Frame.quit(self)
+
     def inicializarJSONs(self):
+        '''
+        Funcion que inicializa nuestras listas y hacemos uso de nuestro dataset
+        '''
         nombreArchivoCSV = "dataset1.csv"
         tamañoDiccionario = 71
         self.listaAeropuertosOrigen = []
@@ -79,6 +99,9 @@ class Interfaz(tk.Frame):
 
 
     def seleccionAeropuertoOrigen(self, *args):
+        '''
+        Funcion para cuando hacemos la seleccion de nuestro aeropuerto de origen y poder revisas los posibles destinos y el clima
+        '''
         nombreAeropuertoOrigen = self.aeropuertoOrigenSeleccionado.get()
         self.destinosDisponibles = leerDestinos(nombreAeropuertoOrigen)
         if(self.destinosDisponibles != None):
@@ -99,6 +122,9 @@ class Interfaz(tk.Frame):
 
 
     def obtenerNombreDestinos(self, destinos):
+        '''
+        Funcion que nos regresa una lista con los nombres de lugares destinos
+        '''
         lista = []
         for destino in destinos:
                 lista.append(destino[0])
@@ -106,6 +132,9 @@ class Interfaz(tk.Frame):
             
 
     def seleccionAeropuertoDestino(self, *args):
+        '''
+        Funcion para seleccionar nuestro aeropuerto destino
+        '''
         nombreAeropuertoDestino = self.aeropuertoDestinoSeleccionado.get()
         if(self.destinosDisponibles != None):
             for destino in self.destinosDisponibles:
@@ -121,6 +150,9 @@ class Interfaz(tk.Frame):
 
 
     def consultarVuelo(self):
+        '''
+        Fucion para hacer las consultas de los vuelos
+        '''
         if(self.request):
             self.mostrarClima(self.cache.obtenerClima(self.aeropuertoOrigen),\
                               self.cache.obtenerClima(self.aeropuertoDestino))
@@ -130,24 +162,32 @@ class Interfaz(tk.Frame):
 
     def mostrarClima(self, datosOrigen, datosDestino):
         '''
-        Esto deberia ser una docstring para documetnar la funcion o metodo.
+        Funcion para poder mostrar el clima de los datos de origen y destino
         '''
         self.datosClimaAeropuertoOrigen.set(datosOrigen)
         self.datosClimaAeropuertoDestino.set(datosDestino)
         with open("datos/historial.txt",'a') as archivoHistorial:
             archivoHistorial.write(convertirAVuelo(datosOrigen, datosDestino))
-        
+
     
     def mostrarHistorial(self):
-        n = 3*3 
-        with open("datos/historial.txt", 'r') as archivo:
-            informacion = ""
-            for linea in (archivo.readlines()[-n:]):
-                informacion += linea + "\n"
-        tkinter.messagebox.showinfo("Historial", message=informacion)
-
+        '''
+        Funcion para mostrar el historial de lo consultado
+        '''
+        n = 3*3
+        try:
+            with open("datos/historial.txt", 'r') as archivo:
+                informacion = ""
+                for linea in (archivo.readlines()[-n:]):
+                    informacion += linea + "\n"
+                tkinter.messagebox.showinfo("Historial", message=informacion)
+        except OSError as error:
+            print("Primer vuelo")
 
     def registrarAPI(self):
+        '''
+        Funcion par registrar nuestra llave
+        '''
         self.api = self.llaveAPI.get()
         self.cache.actualizarAPI(self.api)
         print(str(self.api)) 

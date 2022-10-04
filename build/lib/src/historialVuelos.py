@@ -2,14 +2,14 @@ from datetime import datetime
 
 def obtenerNumeroDeVuelo():
     '''
-    Funcion que devuelve cuantos vuelos hemos reguistrado
+    Funcion que devuelve cuantos vuelos hemos registrado
     '''
     try:
         with open('datos/nVuelo.txt','r') as archivoNumeroDeVuelo:
             numeroDeVuelo = archivoNumeroDeVuelo.read()
             numeroDeVuelo = int(numeroDeVuelo)
     except OSError as error:
-        numeroDeVuelo = 0
+        numeroDeVuelo = 1
     with open('datos/nVuelo.txt','w') as archivoNumeroDeVuelo:
         archivoNumeroDeVuelo.write(str(numeroDeVuelo + 1))
     return numeroDeVuelo

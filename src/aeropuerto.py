@@ -13,7 +13,7 @@ class Aeropuerto:
 
     def funcionHash(self, hashSize):
         ''' 
-        Funcion que obtiene el valor hash de una ciudad, dado su nombre, longitud ciudad
+        Funcion que obtiene el valor hash de un aeropuerto, dado su nombre, longitud latitud
         '''
         suma = 0
         for caracter in self.nombre: #Suma de valores ASCII
@@ -29,7 +29,7 @@ class Aeropuerto:
 
     def __repr__(self):
         '''
-        Clase ciudades para guardar la ciudad y su longitud y latitud para calcular su clima
+        Clase Aeropuerto para guardar el nombre y su longitud y latitud para calcular su clima
         '''
         return "[ " + self.nombre + ", " + str(self.latitud) +\
             ", " + str(self.longitud) + "]"

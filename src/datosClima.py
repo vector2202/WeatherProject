@@ -40,8 +40,7 @@ class DatosClima:
             '\nTemperatura: ' + self.temperatura + '\nSensacion: '\
             + self.sensacion + '\nTemperatura Maxima: '\
             + self.tempeaturaMaxima + '\nTemperatura Minima: '\
-            + self.tempeaturaMinimai
-
+            + self.tempeaturaMinima
 
     def __eq__(self, objeto) -> bool:
         '''

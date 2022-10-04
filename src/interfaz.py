@@ -26,10 +26,7 @@ class Interfaz(tk.Frame):
         self.crearMenus()
         self.master = master
         self.master.minsize(400,250)
-        self.createMenus()
-        self.api = "9d92b9e2262e46e5b34601d6f706cf43"
- 
-
+        self.api = ''
     def crearBotones(self):
         '''
         Funcion que nos permite crear botones que estan asociados a ciertas funciones
@@ -37,7 +34,7 @@ class Interfaz(tk.Frame):
         ttk.Button(self, text="Historial", command=self.mostrarHistorial).place(x=20,y=20)
         ttk.Button(self, text="API", command=self.registrarAPI).place(x=390, y=20)
         ttk.Button(self, text="Salir del programa",\
-                  command=self.saluda).pack(padx=200, pady=350)
+                   command=self.salida).pack(padx=200, pady=350)
         ttk.Button(self, text="Consultar", command=self.seleccionAeropuertoDestino).place(x=390, y=130)
 
 
@@ -64,8 +61,8 @@ class Interfaz(tk.Frame):
         Funcion que crea las etiquetas para mostrar ciertos mensajes en nuestra interfaz (es meramente visual)
         '''
         ttk.Label(text="Escriba la llave:").place(x=200,y=20)
-        Label(self, text="Ciudad de origen").place(x=20,y=100)
-        Label(self, text="Ciudad de destino:").place(x=200, y=100) 
+        Label(self, text="Aeropuerto de origen").place(x=20,y=100)
+        Label(self, text="Aeropuerto de destino:").place(x=200, y=100) 
         self.datosClimaAeropuertoOrigen = StringVar()
         self.datosClimaAeropuertoDestino = StringVar()
         self.datosClimaAeropuertoOrigen.set("")
@@ -82,7 +79,7 @@ class Interfaz(tk.Frame):
 
     
     def salida(self):
-        tk.Frame.destroy() 
+        tk.Frame.quit(self)
 
     def inicializarJSONs(self):
         '''
@@ -171,19 +168,21 @@ class Interfaz(tk.Frame):
         self.datosClimaAeropuertoDestino.set(datosDestino)
         with open("datos/historial.txt",'a') as archivoHistorial:
             archivoHistorial.write(convertirAVuelo(datosOrigen, datosDestino))
-        
+
     
     def mostrarHistorial(self):
         '''
         Funcion para mostrar el historial de lo consultado
         '''
-        n = 3*3 
-        with open("datos/historial.txt", 'r') as archivo:
-            informacion = ""
-            for linea in (archivo.readlines()[-n:]):
-                informacion += linea + "\n"
-        tkinter.messagebox.showinfo("Historial", message=informacion)
-
+        n = 3*3
+        try:
+            with open("datos/historial.txt", 'r') as archivo:
+                informacion = ""
+                for linea in (archivo.readlines()[-n:]):
+                    informacion += linea + "\n"
+                tkinter.messagebox.showinfo("Historial", message=informacion)
+        except OSError as error:
+            print("Primer vuelo")
 
     def registrarAPI(self):
         '''

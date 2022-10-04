@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{pdfpages}
 \usepackage{minted}
 \usemintedstyle{pastie}
 \author{Víctor Torres}
@@ -107,59 +108,18 @@ Y por ultimo tenemos la clase de la interfaz la cual nos permite una mejor exper
 Los datos se representaran principalmente a traves de tablas hash o de dispersion o diccionarios, como queremos almacenar la informacion de muchos aeropuertos se considero que un arreglo es la estructura mas adecuada para almacenar los distintos datos, esto determina el desempeño ya que el acceso a un arreglo es constante, ahora se usa una tabla de dispersion porque al tener una llave hash relacionada a los datos del aeropuerto el acceder a los valores almacenados conociendo su llave hash es tiempo constante, lo cual beneficia mucho el desempeño. Se ajusta perfecto al esbozo de una solucion ya que nos permite almacenar los datos dado un tamaño y una tabla hash, nos permite conocer y manipular la informacion de manera constante o casi constante, en el caso de lista de aeropuertos donde tenemos lista de listas, conocer la ubicacion de la lista del aeropuerto de origen es constante y generalmente no son muchos los aeropuertos de destino, por lo que acceder a ellos es muy rapido, en el caso del cache es una tabla hash la cual accedemos al clima de manera constante. Se manejan las colisiones de manera lineal, es decir, si la casilla correspondiente esta ocupada, se busca la siguiente disponible y el tamaño se selecciono tratando de minimizar las colisiones y el tamaño. No puede haber algo mejor en cuanto a tiempo porque el acceder a los datos es constante y si hay peores porque en tanto los arreglos (no hay relacion aeropuerto-indice), lista, cola, pila el acceder a los elementos es complejidad lineal.
 
 \subsection{Seleccion de la mejor alternativa}
-Ya se expuso el porque la estructura de datos tabla hash es la mejor para el proyecto y el proceso de solucion, del diseño de las clases asi como su comportamiento y atributos y el como estas interactuan entre si vistas desde un enfoque procedural, asi que solo queda como vamos a seleccionar la mejor alternativa de diseño de la interfaz, lo que se busca es minimizar la interaccion con el usuario de manera que este tenga que ingresar lo minimo indispensable para evitar errores de entrada, ya que la aplicacion va dirigida a personas ajenas a la computacion, para esto usamos el procesamiento de la base de datos para obtener los aeropuertos de origen, de esta manera podemos hacer que el usuario seleccione el aeropuerto requerido de una lista restringida, una vez seleccionada esta opcion se despliega los aeropuertos de destino de esta ciudad, al usuario seleccionar la opcion, se tiene control sobre la entrada del sistema, se evitan errores. Para poder desplegar las opciones de destino se usa tablas hash y escritura sobre archivos formato JSON, para las peticiones se sabe que no podemos hacer mas de 60 por minuto, pero tambien sabemos que el usuario no es lo suficientemente veloz como para seleccionar y consultar 60 peticiones por minuto, ademas que hay un retraso de unos segundos por la lectura del archivo JSON correspondiente para el despliegue de aeropuertos destino, por lo que eso no sera un problema, lo que si es que hay que evitar requests innecesarias por ejemplo la misma peticion con un intervalo de 10 minutos ya que el clima no ha variado significativamente, por lo que establecemos un intervalo de 30 minutos y con tablas hash simulando una memoria cache guardamos la informacion json ademas de la hora en que se ha realizado la peticion. Por ultimo para registros previos podemos visualizar los ultimos 3 vuelos registrados. Entiendase registrar por un vuelo consultado. Cabe mencionar que se va a hacer uso de OpenWeatherAPI para la request de los datos del clima de cada aeropuerto.
+Ya se expuso el porque la estructura de datos tabla hash es la mejor para el proyecto y el proceso de solucion, del diseño de las clases asi como su comportamiento y atributos y el como estas interactuan entre si vistas desde un enfoque procedural, asi que solo queda como vamos a seleccionar la mejor alternativa de diseño de la interfaz, lo que se busca es minimizar la interaccion con el usuario de manera que este tenga que ingresar lo minimo indispensable para evitar errores de entrada, ya que la aplicacion va dirigida a personas ajenas a la computacion, para esto usamos el procesamiento de la base de datos para obtener los aeropuertos de origen, de esta manera podemos hacer que el usuario seleccione el aeropuerto requerido de una lista restringida, una vez seleccionada esta opcion se despliega los aeropuertos de destino de este aeropuerto de origen, al usuario seleccionar la opcion, se tiene control sobre la entrada del sistema, se evitan errores. Para poder desplegar las opciones de destino se usa tablas hash y escritura sobre archivos formato JSON, para las peticiones se sabe que no podemos hacer mas de 60 por minuto, pero tambien sabemos que el usuario no es lo suficientemente veloz como para seleccionar y consultar 60 peticiones por minuto, ademas que hay un retraso de unos segundos por la lectura del archivo JSON correspondiente para el despliegue de aeropuertos destino, por lo que eso no sera un problema, lo que si es que hay que evitar requests innecesarias por ejemplo la misma peticion con un intervalo de 10 minutos ya que el clima no ha variado significativamente, por lo que establecemos un intervalo de 30 minutos y con tablas hash simulando una memoria cache guardamos la informacion json ademas de la hora en que se ha realizado la peticion. Por ultimo para registros previos podemos visualizar los ultimos 3 vuelos registrados. Entiendase registrar por un vuelo consultado. Cabe mencionar que se va a hacer uso de OpenWeatherAPI para la request de los datos del clima de cada aeropuerto.
 
 Para poder garantizar la minima interaccion se diseño un boceto el cual solo tiene 3 entradas: la llave API, la seleccion de aeropuerto de origen y destino la cual como ya mencionamos se acota, asi que al diseñar el boceto de la aplicacion quedo de la siguiente manera:
 \newpage
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.38]{figures/boceto.jpeg}
+  \includegraphics[scale=0.35]{figures/boceto.jpeg}
   \caption{\label{fig:label} }
 \end{figure}
-\newpage
-\section{Pseudocodigo}
-\begin{algorithmic}[1]
-  \For{cada vuelo}
-  \If{ciudad de origen no esta registrada}
-  \State{registrala en la primera casilla vacia a partir del hash}
-  \EndIf
-  \If{ciudad de destino no esta registrada}
-  \State{registrala en el arreglo de la ciudad de origen}
-  \EndIf
-  \EndFor
 
-  
-  \For{ciudad de Origen}{ciudades}
-  \State{Escribir en cada json el arreglo de ciudad Origen}
-  \EndFor
-
-  
-  \State{Leer ciudad Origen}
-  \State{Mostrar todos los destinos posibles dada la ciudad de origen}
-  \State{climaOrigen = obtenerClima(ciudadOrigen, api)}
-  \State{Leer ciudad destino}
-  \State{climaDestino = obtenerClima(ciudadOrigen, api)}
-  \State{Mostrar Clima}
-  \State{Registrar el vuelo en un archivo}
-
-  \Function{obtenerClima}{ciudadOrigen, api}
-  \If{clima ya fue registrado en cache}
-  \If{Han pasado mas de 30 min desde la ultima request}
-  \State{realiza una peticion y guarda en cache}
-  \EndIf
-  \Else
-  \State{realiza la peticion}
-  \State{Guarda en los datos en la primera posicion disponible}
-  \EndIf
-  \EndFunction
-  \Function{hash}{ciudad, n}
-  \State{suma = 0}
-  \For{caracter}{nombre de ciudad}
-  \State{suma += caracter}
-  \EndFor
-  \Return{(suma + abs(latitud) + abs(longitud)) \% n}
-  \EndFunction
-\end{algorithmic}
+\section{Diagrama de Flujo}
+\includepdf[pages=1-]{figures/diagrama.pdf}
 \section{Mantenimiento}
 El sistema se dividio en 9 archivos el cual cada uno representa una clase o un conjunto de funciones para que el sistema pueda funcionar de manera correctamente, estos son:
 \begin{itemize}
@@ -345,13 +305,14 @@ aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 assert(cacheEjemplo.refrescarClima(aeropuerto1))\
       , "No se actualizaron los datos"
 \end{minted}
-  \newpage
+
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.4]{pruebasPy/cache/refrescaApiMal.png}
     \caption{Salida}
   \end{figure}
 \end{itemize}
+\newpage
 \subsubsection{buscar aeropuerto}
 \begin{itemize}
 \item Con el aeropuerto de mexico insertado, se busca el aeropuerto de mexico
@@ -378,12 +339,13 @@ assert(cacheEjemplo.refrescarClima(aeropuerto1))\
 assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1)\
       , "Aeropuerto no encontrado"
 \end{minted}
-  \newpage
  \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.4]{pruebasPy/cache/aeroNoEncontrado.png}
     \caption{Salida}
   \end{figure}
+   \newpage
+
 \item Se busca un aeropuerto nulo
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
@@ -412,6 +374,8 @@ assert(cacheEjemplo.obtenerClima(aeropuerto1)\
        .__eq__(DatosClima(cacheEjemplo\
        .realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
 \end{minted}
+    \newpage
+
  \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{pruebasPy/cache/bien.png}
@@ -500,6 +464,12 @@ assert(type (convertirAVuelo(\
 assert(type (convertirAVuelo(cacheClima.obtenerClima(None),\
                              cacheClima.obtenerClima(None))) == str)
 \end{minted}
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/historial/bien.png}
+    \caption{Salida}
+  \end{figure}
+
   En ambos caso tenemos la misma salida, una string que representa el vuelo
 \end{itemize}
 \subsection{Lista de Aeropuertos}
@@ -523,7 +493,7 @@ assert(listaPrueba.procesarVuelo(vuelo) != -1)
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.3]{pruebasPy/listaAeropuertos/procesaNone.png}
+    \includegraphics[scale=0.4]{pruebasPy/listaAeropuertos/procesaNone.png}
     \caption{Salida}
   \end{figure}
 \end{itemize}
@@ -546,9 +516,10 @@ assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1)
 aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
 assert(listaPrueba.buscarAeropuertoOrigen(None) != -1)    
 \end{minted}
+  \newpage
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.4]{pruebasPy/listaAeropuertos/buscaNone.png}
+    \includegraphics[scale=0.7]{pruebasPy/listaAeropuertos/buscaNone.png}
     \caption{Salida}
   \end{figure}
 
@@ -570,6 +541,7 @@ assert(listaPrueba.buscarAeropuertoOrigen(aeropuertoPrueba) != -1)
 assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1)\
        , "No se inserto el aeropuerto"
 \end{minted}
+  \newpage
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
@@ -595,6 +567,7 @@ assert(listaPrueba.buscarAeropuertoDestino(\
        listaPrueba.lista[aeropuerto1.funcionHash(11)]\
        , aeropuerto2.nombre)), "Aeropuerto inexistente"
 \end{minted}
+  \newpage
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
@@ -640,11 +613,35 @@ Si solo se han insertado acapulco y monterrey como aeropuertos de origen se busc
 assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
 \end{minted}
 \begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
-    \caption{Salida}
-  \end{figure}
+  \centering
+  \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
+  \caption{Salida}
+\end{figure}
+\section{Referencias}
+\subsection{Web services}
+Nos apoyamos de \url{https://unprogramador.com/consumir-webservices-en-python-get-tutorial-python-3/} para poder hacer la request de los datos, urlopen que esta en urllib.request lo que hace es dado una url nos devuelve un archivo, hace la peticion al servicio web, nosotros especificamos la URL que es una combinacion de longitud latitud y la API,  agregamos lenguaje tambien, despues de que recibimos el archivo usamos read para leerlo y con loads lo que hacemos es transformarlo en una cadena formato json usando la libreria json, que es lo que devolvemos, manejamos los errores de peticiones con HTTPError y lo imprimimos, para saber que datos seleccionar de los multiples datos que estan contenidos en la cadena formato json, leimos la documentacion de \url{https://openweathermap.org/current} que es como convertimos datos en formato json a datos en formato string usando datos clima que basicamente es el concepto de arreglos.
 
+\subsection{Json}
+
+Para poder escribir un aeropuerto en un archivo JSON hacia falta codificarlo a JSON, por lo que nos basamos en \url{https://stackoverflow.com/questions/46005944/python-json-encoder-default-method} que lo que hace es crear una clase la cual devuelve los atributos de la clase en forma de lista, para poder devolverlos en formato json y poderlos escribir asi, si es instancia de aeropuerto devuelve la lista y sino la clase base devuelve el error que no son de la misma clase.
+Para poder ver como escribir en un archivo json nos basamos en el siguiente link \url{https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable} donde se especifica que se debe indicar la clase que codifica al aeropuerto y para ver la diferencia entre leer y escribir un archivo json nos apoyamos del siguiente archivo: \url{https://www.freecodecamp.org/espanol/news/python-leer-archivo-json-como-cargar-json-desde-un-archivo-y-procesar-dumps/} donde nos dice que dump escribe sobre un archivo json y para que sirve la identacion y que load solo carga el contenido y con loads la string, 
+\subsection{Tiempo}
+Para el manejo del tiempo nos basamos en \url{https://www.geeksforgeeks.org/python-datetime-timedelta-function/} para poder establecer la diferencia entre dos fechas que basicamente es restar dos .now() y con timedelta establecemos valor de la diferencia requerida, y con \url{https://www.programiz.com/python-programming/datetime/current-datetime} para poder ver como visualizar el tiempo en un formato conocido que es con strftime y estableciendo que queremos horas minutos y segundos.
+\subsection{Archivos}
+Usamos el \url{https://www.geeksforgeeks.org/python-os-path-isfile-method/} para saber como conocer si un archivo existe o no dado un a ruta determinada usando la libreria os y devuelve un booleano
+
+Para leer el csv usamos el \url{https://www.programiz.com/python-programming/reading-csv-files} para conocer todo el contenido del csv que solo es llamar a reader de parte de la biblioteca csv para que iteremos sobre el contenido, por ello usamos next ya que es un iterador
+
+Para el manejor de lectura escritura en archivos txt usamos el \url{https://programminghistorian.org/es/lecciones/trabajar-con-archivos-de-texto} donde tambien s enos dice como usar append, igual que todos los archivos solo hay que especificar bien la ruta y lo demas es parecido a los demas lenguajes de programacion.
+
+\subsection{Interfaz}
+La interfaz tal vez fue la que mas ayuda necesitamos de codigos de internet ya que a veces se vuelve muy especifica o asi y tkinter es una libreria muy extensa, para el displayMenu se uso \url{https://www.geeksforgeeks.org/tkinter-optionmenu-widget/} que entendimos porque se establece una stringvar que va a ser la variable de seleccion de la barra de menu, y luego en el caso de destino que cada vez que seleccionamos un aeropuerto de origen se redefine destino, se apoyo en \url{https://www.plus2net.com/python/tkinter-OptionMenu-proj1.php} para ver como limpiar todas las opciones y redefinir la lista de opciones con addcommand y con las etiquetas correspondientes, reiniciando igual la variable de seleccion a cadena vacia, es por ello que consultar se le asigna tambien el realizar la peticion de destino ya que al redefinir se pierde el comando relacionado, en el caso de leer textbox como lo requerimos en la API nos basamos en \url{https://recursospython.com/guias-y-manuales/caja-de-texto-entry-tkinter/} y en el caso del historial queremos mostrar una ventana emergente asi que utilizamos \url{https://www.geeksforgeeks.org/python-tkinter-messagebox-widget/} donde nos indica como crear un message box, pasandole el titulo y la informacion y para mostrar el historial usamos \url{https://es.acervolima.com/python-lectura-de-las-ultimas-n-lineas-de-un-archivo/} ya que mostrar todo se nos complico mientras mas grande se hacia, lo que hace es con un iterador negativo lee las lineas desde el final del archivo y es 3*3 porque queremos los ultimos 3 vuelos y cada vuelo contiene 3 lineas, por lo que son las ultimas 9 lineas. Para poder inicializar exitosamente la interfaz nos hicimos de ayuda de la documentacion: \url{ttps://docs.python.org/es/3/library/tkinter.html}, grid y place nos ayudan a colocar los botones y etiquetas a lo largo de toda la interfaz grafica, en init se inicializa la ventana con la ventana principal. MinSize es para un tamaño minimo decente.
+\subsection{Setup.py}
+Tamnien cabe destacar que como usamos paquetes y en especial tenemos el directorio pruebas y el directorio src en donde en los archivos de pruebas usamos los paquetes de src, nos fue dificil como encontrar exportarlos hasta que vimos que con setup.py e init.py podiamos exportar y usar paquetes, setup.py y el porque lo encontramos aqui \url{https://betterprogramming.pub/sharing-code-using-a-setup-py-b6a596646532} donde se nos explica el que hace setup que le da un nombre al paquete y nos dice si queremos excluir alguno, en este caso no, y la importancia de init.py se encuentra aqui \url{https://stackoverflow.com/questions/448271/what-is-init-py-for} y basicamente es que con init.py nos damos cuenta que es un paquete el directorio y con setup.py establecemos cuales son paquetes y buscamos todos los archivos menos los especificados, en este caso ninguno y instalamos setup.py para que se añada a la libreria de python y lo podemos usar. Tambien nos apoyamos de: \url{https://www.educative.io/answers/what-is-setuppy} para ver como instalarlo y que hacia setup.py
+\subsection{Asserts}
+Nuestras primeras pruebas fueron muy rusticas, ahora usamos asserts que entendimos que son en base a lo explicado por esta pagina: \url{https://ellibrodepython.com/assert-python} donde nos dice que basicamente son funciones pruebas que buscan si lo que dado una funcion y su parametro devuelve es lo esperafo que uno especifica, sino rompe el programa para indicar que no se cumplio lo esperado.
+\subsection{Documentacion}
+Para generar la documentacion en python se baso en la documentacion de la pagina: \url{https://docs.python.org/3/library/pydoc.html} que es la que indica que banderas poner al correr la linea para generar la documentacion pertinente, para esto tienen que esta bien documentadas todas las clases
 \section{Costos}
 El costo de desarrollo por la beta seria de \$1000, el de desarrollo final seria un costo total ya de \$2000 y por darle mantenimiento habria un costo de \$500.
 \end{document}
