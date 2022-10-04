@@ -45,7 +45,7 @@ _Se corre en modo administrador porque hay archivos que necesitamos permisos par
 ## Ejecutando el programa ⚙️
 
 ### Pruebas de cada paquete 🔩
-
+Llave valida: 9d92b9e2262e46e5b34601d6f706cf43
 Las pruebas contenidas el el directorio pruebas cada archivo contiene la prueba de cada funcion por lo que para ejecutar las pruebas basta con correr:
 
 ```

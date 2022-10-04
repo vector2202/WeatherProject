@@ -26,9 +26,7 @@ class Interfaz(tk.Frame):
         self.crearMenus()
         self.master = master
         self.master.minsize(400,250)
-        self.api = "9d92b9e2262e46e5b34601d6f706cf43"
- 
-
+        self.api = ''
     def crearBotones(self):
         '''
         Funcion que nos permite crear botones que estan asociados a ciertas funciones
