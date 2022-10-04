@@ -21,7 +21,7 @@ def compararLista(lista1, lista2):
 def main():
     assert(revisarCSV('dataset1.csv')), "Base de datos invalida"
     lista = escribirDestinos("../pruebas/datosPrueba/baseDeDatos.csv", 2)
-    #assert(compararLista(lista.lista, [[], [['TLC', 19.3371, -99.566], ['MTY', 25.7785, -100.107]],[]])), "Destinos invalidos"
-    assert(leerDestinos(None) == [['ACA', 16.7571, -99.754],\
+    assert(compararLista(lista.lista, [[], [['TLC', 19.3371, -99.566], ['MTY', 25.7785, -100.107]],[]])), "Destinos invalidos"
+    assert(leerDestinos('ACA') == [['ACA', 16.7571, -99.754],\
                                    ['MEX', 19.4363, -99.0721]]), "Aeropuerto no valido"
 main()
