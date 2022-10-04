@@ -1,5 +1,4 @@
 import json
-from types import NoneType
 import urllib
 import urllib.request
 import urllib.parse
@@ -86,8 +85,8 @@ class CacheClima:
             url = "https://api.openweathermap.org/data/2.5/weather?lat="\
                 + str(aeropuerto.latitud) + "&lon=" + str(aeropuerto.longitud)\
                 + "&appid=" + self.api + "&lang=es"
-            f = urllib.request.urlopen(url,timeout=30)
-            return json.loads(f.read())
+            archivoPeticion = urllib.request.urlopen(url,timeout=30)
+            return json.loads(archivoPeticion.read())
         except urllib.request.HTTPError as error:
             print(error)
             return None

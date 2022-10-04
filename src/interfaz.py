@@ -24,7 +24,6 @@ class Interfaz(tk.Frame):
         self.crearEtiquetas()
         self.crearEntrada()
         self.crearMenus()
-        self.inicializarJsons()
         self.master = master
         self.master.minsize(400,250)
         self.createMenus()
@@ -82,11 +81,10 @@ class Interfaz(tk.Frame):
         self.llaveAPI.place(x=320, y=20, width=60)
 
     
-    def saluda(self):
-        print("Hola")
-    
+    def salida(self):
+        tk.Frame.destroy() 
 
-    def inicializarJsons(self):
+    def inicializarJSONs(self):
         '''
         Funcion que inicializa nuestras listas y hacemos uso de nuestro dataset
         '''
@@ -108,19 +106,6 @@ class Interfaz(tk.Frame):
         Funcion para cuando hacemos la seleccion de nuestro aeropuerto de origen y poder revisas los posibles destinos y el clima
         '''
         nombreAeropuertoOrigen = self.aeropuertoOrigenSeleccionado.get()
-            revisarCsv(nombreArchivoCSV)
-        except Exception as exception:
-            sys.exit(str(exception))
-        listaAeropuertos = escribirDestinos(nombreArchivoCSV, tamañoDiccionario)
-        self.listaOrigenes = listaAeropuertos.obtenerNombres()
-        self.cache = CacheClima(tamañoDiccionario)
-
-
-    def origenElegido(self, *args):
-        '''
-        Funcion para cuando escogemos nuestro lugar de origen
-        '''
-        nombreAeropuertoOrigen = self.optionVarOrigen.get()
         self.destinosDisponibles = leerDestinos(nombreAeropuertoOrigen)
         if(self.destinosDisponibles != None):
             self.aeropuertoOrigen = Aeropuerto\
@@ -133,11 +118,6 @@ class Interfaz(tk.Frame):
             self.menuAeropuertoDestino['menu'].delete(0, 'end')    
             for aeropuertoDestino in self.listaAeropuertosDestino:
                 self.menuAeropuertoDestino['menu'].add_command\
-            self.listaDestinos = self.obtenerNombreDestinos(self.destinosDisponibles)
-            self.optionVarDestino.set('')
-            self.destino['menu'].delete(0, 'end')    
-            for aeropuertoDestino in self.listaDestinos:
-                self.destino['menu'].add_command\
                     (label=aeropuertoDestino, command=tk._setit\
                      (self.aeropuertoDestinoSeleccionado, aeropuertoDestino))
             return True
@@ -159,13 +139,6 @@ class Interfaz(tk.Frame):
         Funcion para seleccionar nuestro aeropuerto destino
         '''
         nombreAeropuertoDestino = self.aeropuertoDestinoSeleccionado.get()
-
-
-    def destinoElegido(self, *args):
-        '''
-        Funcion para cuando tenemos un lugar destino y hacer consulta de vuelo y clima
-        '''
-        nombreAeropuertoDestino = self.optionVarDestino.get()
         if(self.destinosDisponibles != None):
             for destino in self.destinosDisponibles:
                 if (destino[0] == nombreAeropuertoDestino):
@@ -198,10 +171,6 @@ class Interfaz(tk.Frame):
         self.datosClimaAeropuertoDestino.set(datosDestino)
         with open("datos/historial.txt",'a') as archivoHistorial:
             archivoHistorial.write(convertirAVuelo(datosOrigen, datosDestino))
-        self.climaOrigenDatos.set(datosOrigen)
-        self.climaDestinoDatos.set(datosDestino)
-        with open("datos/historial.txt",'a') as archivoHistorial:
-            archivoHistorial.write(convertirVuelo(datosOrigen, datosDestino))
         
     
     def mostrarHistorial(self):
