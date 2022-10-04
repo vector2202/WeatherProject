@@ -2,7 +2,10 @@ import json
 from src.aeropuerto import Aeropuerto
 
 class CodificadorAeropuerto(json.JSONEncoder):
-    def default(self, obj):
+    '''
+    Clase para cambiar el formato y poder usar json
+    '''
+    def default(self, objeto):
         '''
         Esta ciudad convierte el objeto Ciudades en un formato json para escribir en los archivos json
         '''

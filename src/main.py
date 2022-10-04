@@ -3,7 +3,7 @@ from src.interfaz import Interfaz
 
 def main():
     raiz = tkinter.Tk()
-    raiz.title("CheckWeather")
+    raiz.title("Sistema meteorologico")
     interfaz = Interfaz(raiz)
     interfaz.mainloop()
     
