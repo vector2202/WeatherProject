@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{assert}\PYG{p}{(}\PYG{n}{listaPrueba}\PYG{o}{.}\PYG{n}{buscarAeropuertoDestino}\PYG{p}{(}\PYGZbs{}
-       \PYG{n}{listaPrueba}\PYG{o}{.}\PYG{n}{lista}\PYG{p}{[}\PYG{n}{aeropuerto1}\PYG{o}{.}\PYG{n}{funcionHash}\PYG{p}{(}\PYG{l+m+mi}{11}\PYG{p}{)]}\PYGZbs{}
-       \PYG{p}{,} \PYG{n}{aeropuerto2}\PYG{o}{.}\PYG{n}{nombre}\PYG{p}{)),} \PYG{l+s+s2}{\PYGZdq{}Aeropuerto inexistente\PYGZdq{}}
-\end{Verbatim}

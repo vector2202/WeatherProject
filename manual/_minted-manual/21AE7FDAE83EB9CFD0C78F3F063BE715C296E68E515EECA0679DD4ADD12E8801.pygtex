@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{cacheEjemplo}\PYG{o}{.}\PYG{n}{actualizarAPI}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}9d92b9e2262e46e5b34601d6f706cf43\PYGZdq{}}\PYG{p}{)}
-\PYG{n}{aeropuerto1} \PYG{o}{=} \PYG{k+kc}{None}
-\PYG{k}{assert}\PYG{p}{(}\PYG{n}{cacheEjemplo}\PYG{o}{.}\PYG{n}{refrescarClima}\PYG{p}{(}\PYG{n}{aeropuerto1}\PYG{p}{))}\PYGZbs{}
-      \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}No se actualizaron los datos\PYGZdq{}}
-\end{Verbatim}
