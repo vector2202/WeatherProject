@@ -13,7 +13,7 @@ def main():
     #assert(listaPrueba.buscarAeropuertoDestino([], aeropuerto2.nombre)), "Aeropuerto inexistente"
     assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1), "No se inserto el aeropuerto"
     listaPrueba.escribirAeropuertosJson()
-    assert(listaPrueba.revisarArchivosJSON()), "JSONs no escritos"
-    #assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
+    #assert(listaPrueba.revisarArchivosJSON()), "JSONs no escritos"
+    assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
     
 main()

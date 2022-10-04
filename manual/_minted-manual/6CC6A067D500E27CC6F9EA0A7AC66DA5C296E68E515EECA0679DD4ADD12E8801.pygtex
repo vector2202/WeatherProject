@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{lista} \PYG{o}{=} \PYG{n}{escribirDestinos}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}../pruebas/datosPrueba/baseDeDatos.csv\PYGZdq{}}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{compararLista}\PYG{p}{(}\PYG{n}{lista}\PYG{o}{.}\PYG{n}{lista}\PYG{p}{,} \PYG{p}{[[],} \PYG{p}{[[}\PYG{l+s+s1}{\PYGZsq{}TLC\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{19.3371}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{99.566}\PYG{p}{]}\PYGZbs{}
+       \PYG{p}{,} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}MTY\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{25.7785}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{100.107}\PYG{p}{]],[]])),} \PYG{l+s+s2}{\PYGZdq{}Destinos invalidos\PYGZdq{}}
+\end{Verbatim}

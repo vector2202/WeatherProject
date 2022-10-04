@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{aeropuertoPrueba} \PYG{o}{=} \PYG{n}{Aeropuerto}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}MTY\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{0} \PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{listaPrueba}\PYG{o}{.}\PYG{n}{buscarAeropuertoOrigen}\PYG{p}{(}\PYG{n}{aeropuertoPrueba}\PYG{p}{)} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+\end{Verbatim}

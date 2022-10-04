@@ -24,4 +24,9 @@ class Aeropuerto:
         '''
         return "[ " + self.nombre + ", " + str(self.latitud) +\
             ", " + str(self.longitud) + "]"
-    
+    def __eq__(self, objeto) -> bool:
+        if(isinstance(objeto, Aeropuerto)):
+            return objeto.nombre == self.nombre and\
+                objeto.longitud == self.longitud and\
+                objeto.latitud == self.latitud
+        return False

@@ -14,6 +14,8 @@ def revisarCSV(nombreArchivo):
     '''
     Funcion que verifica que el formato del csv sea correcto
     '''
+    if(type(nombreArchivo) != str or len(nombreArchivo) < 1):
+        return False
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
@@ -27,6 +29,8 @@ def escribirDestinos(nombreArchivo, tamañoDiccionario):
     '''
     Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash
     '''
+    if(type(nombreArchivo) != str or len(nombreArchivo) < 1):
+        return None
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
@@ -42,6 +46,8 @@ def leerDestinos(nombreAeropuertoOrigen):
     '''
     Leemos con la ciudad de origen todos sus destinos posibles
     '''
+    if(type(nombreAeropuertoOrigen) != str or len(nombreAeropuertoOrigen) < 1):
+        return None
     try:
         destinos = []
         with open("datos/" + nombreAeropuertoOrigen + ".json") as archivo:

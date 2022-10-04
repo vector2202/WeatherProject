@@ -187,32 +187,128 @@ Tenemos para el siguiente codigo un aeropuerto con la siguiente entrada tenemos 
   assert(aeropuertoPrueba.funcionHash(11) == 3)
 \end{minted}
 Por lo que al correr la siguiente salida es:
-%Insertar foto
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{pruebasPy/aeropuerto/hash1.png}
+  \caption{Salida}
+\end{figure}
+
 Si ahora probamos con un resultado distinto a 3, sea 2
 \begin{minted}{python}
   aeropuertoPrueba = aeropuerto.Aeropuerto('MEX', 10, 100)
   assert(aeropuertoPrueba.funcionHash(11) == 2)
 \end{minted}
 Se obtiene la siguiente salida:
-\subsection{Prueba de Archivos}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.4]{pruebasPy/aeropuerto/hash2.png}
+  \caption{Salida}
+\end{figure}
+\subsection{Prueba de Archivos}|
 Para el prueba de archivos la funcion de revisarFormatoVuelo es meramente auxiliar para probar que el formato de vuelo sea de la forma: (string,string,float,float, float, float) para poder validar que el formato de vuelo es valido, pero esta funcion es llamada desde revisarCSV por lo que es redundante hacer una prueba de esto ya que se usa directamente al revisar la base de datos dada.
 
 \subsubsection{revisarCSV}
 \begin{itemize}
 \item Si revisamos dataset1.csv como base de datos, la cual es una base de datos valida, tendremos la siguiente salida
+\begin{minted}{python}
+assert(revisarCSV('dataset1.csv')), "Base de datos invalida"
+\end{minted}
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{pruebasPy/archivos/bien.png}
+    \caption{Salida}
+  \end{figure}
+
 \item En el caso de que ingresemos datos.csv la cual es una base de datos no valida, tendremos la siguiente salida
+\begin{minted}{python}
+assert(revisarCSV('datosMal.csv')), "Base de datos invalida"
+\end{minted}
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/archivos/datosMal.png}
+    \caption{Salida}
+  \end{figure}
+
 \item Si no ingresamos ningun archivo como base de datos, tendremos la siguiente salida
+\begin{minted}{python}
+assert(revisarCSV(None)), "Base de datos invalida"
+assert(revisarCSV('')), "Base de datos invalida"
+\end{minted}
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/archivos/datosNone.png}
+    \caption{Salida}
+  \end{figure}
+  
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/archivos/datosNulo.png}
+    \caption{Salida}
+  \end{figure}
+
 \end{itemize}
 \subsubsection{escribirDestinos}
 \begin{itemize}
-\item Para escribir los destinos revisaremos si le damos el archivo correcto de una base de datos recortada para poder calcular la salida
+\item Para escribir los destinos revisaremos si le damos el archivo correcto de una base de datos recortada para poder calcular la salida, para poder comparar bien creamos una funcion auxiliar que compara dos listas
+\begin{minted}{python}
+lista = escribirDestinos("../pruebas/datosPrueba/baseDeDatos.csv", 2)
+assert(compararLista(lista.lista, [[], [['TLC', 19.3371, -99.566]\
+       , ['MTY', 25.7785, -100.107]],[]])), "Destinos invalidos"
+\end{minted}
+\newpage
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{pruebasPy/archivos/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item El resultado si le pasamos un archivo nulo
+\begin{minted}{python}
+lista = escribirDestinos("None", 2)
+assert(compararLista(lista.lista, [[], [['TLC', 19.3371, -99.566]\
+      , ['MTY', 25.7785, -100.107]],[]])), "Destinos invalidos"
+\end{minted}
+  
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/archivos/destinosNulo.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{leerDestinos}
 \begin{itemize}
-\item Esta funcion lee los destinos de un aeropuerto de origen, asi que se lee los destinos de Acapulco 
+\item Esta funcion lee los destinos de un aeropuerto de origen, asi que se lee los destinos de Acapulco
+\begin{minted}{python}
+assert(leerDestinos("ACA") == [['ACA', 16.7571, -99.754],\
+                                ['MEX', 19.4363, -99.0721]])
+\end{minted}
+  
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{pruebasPy/archivos/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se lee los destinos de un aeropuerto inexistente
+\begin{minted}{python}
+assert(leerDestinos("MEX") == [['ACA', 16.7571, -99.754],\
+                                ['MEX', 19.4363, -99.0721]])
+\end{minted}
+  
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/archivos/aeroMal.png}
+    \caption{Salida}
+  \end{figure}
 \item Se lee los destinos de un aeropuerto nulo
+\begin{minted}{python}
+assert(leerDestinos(None) == [['ACA', 16.7571, -99.754],\
+                                ['MEX', 19.4363, -99.0721]])
+\end{minted}
+  
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/archivos/leerNone.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsection{Cache Clima}
 Creamos un cache de prueba, el metodo de actualizaAPI no tiene sentido probarlo dado que solo establece un atributo, pero si lo usaremos en refrescar que realiza la peticion del servicio web
@@ -222,22 +318,39 @@ Creamos un cache de prueba, el metodo de actualizaAPI no tiene sentido probarlo 
 \begin{minted}{python}
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
 \end{minted}
-  Salida:
+  
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/cache/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se refresca con un aeropuerto nulo
 \begin{minted}{python}
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
 aeropuerto1 = None
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
 \end{minted}
-  Salida:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/refrescaMal.png}
+    \caption{Salida}
+  \end{figure}
 \item No se establece una llave API por lo que es erronea la llave vacia y se solicita la informacion del aeropuerto de mexico
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
 \end{minted}
-  Salida:
+  \newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/refrescaApiMal.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{buscar aeropuerto}
 \begin{itemize}
@@ -245,27 +358,46 @@ assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1), "Aeropuerto no encontrado"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
+assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1)\
+      , "Aeropuerto no encontrado"
 \end{minted}
-  Salida:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/cache/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se busca el aeropuerto de acapulco el cual no se encuentra en el cache
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 aeropuerto2 = Aeropuerto('ACA', 16.7571, -99.754)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1), "Aeropuerto no encontrado"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
+assert(cacheEjemplo.buscarAeropuerto(aeropuerto1) != -1)\
+      , "Aeropuerto no encontrado"
 \end{minted}
-  Salida:
+  \newpage
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/aeroNoEncontrado.png}
+    \caption{Salida}
+  \end{figure}
 \item Se busca un aeropuerto nulo
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.buscarAeropuerto(None) != -1), "Aeropuerto no encontrado"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
+assert(cacheEjemplo.buscarAeropuerto(None) != -1)\
+      , "Aeropuerto no encontrado"
 \end{minted}
-  Salida:
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/buscaNone.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{obtener clima y realizar peticion}
 Se compara con realizar peticion ya que los datos que hay en el cache son formato JSON que son los datos que devuelve realizar peticion pero realizar peticion lo hace directamente.
@@ -274,43 +406,75 @@ Se compara con realizar peticion ya que los datos que hay en el cache son format
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.obtenerClima(aeropuerto1).__eq__(DatosClima(cacheEjemplo.realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
+assert(cacheEjemplo.obtenerClima(aeropuerto1)\
+       .__eq__(DatosClima(cacheEjemplo\
+       .realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
 \end{minted}
-  Salida:
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/cache/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se busca el clima de un aeropuerto nulo
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.obtenerClima(None).__eq__(DatosClima(cacheEjemplo.realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+      , "No se actualizaron los datos"
+assert(cacheEjemplo.obtenerClima(None)\
+       .__eq__(DatosClima(cacheEjemplo\
+       .realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
 \end{minted}
-  Salida:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/obtenNone.png}
+    \caption{Salida}
+  \end{figure}
 \item Se busca el clima de un aeropuerto que no esta en el cache
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.obtenerClima(aeropuerto2).__eq__(DatosClima(cacheEjemplo.realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+       , "No se actualizaron los datos"
+assert(cacheEjemplo.obtenerClima(aeropuerto2)\
+       .__eq__(DatosClima(cacheEjemplo\
+       .realizarPeticion(aeropuerto1)))), "Datos JSON distintos"
 \end{minted}
-  Salida:
+  \newpage
+ \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/obtenInex.png}
+    \caption{Salida}
+  \end{figure}
 \item Por ultimo se prueba realizar peticion para un aeropuerto nulo
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
-assert(cacheEjemplo.refrescarClima(aeropuerto1)), "No se actualizaron los datos"
-assert(cacheEjemplo.realizarPeticion(None) != None), "Datos JSON nulos"
+assert(cacheEjemplo.refrescarClima(aeropuerto1))\
+       , "No se actualizaron los datos"
+assert(cacheEjemplo.realizarPeticion(None) != None)\
+      , "Datos JSON nulos"
 \end{minted}
-  Salida:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/cache/pideNone.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsection{Historial}
 \subsubsection{Obtener numero de vuelo}
-\begin{itemize}
-\item Se busca que devuelva un dato de tipo entero
+Se busca que devuelva un dato de tipo entero
 \begin{minted}{python}
-assert(type(obtenerNumeroDeVuelo()) == int), "Tipo de dato incorrecto"
+assert(type(obtenerNumeroDeVuelo()) == int)\
+       , "Tipo de dato incorrecto"
 \end{minted}
-\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/historial/bien.png}
+    \caption{Salida}
+  \end{figure}
 Solo se realizo una prueba porque la funcion es sin parametros, salida:
 \subsubsection{Convertir a vuelo}
 Usaremos un objeto de la clase clima cache para poder acceder a la funcion de realizar peticion, ya que esta funcion toma datos JSON y los convierte en texto legible para vuelos
@@ -321,9 +485,15 @@ aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
 cacheClima = CacheClima(11)
 cacheClima.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
 cacheClima.refrescarClima(aeropuerto1)
-assert(type (convertirAVuelo(cacheClima.realizarPeticion(aeropuerto1),\
-                             cacheClima.realizarPeticion(aeropuerto1))) == str)
+assert(type (convertirAVuelo(\
+            cacheClima.realizarPeticion(aeropuerto1),\
+            cacheClima.realizarPeticion(aeropuerto1))) == str)
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/historial/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se le manda dos datos nulos como ambos parametros
 
 \begin{minted}{python}
@@ -340,7 +510,22 @@ assert(type (convertirAVuelo(cacheClima.obtenerClima(None),\
 vuelo = ['ACA', 'MEX', 16.7571, -99.754, 19.4363, -99.0721]
 assert(listaPrueba.procesarVuelo(vuelo) != -1)    
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/listaAeropuertos/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se revisa si se procesa un vuelo nulo
+\begin{minted}{python}
+vuelo = None
+assert(listaPrueba.procesarVuelo(vuelo) != -1)    
+\end{minted}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{pruebasPy/listaAeropuertos/procesaNone.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{Buscar Aeropuerto de Origen}
 Se toma el vuelo registrado de acapulco a mexico
@@ -350,28 +535,56 @@ Se toma el vuelo registrado de acapulco a mexico
 aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
 assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1)    
 \end{minted}
-  Salida:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/listaAeropuertos/bien.png}
+    \caption{Salida}
+\end{figure}
+
 \item Se busca un aeropuerto nulo
 \begin{minted}{python}
 aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
 assert(listaPrueba.buscarAeropuertoOrigen(None) != -1)    
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{pruebasPy/listaAeropuertos/buscaNone.png}
+    \caption{Salida}
+  \end{figure}
+
 \item Se busca un aeropuerto de un vuelo que no hemos procesado
 \begin{minted}{python}
 aeropuertoPrueba = Aeropuerto('MTY', 0 ,0)
 assert(listaPrueba.buscarAeropuertoOrigen(aeropuertoPrueba) != -1)    
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{pruebasPy/listaAeropuertos/buscaInex.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{Insertar aeropuerto de origen}
 \begin{itemize}
 \item Dado un aeropuerto de origen se busca que se haya insertado en un indice valido
 \begin{minted}{python}
-assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1), "No se inserto el aeropuerto"
+assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1)\
+       , "No se inserto el aeropuerto"
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
+    \caption{Salida}
+  \end{figure}
 \item Se inserta un aeropuerto nulo
 \begin{minted}{python}
-assert(listaPrueba.insertarAeropuertoOrigen(None) != -1), "No se inserto el aeropuerto"
+assert(listaPrueba.insertarAeropuertoOrigen(None) != -1)\
+      , "No se inserto el aeropuerto"
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/insertaNone.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{Buscar aeropuerto de destino}
 Se usa la misma lista con el vuelo de acapulco a mexico
@@ -379,30 +592,59 @@ Se usa la misma lista con el vuelo de acapulco a mexico
 \item Dado el vuelo anterior de acapulco a mexico se busca a mexico dentro de la lista correspondiente a acapulco
 \begin{minted}{python}
 assert(listaPrueba.buscarAeropuertoDestino(\
-                                          listaPrueba.lista[aeropuerto1.funcionHash(11)]\
-                                         , aeropuerto2.nombre)), "Aeropuerto inexistente"
+       listaPrueba.lista[aeropuerto1.funcionHash(11)]\
+       , aeropuerto2.nombre)), "Aeropuerto inexistente"
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
+    \caption{Salida}
+  \end{figure}
+
 \item Se busca un aeropuerto nulo en la lista de acapulco
 \begin{minted}{python}
 assert(listaPrueba.buscarAeropuertoDestino(\
-                                          listaPrueba.lista[aeropuerto1.funcionHash(11)]\
-                                         , None)), "Aeropuerto inexistente"
+       listaPrueba.lista[aeropuerto1.funcionHash(11)]\
+      , None)), "Aeropuerto inexistente"
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/buscaNone.png}
+    \caption{Salida}
+  \end{figure}
 \item Se busca un aeropuerto en una lista vacia
 \begin{minted}{python}
-assert(listaPrueba.buscarAeropuertoDestino([], aeropuerto2.nombre)), "Aeropuerto inexistente"
+assert(listaPrueba.buscarAeropuertoDestino([], aeropuerto2.nombre))\
+       , "Aeropuerto inexistente"
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/buscaDvacio.png}
+    \caption{Salida}
+  \end{figure}
 \end{itemize}
 \subsubsection{Revisar archivos}
 Se revisa que se hayan escrito los aeropuertos de manera correcta de acuerdo a los nombres de aeropuerto
 \begin{minted}{python}
 assert(listaPrueba.revisarArchivosJSON()), "JSONs no escritos"
-\end{minted}  
+\end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
+    \caption{Salida}
+  \end{figure}
+
 \subsubsection{Obtener nombres}
 Si solo se han insertado acapulco y monterrey como aeropuertos de origen se busca que se devuelvan solo los nombres de esos dos aeropuertos
 \begin{minted}{python}
 assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
 \end{minted}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{pruebasPy/listaAeropuertos/bien.png}
+    \caption{Salida}
+  \end{figure}
+
 \section{Costos}
 El costo de desarrollo por la beta seria de \$1000, el de desarrollo final seria un costo total ya de \$2000 y por darle mantenimiento habria un costo de \$500.
 \end{document}
