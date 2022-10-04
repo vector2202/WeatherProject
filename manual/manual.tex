@@ -307,12 +307,30 @@ assert(cacheEjemplo.realizarPeticion(None) != None), "Datos JSON nulos"
 \subsubsection{Obtener numero de vuelo}
 \begin{itemize}
 \item Se busca que devuelva un dato de tipo entero
+\begin{minted}{python}
+assert(type(obtenerNumeroDeVuelo()) == int), "Tipo de dato incorrecto"
+\end{minted}
 \end{itemize}
+Solo se realizo una prueba porque la funcion es sin parametros, salida:
 \subsubsection{Convertir a vuelo}
 Usaremos un objeto de la clase clima cache para poder acceder a la funcion de realizar peticion, ya que esta funcion toma datos JSON y los convierte en texto legible para vuelos
 \begin{itemize}
 \item Revisamos que lo que nos devuelva es una string ya que quiere decir que proceso bien los datos JSON de entrada.
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('MEX', 19.4363, -99.0721)
+cacheClima = CacheClima(11)
+cacheClima.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")
+cacheClima.refrescarClima(aeropuerto1)
+assert(type (convertirAVuelo(cacheClima.realizarPeticion(aeropuerto1),\
+                             cacheClima.realizarPeticion(aeropuerto1))) == str)
+\end{minted}
 \item Se le manda dos datos nulos como ambos parametros
+
+\begin{minted}{python}
+assert(type (convertirAVuelo(cacheClima.obtenerClima(None),\
+                             cacheClima.obtenerClima(None))) == str)
+\end{minted}
+  En ambos caso tenemos la misma salida, una string que representa el vuelo
 \end{itemize}
 \subsection{Lista de Aeropuertos}
 \subsubsection{Procesar Vuelo}

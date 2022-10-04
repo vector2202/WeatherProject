@@ -2,7 +2,6 @@ from src.aeropuerto import Aeropuerto
 from src.cacheClima import CacheClima
 from src.datosClima import DatosClima
 
-
 def main():
     cacheEjemplo = CacheClima(11)
     cacheEjemplo.actualizarAPI("9d92b9e2262e46e5b34601d6f706cf43")

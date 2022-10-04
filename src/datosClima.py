@@ -36,5 +36,5 @@ class DatosClima:
                 self.tempeaturaMaxima == objeto.tempeaturaMaxima and\
                 self.tempeaturaMinima == objeto.tempeaturaMinima
         return False
-    #def __ne__(self, objeto) -> bool:
-    #    return not self.__eq__(objeto)
+    def __ne__(self, objeto) -> bool:
+        return not self.__eq__(objeto)
