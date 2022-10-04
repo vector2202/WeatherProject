@@ -336,31 +336,73 @@ assert(type (convertirAVuelo(cacheClima.obtenerClima(None),\
 \subsubsection{Procesar Vuelo}
 \begin{itemize}
 \item Se revisa que si se procesa un vuelo de acapulco a mexico, se inserta de manera correcta en la lista de listas.
+\begin{minted}{python}
+vuelo = ['ACA', 'MEX', 16.7571, -99.754, 19.4363, -99.0721]
+assert(listaPrueba.procesarVuelo(vuelo) != -1)    
+\end{minted}
 \item Se revisa si se procesa un vuelo nulo
 \end{itemize}
 \subsubsection{Buscar Aeropuerto de Origen}
+Se toma el vuelo registrado de acapulco a mexico
 \begin{itemize}
 \item Si se proceso el vuelo de acapulco a mexico, se busca a acapulco dentro de la lista
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
+assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1)    
+\end{minted}
+  Salida:
 \item Se busca un aeropuerto nulo
+\begin{minted}{python}
+aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
+assert(listaPrueba.buscarAeropuertoOrigen(None) != -1)    
+\end{minted}
 \item Se busca un aeropuerto de un vuelo que no hemos procesado
+\begin{minted}{python}
+aeropuertoPrueba = Aeropuerto('MTY', 0 ,0)
+assert(listaPrueba.buscarAeropuertoOrigen(aeropuertoPrueba) != -1)    
+\end{minted}
 \end{itemize}
 \subsubsection{Insertar aeropuerto de origen}
 \begin{itemize}
 \item Dado un aeropuerto de origen se busca que se haya insertado en un indice valido
+\begin{minted}{python}
+assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1), "No se inserto el aeropuerto"
+\end{minted}
 \item Se inserta un aeropuerto nulo
+\begin{minted}{python}
+assert(listaPrueba.insertarAeropuertoOrigen(None) != -1), "No se inserto el aeropuerto"
+\end{minted}
 \end{itemize}
 \subsubsection{Buscar aeropuerto de destino}
+Se usa la misma lista con el vuelo de acapulco a mexico
 \begin{itemize}
 \item Dado el vuelo anterior de acapulco a mexico se busca a mexico dentro de la lista correspondiente a acapulco
+\begin{minted}{python}
+assert(listaPrueba.buscarAeropuertoDestino(\
+                                          listaPrueba.lista[aeropuerto1.funcionHash(11)]\
+                                         , aeropuerto2.nombre)), "Aeropuerto inexistente"
+\end{minted}
 \item Se busca un aeropuerto nulo en la lista de acapulco
-\item Se busca un aeropuerto en una lista nula
+\begin{minted}{python}
+assert(listaPrueba.buscarAeropuertoDestino(\
+                                          listaPrueba.lista[aeropuerto1.funcionHash(11)]\
+                                         , None)), "Aeropuerto inexistente"
+\end{minted}
+\item Se busca un aeropuerto en una lista vacia
+\begin{minted}{python}
+assert(listaPrueba.buscarAeropuertoDestino([], aeropuerto2.nombre)), "Aeropuerto inexistente"
+\end{minted}
 \end{itemize}
 \subsubsection{Revisar archivos}
-\begin{itemize}
-\item Se revisa que se hayan escrito los aeropuertos de manera correcta de acuerdo a los nombres de aeropuerto
-\end{itemize}
+Se revisa que se hayan escrito los aeropuertos de manera correcta de acuerdo a los nombres de aeropuerto
+\begin{minted}{python}
+assert(listaPrueba.revisarArchivosJSON()), "JSONs no escritos"
+\end{minted}  
 \subsubsection{Obtener nombres}
 Si solo se han insertado acapulco y monterrey como aeropuertos de origen se busca que se devuelvan solo los nombres de esos dos aeropuertos
+\begin{minted}{python}
+assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
+\end{minted}
 \section{Costos}
 El costo de desarrollo por la beta seria de \$1000, el de desarrollo final seria un costo total ya de \$2000 y por darle mantenimiento habria un costo de \$500.
 \end{document}
