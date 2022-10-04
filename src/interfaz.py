@@ -10,41 +10,42 @@ from src.cacheClima import CacheClima
 
 
 class Interfaz(tk.Frame):
+    '''
+    Clase para crear y organizar la interfaz
+    '''
     def __init__(self, master):
+        '''
+        Construye los atributos necesarios para nuestra interfaz
+        '''
         tk.Frame.__init__(self, master)
         self.grid() 
-<<<<<<< HEAD
         self.inicializarJSONs()
         self.crearBotones()
         self.crearEtiquetas()
         self.crearEntrada()
         self.crearMenus()
-=======
         self.inicializarJsons()
->>>>>>> main
         self.master = master
         self.master.minsize(400,250)
-        self.createButtons()
-        self.createLabels()
-        self.createEntries()
         self.createMenus()
         self.api = "9d92b9e2262e46e5b34601d6f706cf43"
  
 
-<<<<<<< HEAD
     def crearBotones(self):
-=======
-    def createButtons(self):
->>>>>>> main
+        '''
+        Funcion que nos permite crear botones que estan asociados a ciertas funciones
+        '''
         ttk.Button(self, text="Historial", command=self.mostrarHistorial).place(x=20,y=20)
         ttk.Button(self, text="API", command=self.registrarAPI).place(x=390, y=20)
         ttk.Button(self, text="Salir del programa",\
                   command=self.saluda).pack(padx=200, pady=350)
-<<<<<<< HEAD
         ttk.Button(self, text="Consultar", command=self.seleccionAeropuertoDestino).place(x=390, y=130)
 
 
     def crearMenus(self):
+        '''
+        Funcion que nos muestra los menus tanto para el lugar de origen como de destino
+        '''
         self.aeropuertoOrigenSeleccionado = tk.StringVar(self)
         self.aeropuertoOrigenSeleccionado.set("Selecciona el origen:")
         self.menuAeropuertoOrigen = tk.OptionMenu(self, self.aeropuertoOrigenSeleccionado,\
@@ -60,6 +61,9 @@ class Interfaz(tk.Frame):
         self.menuAeropuertoDestino.place(x=200, y=130)
 
     def crearEtiquetas(self):
+        '''
+        Funcion que crea las etiquetas para mostrar ciertos mensajes en nuestra interfaz (es meramente visual)
+        '''
         ttk.Label(text="Escriba la llave:").place(x=200,y=20)
         Label(self, text="Ciudad de origen").place(x=20,y=100)
         Label(self, text="Ciudad de destino:").place(x=200, y=100) 
@@ -71,56 +75,26 @@ class Interfaz(tk.Frame):
         self.climaAeropuertoDestino = ttk.Label(self, textvariable=self.datosClimaAeropuertoDestino).place(x=200, y=170)
         
     def crearEntrada(self):
+        '''
+        Funcion para que se pueda escribir la llave de la API
+        '''
         self.llaveAPI = ttk.Entry()
         self.llaveAPI.place(x=320, y=20, width=60)
 
-    def saluda(self):
-        print("Hola")
     
-    def inicializarJSONs(self):
-=======
-
-
-    def createMenus(self):
-        self.optionVarOrigen = tk.StringVar(self)
-        self.optionVarOrigen.set("Selecciona el origen:")
-        tk.OptionMenu(self, self.optionVarOrigen,\
-                self.listaOrigenes[0], *self.listaOrigenes,\
-                command=self.origenElegido).place(x=20, y=130)
-        self.optionVarDestino = tk.StringVar(self)
-        self.optionVarDestino.set("Selecciona el destino:")
-        tk.OptionMenu(self, self.optionVarDestino, None,\
-                *self.listaDestinos,command=self.destinoElegido).place(x=200, y=130)
-
-
-    def createLabels(self):
-        ttk.Label(text="Escriba la llave:").place(x=200,y=20)
-        Label(self, text="Ciudad de origen").place(x=20,y=100)
-        Label(self, text="Ciudad de destino:").place(x=200, y=100) 
-        self.climaOrigenDatos = StringVar()
-        self.climaDestinoDatos = StringVar()
-        self.climaOrigenDatos.set("")
-        self.climaDestinoDatos.set("")
-        ttk.Label(self, textvariable=self.climaOrigenDatos).place(x=20, y=170)
-        ttk.Label(self, textvariable=self.climaDestinoDatos).place(x=200, y=170)
-        
-
-    def createEntries(self):
-        ttk.Entry().place(x=320, y=20, width=60)
-
-
     def saluda(self):
         print("Hola")
     
 
     def inicializarJsons(self):
->>>>>>> main
+        '''
+        Funcion que inicializa nuestras listas y hacemos uso de nuestro dataset
+        '''
         nombreArchivoCSV = "dataset1.csv"
         tamañoDiccionario = 71
         self.listaAeropuertosOrigen = []
         self.listaAeropuertosDestino = []
         try:
-<<<<<<< HEAD
             revisarCSV(nombreArchivoCSV)
         except Exception as exception:
             sys.exit(str(exception))
@@ -130,8 +104,10 @@ class Interfaz(tk.Frame):
 
 
     def seleccionAeropuertoOrigen(self, *args):
+        '''
+        Funcion para cuando hacemos la seleccion de nuestro aeropuerto de origen y poder revisas los posibles destinos y el clima
+        '''
         nombreAeropuertoOrigen = self.aeropuertoOrigenSeleccionado.get()
-=======
             revisarCsv(nombreArchivoCSV)
         except Exception as exception:
             sys.exit(str(exception))
@@ -141,8 +117,10 @@ class Interfaz(tk.Frame):
 
 
     def origenElegido(self, *args):
+        '''
+        Funcion para cuando escogemos nuestro lugar de origen
+        '''
         nombreAeropuertoOrigen = self.optionVarOrigen.get()
->>>>>>> main
         self.destinosDisponibles = leerDestinos(nombreAeropuertoOrigen)
         if(self.destinosDisponibles != None):
             self.aeropuertoOrigen = Aeropuerto\
@@ -150,19 +128,16 @@ class Interfaz(tk.Frame):
                  self.destinosDisponibles[0][1], self.destinosDisponibles[0][2])
             self.request = self.cache.refrescarClima(self.aeropuertoOrigen)
             self.destinosDisponibles.pop(0)
-<<<<<<< HEAD
             self.listaAeropuertosDestino = self.obtenerNombreDestinos(self.destinosDisponibles)
             self.aeropuertoDestinoSeleccionado.set('')
             self.menuAeropuertoDestino['menu'].delete(0, 'end')    
             for aeropuertoDestino in self.listaAeropuertosDestino:
                 self.menuAeropuertoDestino['menu'].add_command\
-=======
             self.listaDestinos = self.obtenerNombreDestinos(self.destinosDisponibles)
             self.optionVarDestino.set('')
             self.destino['menu'].delete(0, 'end')    
             for aeropuertoDestino in self.listaDestinos:
                 self.destino['menu'].add_command\
->>>>>>> main
                     (label=aeropuertoDestino, command=tk._setit\
                      (self.aeropuertoDestinoSeleccionado, aeropuertoDestino))
             return True
@@ -170,19 +145,27 @@ class Interfaz(tk.Frame):
 
 
     def obtenerNombreDestinos(self, destinos):
+        '''
+        Funcion que nos regresa una lista con los nombres de lugares destinos
+        '''
         lista = []
         for destino in destinos:
                 lista.append(destino[0])
         return lista
             
 
-<<<<<<< HEAD
     def seleccionAeropuertoDestino(self, *args):
+        '''
+        Funcion para seleccionar nuestro aeropuerto destino
+        '''
         nombreAeropuertoDestino = self.aeropuertoDestinoSeleccionado.get()
-=======
+
+
     def destinoElegido(self, *args):
+        '''
+        Funcion para cuando tenemos un lugar destino y hacer consulta de vuelo y clima
+        '''
         nombreAeropuertoDestino = self.optionVarDestino.get()
->>>>>>> main
         if(self.destinosDisponibles != None):
             for destino in self.destinosDisponibles:
                 if (destino[0] == nombreAeropuertoDestino):
@@ -197,6 +180,9 @@ class Interfaz(tk.Frame):
 
 
     def consultarVuelo(self):
+        '''
+        Fucion para hacer las consultas de los vuelos
+        '''
         if(self.request):
             self.mostrarClima(self.cache.obtenerClima(self.aeropuertoOrigen),\
                               self.cache.obtenerClima(self.aeropuertoDestino))
@@ -206,22 +192,22 @@ class Interfaz(tk.Frame):
 
     def mostrarClima(self, datosOrigen, datosDestino):
         '''
-        Esto deberia ser una docstring para documetnar la funcion o metodo.
+        Funcion para poder mostrar el clima de los datos de origen y destino
         '''
-<<<<<<< HEAD
         self.datosClimaAeropuertoOrigen.set(datosOrigen)
         self.datosClimaAeropuertoDestino.set(datosDestino)
         with open("datos/historial.txt",'a') as archivoHistorial:
             archivoHistorial.write(convertirAVuelo(datosOrigen, datosDestino))
-=======
         self.climaOrigenDatos.set(datosOrigen)
         self.climaDestinoDatos.set(datosDestino)
         with open("datos/historial.txt",'a') as archivoHistorial:
             archivoHistorial.write(convertirVuelo(datosOrigen, datosDestino))
->>>>>>> main
         
     
     def mostrarHistorial(self):
+        '''
+        Funcion para mostrar el historial de lo consultado
+        '''
         n = 3*3 
         with open("datos/historial.txt", 'r') as archivo:
             informacion = ""
@@ -231,6 +217,9 @@ class Interfaz(tk.Frame):
 
 
     def registrarAPI(self):
+        '''
+        Funcion par registrar nuestra llave
+        '''
         self.api = self.llaveAPI.get()
         self.cache.actualizarAPI(self.api)
         print(str(self.api)) 

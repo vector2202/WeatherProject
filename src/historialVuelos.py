@@ -2,7 +2,7 @@ from datetime import datetime
 
 def obtenerNumeroDeVuelo():
     '''
-    Funcion que devuelve cuantos vuelos hemos reguistrado
+    Funcion que devuelve cuantos vuelos hemos registrado
     '''
     try:
         with open('datos/nVuelo.txt','r') as archivoNumeroDeVuelo:
@@ -13,15 +13,9 @@ def obtenerNumeroDeVuelo():
     with open('datos/nVuelo.txt','w') as archivoNumeroDeVuelo:
         archivoNumeroDeVuelo.write(str(numeroDeVuelo + 1))
     return numeroDeVuelo
-<<<<<<< HEAD:src/historialVuelos.py
 
 
 def convertirAVuelo(datosOrigen, datosDestino):
-=======
-
-
-def convertirVuelo(datosOrigen, datosDestino):
->>>>>>> main:src/historial.py
     '''
     Funcion que devuelve datos los datos json un dato en string con la hora y numero de vuelo
     '''
