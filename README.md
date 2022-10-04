@@ -61,7 +61,7 @@ Para ejecutar el sistema, la aplicacion y que funcione se tiene que ejecutar:
 python3.10 src/main.py
 ```
 
-La interfaz es muy amigable e intuitiva, al abrirla necesitamos ingresar una llave API valida ya que por default es una llave vacia, solo se tiene que ingresar en el textbox y presionar el boton de API, para mostrar los ultimos 3 vuelos realizados basta con presionar el boton de historial y para registrar un vuelo primero se tiene que seleccionar una ciudad de origen, luego una ciudad de destino y presionar consultar y aparecen los datos del clima abajo de cada ciudad.
+La interfaz es muy amigable e intuitiva, al abrirla necesitamos ingresar una llave API valida ya que por default es una llave vacia, solo se tiene que ingresar en el textbox y presionar el boton de API, para mostrar los ultimos 3 vuelos realizados basta con presionar el boton de historial y para registrar un vuelo primero se tiene que seleccionar un aeropuerto de origen, luego un aeropuerto de destino y presionar consultar y aparecen los datos del clima abajo de cada aeropuerto.
 
 ## Construido con 🛠️
 
