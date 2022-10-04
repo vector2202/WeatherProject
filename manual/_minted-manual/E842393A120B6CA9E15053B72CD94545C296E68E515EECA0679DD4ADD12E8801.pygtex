@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{listaPrueba}\PYG{o}{.}\PYG{n}{buscarAeropuertoDestino}\PYG{p}{([],} \PYG{n}{aeropuerto2}\PYG{o}{.}\PYG{n}{nombre}\PYG{p}{))}\PYGZbs{}
+       \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Aeropuerto inexistente\PYGZdq{}}
+\end{Verbatim}

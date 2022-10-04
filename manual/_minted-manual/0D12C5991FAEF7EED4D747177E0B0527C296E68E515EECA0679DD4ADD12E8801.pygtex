@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{assert}\PYG{p}{(}\PYG{n+nb}{type} \PYG{p}{(}\PYG{n}{convertirAVuelo}\PYG{p}{(}\PYG{n}{cacheClima}\PYG{o}{.}\PYG{n}{obtenerClima}\PYG{p}{(}\PYG{k+kc}{None}\PYG{p}{),}\PYGZbs{}
+                             \PYG{n}{cacheClima}\PYG{o}{.}\PYG{n}{obtenerClima}\PYG{p}{(}\PYG{k+kc}{None}\PYG{p}{)))} \PYG{o}{==} \PYG{n+nb}{str}\PYG{p}{)}
+\end{Verbatim}

@@ -3,7 +3,7 @@ import math
 class DatosClima:
     def __init__(self, datosJSON) -> None:
         
-        self.ubicacion = datosJSON['name'] + "," + datosJSON['sys']['country']
+        self.ubicacion = datosJSON['name'] + ", " + datosJSON['sys']['country']
         self.descripcion = datosJSON['weather'][0]['description']
         self.temperatura = str(math.floor(datosJSON['main']['temp'] - 273))
         self.sensacion = str(math.floor(datosJSON['main']['feels_like'] - 273))
@@ -13,8 +13,7 @@ class DatosClima:
                                                - 273))
         self.icono = "http://openweathermap.org/img/w/" +\
             str(datosJSON['weather'][0]['icon']) + ".png"
-        #informacion += "Amanecer: " + str(datosJSON['sys']['sunrise']) + "\n"
-        #informacion += "Atardecer: " + str(datosJSON['sys']['sunset']) + "\n"
+
 
     def __str__(self) -> str:
         return self.ubicacion + '\n' + self.descripcion +\
@@ -22,10 +21,20 @@ class DatosClima:
             + self.sensacion + '\nTemperatura Maxima: '\
             + self.tempeaturaMaxima + '\nTemperatura Minima: '\
             + self.tempeaturaMinima
-    
+
+
     def __repr__(self) -> str:
         return self.ubicacion + '\n' + self.descripcion +\
             '\nTemperatura: ' + self.temperatura + '\nSensacion: '\
             + self.sensacion + '\nTemperatura Maxima: '\
             + self.tempeaturaMaxima + '\nTemperatura Minima: '\
             + self.tempeaturaMinima
+    def __eq__(self, objeto) -> bool:
+        if isinstance(objeto, DatosClima):
+            return self.ubicacion == objeto.ubicacion and\
+                self.temperatura == objeto.temperatura and\
+                self.tempeaturaMaxima == objeto.tempeaturaMaxima and\
+                self.tempeaturaMinima == objeto.tempeaturaMinima
+        return False
+    def __ne__(self, objeto) -> bool:
+        return not self.__eq__(objeto)

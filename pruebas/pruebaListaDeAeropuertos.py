@@ -8,12 +8,12 @@ def main():
     aeropuerto1 = Aeropuerto('ACA', 16.7571, -99.754)
     aeropuerto2 = Aeropuerto('MEX', 19.4363, -99.0721)
     aeropuertoPrueba = Aeropuerto('MTY', 0 ,0)
-    assert(listaPrueba.procesarVuelo(vuelo) != -1)
-    assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1)
-    assert(listaPrueba.buscarAeropuertoDestino(listaPrueba.lista, aeropuerto2))
-    assert(listaPrueba.insertarAeropuerto(aeropuertoPrueba) != -1)
+    assert(listaPrueba.procesarVuelo(vuelo) != -1), "Aeropuerto no insertado"
+    assert(listaPrueba.buscarAeropuertoOrigen(aeropuerto1) != -1), "Aeropuerto inexistente"
+    #assert(listaPrueba.buscarAeropuertoDestino([], aeropuerto2.nombre)), "Aeropuerto inexistente"
+    assert(listaPrueba.insertarAeropuertoOrigen(aeropuertoPrueba) != -1), "No se inserto el aeropuerto"
     listaPrueba.escribirAeropuertosJson()
-    assert(listaPrueba.revisarArchivos())
+    #assert(listaPrueba.revisarArchivosJSON()), "JSONs no escritos"
     assert(listaPrueba.obtenerNombres() == ['ACA', 'MTY'])
     
 main()

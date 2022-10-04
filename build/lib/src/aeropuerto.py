@@ -5,19 +5,28 @@ class Aeropuerto:
         self.latitud = latitud
         
     def funcionHash(self, hashSize):
+        ''' 
+        Funcion que obtiene el valor hash de una ciudad, dado su nombre, longitud ciudad
+        '''
         suma = 0
-        for caracter in self.nombre:#Suma de valores ASCII
+        for caracter in self.nombre: #Suma de valores ASCII
             suma += ord(caracter)
         return (suma + abs(int(float(self.latitud))) +\
                 abs(int(float(self.longitud)))) % hashSize
-    """ Funcion que obtiene el valor hash de una ciudad, dado su nombre, longitud ciudad """
 
     def __str__(self):
         return "[ " + self.nombre + ", " + str(self.latitud) +\
             ", " + str(self.longitud) + "]"
     
     def __repr__(self):
+        '''
+        Clase ciudades para guardar la ciudad y su longitud y latitud para calcular su clima
+        '''
         return "[ " + self.nombre + ", " + str(self.latitud) +\
             ", " + str(self.longitud) + "]"
-    
-    """" Clase ciudades para guardar la ciudad y su longitud y latitud para calcular su clima """
+    def __eq__(self, objeto) -> bool:
+        if(isinstance(objeto, Aeropuerto)):
+            return objeto.nombre == self.nombre and\
+                objeto.longitud == self.longitud and\
+                objeto.latitud == self.latitud
+        return False

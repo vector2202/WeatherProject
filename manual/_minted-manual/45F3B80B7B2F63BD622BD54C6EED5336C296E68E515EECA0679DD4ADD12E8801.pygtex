@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{vuelo} \PYG{o}{=} \PYG{k+kc}{None}
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{listaPrueba}\PYG{o}{.}\PYG{n}{procesarVuelo}\PYG{p}{(}\PYG{n}{vuelo}\PYG{p}{)} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+\end{Verbatim}

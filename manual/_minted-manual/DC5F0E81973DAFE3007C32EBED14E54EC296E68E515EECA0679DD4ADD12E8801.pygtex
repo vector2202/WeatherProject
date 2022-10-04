@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{listaPrueba}\PYG{o}{.}\PYG{n}{insertarAeropuertoOrigen}\PYG{p}{(}\PYG{k+kc}{None}\PYG{p}{)} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYGZbs{}
+      \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}No se inserto el aeropuerto\PYGZdq{}}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{aeropuerto1} \PYG{o}{=} \PYG{n}{Aeropuerto}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}MEX\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{19.4363}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{99.0721}\PYG{p}{)}
+\PYG{n}{cacheEjemplo}\PYG{o}{.}\PYG{n}{actualizarAPI}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}9d92b9e2262e46e5b34601d6f706cf43\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{cacheEjemplo}\PYG{o}{.}\PYG{n}{refrescarClima}\PYG{p}{(}\PYG{n}{aeropuerto1}\PYG{p}{))}\PYGZbs{}
+       \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}No se actualizaron los datos\PYGZdq{}}
+\PYG{k}{assert}\PYG{p}{(}\PYG{n}{cacheEjemplo}\PYG{o}{.}\PYG{n}{realizarPeticion}\PYG{p}{(}\PYG{k+kc}{None}\PYG{p}{)} \PYG{o}{!=} \PYG{k+kc}{None}\PYG{p}{)}\PYGZbs{}
+      \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Datos JSON nulos\PYGZdq{}}
+\end{Verbatim}
