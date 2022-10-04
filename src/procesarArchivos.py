@@ -3,6 +3,9 @@ import json
 from src.listaDeAeropuertos import ListaDeAeropuertos
 
 def revisarFormatoVuelo(vuelo):
+    '''
+    Funcion para revisar formato de los vuelos para que sea compratible
+    '''
     if(type(vuelo[0]) != str or type(vuelo[1]) != str or \
        type(vuelo[2]) != float or type(vuelo[3]) != float or\
        type(vuelo[4]) != float or type(vuelo[5]) != float):
@@ -10,19 +13,12 @@ def revisarFormatoVuelo(vuelo):
     return True
 
 
-<<<<<<< HEAD:src/procesarArchivos.py
 def revisarCSV(nombreArchivo):
     '''
     Funcion que verifica que el formato del csv sea correcto
     '''
     if(type(nombreArchivo) != str or len(nombreArchivo) < 1):
         return False
-=======
-def revisarCsv(nombreArchivo):
-    '''
-    Funcion que verifica que el formato del csv sea correcto
-    '''
->>>>>>> main:src/archivosCSV.py
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
@@ -36,11 +32,8 @@ def escribirDestinos(nombreArchivo, tamañoDiccionario):
     '''
     Funcion que escribe en un 'Nombre'.json para cada ciudad de origen, escribe los destinos disponibles, recibe un n que es el tamño de la tabla hash
     '''
-<<<<<<< HEAD:src/procesarArchivos.py
     if(type(nombreArchivo) != str or len(nombreArchivo) < 1):
         return None
-=======
->>>>>>> main:src/archivosCSV.py
     with open('datos/' + nombreArchivo, 'r') as archivo:
         next(archivo)
         vuelos = csv.reader(archivo)
@@ -56,11 +49,8 @@ def leerDestinos(nombreAeropuertoOrigen):
     '''
     Leemos con la ciudad de origen todos sus destinos posibles
     '''
-<<<<<<< HEAD:src/procesarArchivos.py
     if(type(nombreAeropuertoOrigen) != str or len(nombreAeropuertoOrigen) < 1):
         return None
-=======
->>>>>>> main:src/archivosCSV.py
     try:
         destinos = []
         with open("datos/" + nombreAeropuertoOrigen + ".json") as archivo:
