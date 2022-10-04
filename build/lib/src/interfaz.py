@@ -168,19 +168,21 @@ class Interfaz(tk.Frame):
         self.datosClimaAeropuertoDestino.set(datosDestino)
         with open("datos/historial.txt",'a') as archivoHistorial:
             archivoHistorial.write(convertirAVuelo(datosOrigen, datosDestino))
-        
+
     
     def mostrarHistorial(self):
         '''
         Funcion para mostrar el historial de lo consultado
         '''
-        n = 3*3 
-        with open("datos/historial.txt", 'r') as archivo:
-            informacion = ""
-            for linea in (archivo.readlines()[-n:]):
-                informacion += linea + "\n"
-        tkinter.messagebox.showinfo("Historial", message=informacion)
-
+        n = 3*3
+        try:
+            with open("datos/historial.txt", 'r') as archivo:
+                informacion = ""
+                for linea in (archivo.readlines()[-n:]):
+                    informacion += linea + "\n"
+                tkinter.messagebox.showinfo("Historial", message=informacion)
+        except OSError as error:
+            print("Primer vuelo")
 
     def registrarAPI(self):
         '''

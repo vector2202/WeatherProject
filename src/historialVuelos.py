@@ -9,7 +9,7 @@ def obtenerNumeroDeVuelo():
             numeroDeVuelo = archivoNumeroDeVuelo.read()
             numeroDeVuelo = int(numeroDeVuelo)
     except OSError as error:
-        numeroDeVuelo = 0
+        numeroDeVuelo = 1
     with open('datos/nVuelo.txt','w') as archivoNumeroDeVuelo:
         archivoNumeroDeVuelo.write(str(numeroDeVuelo + 1))
     return numeroDeVuelo
