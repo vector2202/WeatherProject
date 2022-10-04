@@ -33,6 +33,8 @@ class Interfaz(tk.Frame):
         '''
         ttk.Button(self, text="Historial", command=self.mostrarHistorial).place(x=20,y=20)
         ttk.Button(self, text="API", command=self.registrarAPI).place(x=390, y=20)
+        ttk.Button(self, text="Salir del programa",\
+                   command=self.salida).pack(padx=200, pady=350)
         ttk.Button(self, text="Consultar", command=self.seleccionAeropuertoDestino).place(x=390, y=130)
 
 
@@ -76,6 +78,9 @@ class Interfaz(tk.Frame):
         self.llaveAPI.place(x=320, y=20, width=60)
 
     
+    def salida(self):
+        tk.Frame.quit(self)
+
     def inicializarJSONs(self):
         '''
         Funcion que inicializa nuestras listas y hacemos uso de nuestro dataset

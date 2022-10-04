@@ -79,7 +79,7 @@ class Interfaz(tk.Frame):
 
     
     def salida(self):
-        tk.Tk().destroy()
+        tk.Frame.quit(self)
 
     def inicializarJSONs(self):
         '''
